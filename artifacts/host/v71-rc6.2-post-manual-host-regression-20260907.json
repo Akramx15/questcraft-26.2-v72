@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "V71_RC6_2_POST_MANUAL_HOST_REGRESSION",
+  "status": "PASS_HOST_ONLY",
+  "recordedUtc": "2026-09-07T07:38:15Z",
+  "testedSource": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "commit": "baa7d97393e126e87649ee499e15817aba5428d2",
+    "tree": "2185293c34b5e17117f5f4b837a73197237b6eae",
+    "workingTreeWasCleanBeforeFreshHostRuns": true
+  },
+  "candidate": {
+    "buildLock": {
+      "path": "V71_LAB_RC6_2.lock.json",
+      "sha256": "7DD25F7703A4E2B1F2857FD8EB552CB303CB3A1870779ADBD5708B3F5D1B7E45",
+      "immutableAndUnmodified": true
+    },
+    "runtimeResultLock": {
+      "path": "V71_RC6_2_RUNTIME_RESULT.lock.json",
+      "sha256": "A0B37CCAAA67E0D0E4BA7C4E5CA80745707958F26B113638ABDEFB264788770C",
+      "immutableAndUnmodified": true
+    },
+    "manualAcceptance": {
+      "path": "artifacts/manual/v71-rc6.2-user-acceptance-20260907.json",
+      "sha256": "C321B3CDE43807D68C8A6C8C942FF92FEE2DA046B90FA2F09F1664914CABA12E",
+      "status": "PASS_REQUIRED_STANDARD_HAND_CHECKS"
+    },
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "core": {
+      "path": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc6.2-fabric.jar",
+      "version": "26.2-1.3.15+qc.v71.rc6.2",
+      "sha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+      "sizeBytes": 10068468
+    },
+    "veq": {
+      "path": "Vivecraft-Essentials-Quest/mod-fabric/build/libs/VivecraftEssentialsQuest-0.7.0-v71.rc6+mc26.2-fabric.jar",
+      "version": "0.7.0-v71.rc6",
+      "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "sizeBytes": 443280
+    },
+    "pojlibAar": {
+      "builtPath": "Pojlib/build/outputs/aar/Pojlib-release.aar",
+      "stagedPath": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+      "sha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+      "sizeBytes": 88724129
+    },
+    "apk": {
+      "path": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.6.2-tight-space-local.apk",
+      "sha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+      "sizeBytes": 128459705,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+    }
+  },
+  "results": {
+    "vivecraftCommon": {
+      "workingDirectory": "Vivecraft-26.2-Quest",
+      "gradleTasks": [":common:test"],
+      "result": "PASS",
+      "suiteCount": 45,
+      "testCount": 167,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "vivecraftEssentialsQuest": {
+      "workingDirectory": "Vivecraft-Essentials-Quest",
+      "javaMajorVersion": 25,
+      "gradleTasks": ["check", ":mod-fabric:build"],
+      "result": "PASS",
+      "localVivecraftFabricJarSha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+      "outputJarSha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "outputMatchesLockedVeq": true
+    },
+    "pojlib": {
+      "workingDirectory": "Pojlib",
+      "gradleTasks": ["test", "assembleRelease"],
+      "result": "PASS",
+      "builtAarSha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+      "stagedAarSha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+      "outputMatchesLockedAar": true
+    },
+    "apkVerifier": {
+      "path": "scripts/verify-dev-apk.ps1",
+      "result": "PASS",
+      "exactRc62IdentityAndPayloadVerified": true
+    }
+  },
+  "excludedServerResourcePack": {
+    "name": "LunarLabs-26.2-Quest-Vulkan-v2.zip",
+    "status": "HISTORICAL_OUT_OF_SCOPE_ONLY",
+    "excludedByUserOn": "2026-09-07",
+    "usedAsHostRegressionInput": false,
+    "acceptanceClaimAllowed": false,
+    "futureOptimizationInstallationActivationBenchmarkOrReleaseBundlingAllowed": false
+  },
+  "decision": {
+    "postManualHostRegression": "PASS",
+    "runtimeResultChanged": false,
+    "acceptedPayloadChanged": false,
+    "formalMemoryAcceptance": "FAIL_UNCHANGED_ABSOLUTE_PSS_CAP",
+    "stablePromotionAllowed": false
+  },
+  "creationBoundary": {
+    "hostOnly": true,
+    "recordsCompletedFreshHostRuns": true,
+    "buildsInvokedWhileCreatingReceipt": false,
+    "networkUsedWhileCreatingReceipt": false,
+    "adbInvocationsWhileCreatingReceipt": 0,
+    "deviceReadPerformedWhileCreatingReceipt": false,
+    "deviceWritePerformedWhileCreatingReceipt": false,
+    "runtimeLockModified": false,
+    "acceptedPayloadModified": false
+  },
+  "notes": "Additive post-manual Host regression receipt for the exact RC6.2 source and locked artifacts. It records fresh completed Host checks without rewriting the immutable runtime result or accepted payload. The user-excluded server resource pack remains historical and out of scope only. This receipt does not override the formal absolute-PSS failure or authorize Stable promotion."
+}

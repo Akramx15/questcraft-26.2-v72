@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "V71_RC6_2_MANUAL_VR_INTERACTION",
+  "status": "PASS_REQUIRED_STANDARD_HAND_CHECKS",
+  "candidateBuildLockPath": "V71_LAB_RC6_2.lock.json",
+  "identity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "apkSha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+    "coreVersion": "26.2-1.3.15+qc.v71.rc6.2",
+    "coreSha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+    "veqVersion": "0.7.0-v71.rc6",
+    "veqSha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD"
+  },
+  "observedUtc": "2026-09-07T07:07:40Z",
+  "userConfirmed": true,
+  "userConfirmationUtf8Sha256": "8803FD4F0B1206A442824C2975215AE63B2F51AC55161B1D4A728FFFD11A6770",
+  "userConfirmation": "تمام جربت كل شي شتغل شكرا",
+  "observations": {
+    "shield_hidden_only_while_wrist_visible": "PASS",
+    "shield_blocking_and_inventory_unchanged": "PASS",
+    "shield_returns_on_close": "PASS",
+    "grip_visible_over_blocks_in_1x1_tunnel": "PASS",
+    "grip_selectable_both_hands": "PASS",
+    "reverseHands": {
+      "applicability": "NOT_OBSERVED_IN_THIS_STANDARD_HAND_RUN",
+      "resultIfApplicable": "NOT_CLAIMED"
+    }
+  },
+  "scope": {
+    "manualFunctionalAcceptance": true,
+    "reverseHandsAccepted": false,
+    "performanceAccepted": false,
+    "formalMemoryAccepted": false,
+    "stablePromotionAuthorized": false
+  },
+  "notes": "User confirmation is accepted only for the exact RC6.2 shield/Wrist and Grip/tunnel interactions requested immediately before the observation. It does not override the immutable formal PSS failure, prove reverse-hands behavior, establish a performance improvement, or authorize Stable promotion."
+}

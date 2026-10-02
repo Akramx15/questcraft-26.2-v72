@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "V71_RC4_MANUAL_VR_INTERACTION",
+  "status": "PENDING_USER_CONFIRMATION",
+  "labIdentity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.4",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.4-integrated-local.apk",
+    "apkSha256": "8D4811174EC963FFB0DDD31196C425111D03F04A5A2EB4CF6ED7D2DEBB492FAA",
+    "apkSizeBytes": 128434961,
+    "coreVersion": "26.2-1.3.15+qc.v71.rc4",
+    "coreSha256": "289C27057489B1D9B81583776F458179A1D5D5842451B35E598ADCBEB3213189",
+    "coreSizeBytes": 10068021,
+    "veqVersion": "0.7.0-v70-canary.1",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "veqSizeBytes": 441660,
+    "coreVeqPairSha256": "9D2C0830A34963FF3D5F336B465A6B8D11C153E82A738D0528E8D1821F25A8B1",
+    "pojlibAarSha256": "7CE62B90112B74790100F5A8685412CA477D8086167598975A67DDC9E7FD7F2F",
+    "pojlibAarSizeBytes": 88700612,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "confirmation": {
+    "source": "explicit-user-message",
+    "recordedBy": "human-recorded-from-explicit-user-confirmation",
+    "confirmedUtc": null,
+    "statement": null,
+    "userQuote": null
+  },
+  "checks": {
+    "immersiveMcPickupBothHands": "PENDING",
+    "wristThrowFullStackOutside": "PENDING",
+    "wristThrowSingleItemOutside": "PENDING",
+    "wristOtherHandCannotStealCarriedItem": "PENDING",
+    "yUsesLeftHandItemOnLegacyServer": "PENDING",
+    "bContainerAndInventoryBehavior": "PENDING",
+    "movingContainerMenus": "PENDING",
+    "gripBothHands": "PENDING",
+    "bow": "PENDING",
+    "shield": "PENDING",
+    "teleport": "PENDING",
+    "secondaryActionRightHandSingleItem": "PENDING",
+    "secondaryActionLeftHandSingleItem": "PENDING",
+    "jumpAndTeleportUnaffectedOutsideWrist": "PENDING",
+    "heldButtonFocusChangeDoesNotReplay": "PENDING",
+    "reverseHandsSecondaryAction": "PENDING"
+  },
+  "exactCandidateRuntime": "NOT_RUN",
+  "exactCandidateManualGate": "PENDING",
+  "stableTouched": false,
+  "instructions": "Human trust boundary: this JSON is not cryptographic proof of what the user said. Do not copy it as PASS automatically. Only after the user explicitly confirms every check on this exact RC4 Lab identity: preserve a non-empty statement and a short exact userQuote, set status to PASS_CONFIRMED_BY_USER, set all 16 checks to PASS, set exactCandidateRuntime and exactCandidateManualGate to PASS, and record a canonical UTC confirmedUtc. Keep source and recordedBy unchanged. Save as artifacts/acceptance/v71-rc4-manual-vr-receipt.json and lock its SHA-256."
+}

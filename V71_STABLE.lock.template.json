@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "TEMPLATE_NOT_AUTHORIZED",
+  "target": {
+    "package": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12",
+    "label": "QuestCraft Vivecraft Personal 26.2",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-26.2-personal.12-local.apk",
+    "apkSha256": null,
+    "apkSizeBytes": null,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "signatureSchemeV2": true,
+    "coreSha256": "289C27057489B1D9B81583776F458179A1D5D5842451B35E598ADCBEB3213189",
+    "coreSizeBytes": 10068021,
+    "coreVersion": "26.2-1.3.15+qc.v71.rc4",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "veqSizeBytes": 441660,
+    "veqVersion": "0.7.0-v70-canary.1",
+    "lwjglSha256": "DD19A303D574FCFA68F82300186693BCCC2EF9C6AACDC3ECC3D422EC6DDA4DC9"
+  },
+  "acceptedLabCandidate": {
+    "package": "com.qcxr.qcxr.canary262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.4",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.4-integrated-local.apk",
+    "apkSha256": null,
+    "apkSizeBytes": null,
+    "coreVeqPairSha256": "9D2C0830A34963FF3D5F336B465A6B8D11C153E82A738D0528E8D1821F25A8B1",
+    "pojlibAarSha256": "7CE62B90112B74790100F5A8685412CA477D8086167598975A67DDC9E7FD7F2F",
+    "pojlibAarSizeBytes": 88700612,
+    "artifactAudit": "NOT_RUN",
+    "deviceRuntime": "NOT_RUN",
+    "manualAcceptance": "PENDING",
+    "performanceAcceptance": "PENDING",
+    "memoryAcceptance": "PENDING"
+  },
+  "baselineV69": {
+    "package": "com.qcxr.qcxr.dev262",
+    "versionCode": 69,
+    "versionName": "6.0.1-26.2-vivecraft-personal.10",
+    "apkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+    "apkSizeBytes": 126700777,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "coreSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+    "coreVersion": "1.3.15-qc-openxr-vulkan6-vc014d47e-personal-v67-rc1",
+    "veqSha256": "6575A2A436F1FF74898950A9D781B18641707621CAFAE064BB61A9709C1696B9",
+    "veqVersion": "0.7.0"
+  },
+  "acceptance": {
+    "manifestPath": "V71_STABLE_RC4_ACCEPTANCE.lock.json",
+    "manifestSha256": null,
+    "requiredStatus": "ACCEPTED_FOR_STABLE_BUILD",
+    "currentStatus": "PENDING"
+  },
+  "review": {
+    "status": "PENDING_REVIEW",
+    "reviewedBy": null,
+    "reviewedUtc": null
+  },
+  "installPolicy": {
+    "replaceOnly": true,
+    "noUninstall": true,
+    "noClearData": true,
+    "noAccountAccess": true,
+    "rollbackUsesReplaceOnly": true,
+    "rollbackDowngradeOverrideForbidden": true,
+    "finalRequiredState": "STOPPED",
+    "normalStartCount": 3,
+    "finalGateSeconds": 1800
+  },
+  "instructions": "This template cannot authorize a device action. After the exact Stable APK is built and independently verified, copy this file to V71_STABLE.lock.json, fill only the null artifact/evidence/review fields, and change status/review.status only after human review. The harness rejects this template name and TEMPLATE_NOT_AUTHORIZED."
+}

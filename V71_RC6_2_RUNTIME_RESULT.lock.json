@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "V71_RC6_2_RUNTIME_RESULT",
+  "status": "RECORDED_FORMAL_MEMORY_FAIL_SUPPLEMENTARY_LEAK_STABILITY_PASS_MANUAL_PENDING_STABLE_PROHIBITED",
+  "immutable": true,
+  "recordedDate": "2026-09-07",
+  "candidate": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "label": "QuestCraft Vivecraft Lab 26.2",
+    "apk": {
+      "path": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.6.2-tight-space-local.apk",
+      "sha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+      "sizeBytes": 128459705,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+    },
+    "core": {
+      "path": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "version": "26.2-1.3.15+qc.v71.rc6.2",
+      "sha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+      "sizeBytes": 10068468
+    },
+    "veq": {
+      "path": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "version": "0.7.0-v71.rc6",
+      "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "sizeBytes": 443280,
+      "frozenFromRc6": true
+    },
+    "coreVeqPairSha256": "EA2E063BF3B2B38B3B8EB28CA014C5D6144DC61BFC37BE4F3042CDE27FE8C30A",
+    "pojlibAar": {
+      "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+      "sha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+      "sizeBytes": 88724129
+    }
+  },
+  "sourceLocks": {
+    "candidateBuild": {
+      "path": "V71_LAB_RC6_2.lock.json",
+      "sha256": "7DD25F7703A4E2B1F2857FD8EB552CB303CB3A1870779ADBD5708B3F5D1B7E45",
+      "immutableAndUnmodified": true
+    },
+    "evidenceProducers": {
+      "path": "V71_RC6_2_EVIDENCE_PRODUCERS.lock.json",
+      "sha256": "AE863EE53217D11D594DF208E1C015F2AF59A06217894FE8509E6675CDC878C4",
+      "immutableAndUnmodified": true
+    },
+    "manualTemplate": {
+      "path": "V71_MANUAL_RC6_2_ACCEPTANCE.template.json",
+      "sha256": "7C6C9AAB85C65449040B39AF5E252E68B6EF610F9DE8800D8D37F6B24F5AC3D8",
+      "status": "PENDING_USER_OBSERVATION"
+    }
+  },
+  "runtimeScreen": {
+    "path": "artifacts/benchmarks/v71-rc62-live-readonly-01.json",
+    "sha256": "BFA4632EDF153BE01E91E08EEA42339108A808FAF949BD9608597A22C7C1DE78",
+    "sizeBytes": 8130,
+    "classification": "PASS_SAFETY_STABILITY_ONLY",
+    "durationSeconds": 1800.79,
+    "sampleCount": 1801,
+    "meanFps": 87.19,
+    "p10Fps": 85.0,
+    "p95AppMs": 4.84,
+    "p95CpuAndGpuMs": 11.06,
+    "meanStalePerSecond": 0.77,
+    "maxTemperatureC": 44.0,
+    "pairedPerformanceComparison": false,
+    "qgoFourFourClaimed": false
+  },
+  "memory": {
+    "formalPolicy": {
+      "immutable": true,
+      "absolutePssLimitMib": 2457.6,
+      "absoluteRssLimitMib": 2457.6,
+      "processSwapLimitMib": 512.0,
+      "postWarmPssSlopeLimitMibPerMinute": 2.0,
+      "lastThirtyGrowthLimitMib": 128.0
+    },
+    "soaks": [
+      {
+        "run": 1,
+        "summaryPath": "artifacts/memory/v71-rc62-soak1-live-20260907b/summary.json",
+        "summarySha256": "140ABC18A9F10E9229D8B77A2A41B63883AE9E054B71E32CCDBC326FD4DAF9E9",
+        "summarySizeBytes": 6246,
+        "samplesPath": "artifacts/memory/v71-rc62-soak1-live-20260907b/samples.jsonl",
+        "samplesSha256": "4BD29B858AFBDBBCA28339035E265DCD761C4712BB5FAF301FEAA21584D9B30D",
+        "samplesSizeBytes": 16109,
+        "durationMinutes": 90.09,
+        "sampleCount": 19,
+        "maxPssMib": 3275.992,
+        "maxRssMib": 2322.660,
+        "postWarmPssSlopeMibPerMinute": 0.133845,
+        "lastThirtyGrowthMib": 7.955078,
+        "formalResult": "FAIL",
+        "onlyFailedCriterion": "maxPssAtMost2457Point6Mib"
+      },
+      {
+        "run": 2,
+        "summaryPath": "artifacts/memory/v71-rc62-soak2-live-20260907/summary.json",
+        "summarySha256": "1E5C8EBA2E0B8CB86B9233E731CF88F25902DBA35FE79B72B0493C370CA18FE9",
+        "summarySizeBytes": 6245,
+        "samplesPath": "artifacts/memory/v71-rc62-soak2-live-20260907/samples.jsonl",
+        "samplesSha256": "C0F87D3B65BEACE3137BC2FCF0F503ED44114D55F8A0A170D5A14224FC487D09",
+        "samplesSizeBytes": 16146,
+        "durationMinutes": 90.105,
+        "sampleCount": 19,
+        "maxPssMib": 3172.923,
+        "maxRssMib": 2231.746,
+        "postWarmPssSlopeMibPerMinute": 0.308162,
+        "lastThirtyGrowthMib": 7.828125,
+        "formalResult": "FAIL",
+        "onlyFailedCriterion": "maxPssAtMost2457Point6Mib"
+      }
+    ],
+    "formalResult": "FAIL",
+    "formalFailedCriterion": "absolutePssAtMost2457Point6Mib",
+    "supplementary": {
+      "path": "artifacts/memory/v71-rc62-pair-supplementary.json",
+      "sha256": "3C73CDB3DDD89C338BC001E6FC6C72F69B5158CD7F24C0D9481625D3587FD4C0",
+      "sizeBytes": 16397,
+      "result": "LEAK_STABILITY_PASS",
+      "analyzerPath": "scripts/analyze-v71-memory-soak-pair-rc62.ps1",
+      "analyzerNormalizedLfSha256": "073785C084DA6ECFC0CD69CA81667945AF88B43AE7500A904A62FB3355E7050B",
+      "overridesFormalResult": false,
+      "provesAbsenceOfAllLeaks": false,
+      "authorizesStablePromotion": false
+    }
+  },
+  "manualAcceptance": {
+    "status": "PENDING_USER_OBSERVATION",
+    "mayBeInferredFromLogsScreenshotsOrAutomation": false,
+    "requiredChecks": [
+      "shield-hidden-only-while-wrist-visible",
+      "shield-blocking-and-inventory-unchanged",
+      "shield-returns-on-close",
+      "grip-visible-over-blocks-in-1x1-tunnel",
+      "grip-selectable-with-both-hands",
+      "reverse-hands-if-applicable"
+    ]
+  },
+  "decision": {
+    "runtimeSafetyScreenPassed": true,
+    "formalMemoryAcceptance": "FAIL",
+    "supplementaryLeakStability": "LEAK_STABILITY_PASS",
+    "manualVrInteraction": "PENDING_USER_OBSERVATION",
+    "stablePromotionAllowed": false,
+    "stablePackageTouched": false
+  },
+  "evidenceBoundary": {
+    "hostReceiptOnly": true,
+    "deviceCommandsInvokedWhileCreatingReceipt": 0,
+    "deviceReadPerformedWhileCreatingReceipt": false,
+    "deviceWritePerformedWhileCreatingReceipt": false,
+    "inputEvidenceModified": false,
+    "rawLogsPersisted": false,
+    "deviceSerialPersisted": false,
+    "accountDataPersisted": false,
+    "manualAcceptanceMayBeInferred": false,
+    "stablePromotionMayBeInferred": false
+  },
+  "notes": "Immutable Host-side result receipt for the exact RC6.2 Lab artifact. It binds existing evidence by hash without copying raw logs, account data, or a device serial. The supplementary bounded-growth classification does not override either formal PSS failure and cannot authorize Stable promotion. Manual shield/Wrist and Grip/tunnel observations remain user-only."
+}

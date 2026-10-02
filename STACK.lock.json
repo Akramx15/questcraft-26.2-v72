@@ -1,0 +1,1672 @@
+{
+  "schemaVersion": 1,
+  "status": "v72-seed-only-host-verified-apk-built-device-install-pending",
+  "modManagement": {
+    "mode": "seed-only",
+    "scope": {
+      "applicationId": "com.qcxr.qcxr.dev262",
+      "minecraftVersion": "26.2"
+    },
+    "newProfile": "verified-default-seed-once",
+    "existingProfileMigration": "metadata-only-no-artifact-reconciliation",
+    "normalPlayMutatesMods": false,
+    "explicitRepair": "connected-pinned-default-slots-only-preserve-manual-extras",
+    "labPolicy": "strict-managed-unchanged"
+  },
+  "identity": {
+    "applicationId": "com.qcxr.qcxr.dev262",
+    "label": "Vivecraft Stable",
+    "versionCode": 72,
+    "versionName": "6.0.1-26.2-vivecraft-personal.13",
+    "output": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-26.2-personal.13-local.apk",
+    "expectedSignerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "v71Rc62LabCandidate": {
+    "recordedDate": "2026-09-07",
+    "status": "exact-lab-runtime-screen-and-two-soaks-complete-manual-standard-hand-passed-formal-memory-cap-failed",
+    "stableV69": {
+      "package": "com.qcxr.qcxr.dev262",
+      "versionCode": 69,
+      "versionName": "6.0.1-26.2-vivecraft-personal.10",
+      "apkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+      "state": "installed-untouched-stopped",
+      "promotionAllowed": false
+    },
+    "target": {
+      "package": "com.qcxr.qcxr.canary262",
+      "versionCode": 71,
+      "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+      "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.6.2-tight-space-local.apk",
+      "apkSha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+      "apkSizeBytes": 128459705,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+      "installedAndRuntimeBound": true,
+      "stableTouched": false
+    },
+    "runtimeResultReceipt": {
+      "path": "V71_RC6_2_RUNTIME_RESULT.lock.json",
+      "sha256": "A0B37CCAAA67E0D0E4BA7C4E5CA80745707958F26B113638ABDEFB264788770C",
+      "immutable": true,
+      "verifierPath": "scripts/verify-v71-rc62-runtime-result.ps1",
+      "formalMemoryAcceptance": "FAIL",
+      "supplementaryLeakStability": "LEAK_STABILITY_PASS",
+      "manualVrInteraction": "PASS_REQUIRED_STANDARD_HAND_CHECKS",
+      "stablePromotionAllowed": false
+    },
+    "source": {
+      "branch": "feature/quest3-v71-dual-hand-bow",
+      "shieldAndBaseDepthFixCommit": "edf0ad59c47d49254b6676704ff8243d75d16a28",
+      "fabulousCompositionFixCommit": "c3595101eec81ce8b55f4362256e2c7d1e73c82b",
+      "coreIdentityCommit": "764d33b5d321760439681a5c54919005c80035a2",
+      "payloadIntegrationCommit": "17965167afd7b86d4877e228722c1d45a4649a43",
+      "reproduciblePojlibAarCommit": "bef41d4c21772165fa4876ab9460b518d94f0bea",
+      "hostRegressionCommit": "d4e0bcf3282e2d2bb361ec94ddc46dc8e52cd3bb",
+      "runtimeEvidenceCommit": "845d3d3d"
+    },
+    "artifacts": {
+      "vivecraftCore": {
+        "version": "26.2-1.3.15+qc.v71.rc6.2",
+        "sha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+        "sizeBytes": 10068468
+      },
+      "veq": {
+        "version": "0.7.0-v71.rc6",
+        "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+        "sizeBytes": 443280,
+        "frozenFromRc6": true
+      },
+      "coreVeqPairSha256": "EA2E063BF3B2B38B3B8EB28CA014C5D6144DC61BFC37BE4F3042CDE27FE8C30A",
+      "pojlibAar": {
+        "sha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+        "sizeBytes": 88724129,
+        "cleanBuildsMatchedByteForByte": true
+      }
+    },
+    "tightSpaceFixes": {
+      "wristShield": "hide-only-the-anchor-hand-shield-render-snapshot-while-wrist-is-visible",
+      "shieldGameplayInventoryAndBlockingMutated": false,
+      "gripWorldOcclusion": "ALWAYS_VISIBLE",
+      "fabulousGripTarget": "VrUnoccluded",
+      "fixesAreIndependent": true,
+      "currentSavedShouldRenderSelf": false,
+      "fullBodyHeldItemPathIfEnabled": "manual-regression-required-before-support-claim"
+    },
+    "hostVerification": {
+      "vivecraftCommonSuites": 45,
+      "vivecraftCommonTests": 167,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "artifactChainAudit": "PASS",
+      "duplicateManagedMods": 0,
+      "postManualRegressionReceipt": {
+        "path": "artifacts/host/v71-rc6.2-post-manual-host-regression-20260907.json",
+        "sha256": "D40E03D3EE5E934055A5C5600F936B5EF811723E335E99FB1816AD816E6D70DA",
+        "status": "PASS_HOST_ONLY",
+        "testedCommit": "baa7d97393e126e87649ee499e15817aba5428d2",
+        "vivecraftCommon": "PASS_45_SUITES_167_TESTS_ZERO_FAILURES_ERRORS_SKIPS",
+        "veqJava25CheckAndModFabricBuild": "PASS_EXACT_LOCKED_JAR",
+        "pojlibTestAndAssembleRelease": "PASS_EXACT_LOCKED_AAR",
+        "exactRc62ApkVerifier": "PASS",
+        "runtimeLockModified": false,
+        "acceptedPayloadModified": false,
+        "serverResourcePackScope": "HISTORICAL_OUT_OF_SCOPE_ONLY"
+      }
+    },
+    "runtimeScreen": {
+      "path": "artifacts/benchmarks/v71-rc62-live-readonly-01.json",
+      "sha256": "BFA4632EDF153BE01E91E08EEA42339108A808FAF949BD9608597A22C7C1DE78",
+      "durationSeconds": 1800.79,
+      "samples": 1801,
+      "meanFps": 87.19,
+      "p10Fps": 85.0,
+      "p95AppMs": 4.84,
+      "p95CpuAndGpuMs": 11.06,
+      "meanStalePerSecond": 0.77,
+      "maxTemperatureC": 44.0,
+      "dynamicRefreshRangeHz": [73.0, 94.0],
+      "dynamicRefreshModeHz": 87.0,
+      "cpuLevelMode": 2,
+      "gpuLevelMode": 7,
+      "validCapture": true,
+      "pairedPerformanceComparison": false,
+      "qgoFourFourClaimed": false
+    },
+    "memory": {
+      "formalPolicy": {
+        "immutable": true,
+        "absolutePssLimitMib": 2457.6,
+        "absoluteRssLimitMib": 2457.6,
+        "processSwapLimitMib": 512.0,
+        "postWarmPssSlopeLimitMibPerMinute": 2.0,
+        "lastThirtyGrowthLimitMib": 128.0
+      },
+      "soaks": [
+        {
+          "run": 1,
+          "summaryPath": "artifacts/memory/v71-rc62-soak1-live-20260907b/summary.json",
+          "summarySha256": "140ABC18A9F10E9229D8B77A2A41B63883AE9E054B71E32CCDBC326FD4DAF9E9",
+          "samplesSha256": "4BD29B858AFBDBBCA28339035E265DCD761C4712BB5FAF301FEAA21584D9B30D",
+          "durationMinutes": 90.09,
+          "sampleCount": 19,
+          "maxPssMib": 3275.992,
+          "maxRssMib": 2322.66,
+          "maxProcessSwapMib": 0.059,
+          "minMemAvailableMib": 1514.914,
+          "postWarmPssSlopeMibPerMinute": 0.133845,
+          "lastThirtyGrowthMib": 7.955078,
+          "maxTemperatureC": 43.0,
+          "runtimeIdentityPidFocusAndThermalGates": "PASS",
+          "formalResult": "FAIL",
+          "failedCriteria": ["absolutePssAtMost2457Point6Mib"]
+        },
+        {
+          "run": 2,
+          "summaryPath": "artifacts/memory/v71-rc62-soak2-live-20260907/summary.json",
+          "summarySha256": "1E5C8EBA2E0B8CB86B9233E731CF88F25902DBA35FE79B72B0493C370CA18FE9",
+          "samplesSha256": "C0F87D3B65BEACE3137BC2FCF0F503ED44114D55F8A0A170D5A14224FC487D09",
+          "durationMinutes": 90.09,
+          "sampleCount": 19,
+          "maxPssMib": 3172.923,
+          "maxRssMib": 2231.746,
+          "maxProcessSwapMib": 1.98,
+          "minMemAvailableMib": 1645.52,
+          "postWarmPssSlopeMibPerMinute": 0.308162,
+          "lastThirtyGrowthMib": 7.828125,
+          "maxTemperatureC": 43.0,
+          "runtimeIdentityPidFocusAndThermalGates": "PASS",
+          "formalResult": "FAIL",
+          "failedCriteria": ["absolutePssAtMost2457Point6Mib"]
+        }
+      ],
+      "formalAcceptance": "FAIL",
+      "supplementaryLeakStability": {
+        "result": "LEAK_STABILITY_PASS",
+        "receiptPath": "artifacts/memory/v71-rc62-pair-supplementary.json",
+        "receiptSha256": "3C73CDB3DDD89C338BC001E6FC6C72F69B5158CD7F24C0D9481625D3587FD4C0",
+        "analyzerCommit": "77e1334709b52a7c9e452152eadfb0e86e9dfbbe",
+        "analyzerNormalizedLfSha256": "073785C084DA6ECFC0CD69CA81667945AF88B43AE7500A904A62FB3355E7050B",
+        "overridesFormalResult": false,
+        "provesAbsenceOfAllLeaks": false,
+        "authorizesStablePromotion": false
+      },
+      "resourcePackState": {
+        "exactCurrentRuntimeLogObserved": "file/LunarLabs-26.2-Quest-Vulkan-v2.zip",
+        "boundInsideMemoryReceipts": false,
+        "causalMemoryClaimAllowed": false,
+        "futureWork": "OUT_OF_SCOPE_BY_USER_2026_09_07",
+        "existingArtifacts": "HISTORICAL_ONLY_DO_NOT_INSTALL_ACTIVATE_OPTIMIZE_BENCHMARK_OR_BUNDLE"
+      }
+    },
+    "manualVrInteraction": {
+      "template": "V71_MANUAL_RC6_2_ACCEPTANCE.template.json",
+      "receipt": "artifacts/manual/v71-rc6.2-user-acceptance-20260907.json",
+      "receiptSha256": "C321B3CDE43807D68C8A6C8C942FF92FEE2DA046B90FA2F09F1664914CABA12E",
+      "status": "PASS_REQUIRED_STANDARD_HAND_CHECKS",
+      "reverseHands": "NOT_OBSERVED_NOT_CLAIMED",
+      "required": [
+        "shield-hidden-only-while-wrist-visible",
+        "shield-blocking-and-inventory-unchanged",
+        "shield-returns-on-close",
+        "grip-visible-over-blocks-in-1x1-tunnel",
+        "grip-selectable-with-both-hands",
+        "reverse-hands-if-applicable"
+      ]
+    },
+    "stablePromotionAllowed": false,
+    "stablePackageModified": false
+  },
+  "v71Rc4LabCandidate": {
+    "recordedDate": "2026-09-06",
+    "status": "host-apk-built-audited-all-exact-device-candidate-gates-pending",
+    "stableV69": {
+      "package": "com.qcxr.qcxr.dev262",
+      "versionCode": 69,
+      "versionName": "6.0.1-26.2-vivecraft-personal.10",
+      "apkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+      "state": "installed-untouched",
+      "promotionAllowed": false
+    },
+    "target": {
+      "package": "com.qcxr.qcxr.canary262",
+      "versionCode": 71,
+      "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.4",
+      "delivery": "persistent-integrated-managed-baseline",
+      "apkBuilt": true,
+      "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.4-integrated-local.apk",
+      "apkSha256": "8D4811174EC963FFB0DDD31196C425111D03F04A5A2EB4CF6ED7D2DEBB492FAA",
+      "apkSizeBytes": 128434961,
+      "apkArtifactAudit": "PASS_HOST_ONLY_NOT_INSTALLED",
+      "questRuntime": "NOT_RUN"
+    },
+    "source": {
+      "branch": "feature/quest3-v71-dual-hand-bow",
+      "coreAndPojlibIntegrationCommit": "a636ae61a9c561f8f98dfaf5cfd1d09b6d43902e",
+      "finalLauncherIntegrationCommit": "a636ae61a9c561f8f98dfaf5cfd1d09b6d43902e",
+      "buildHarnessLockCommit": "a636ae61a9c561f8f98dfaf5cfd1d09b6d43902e",
+      "buildScriptSha256": "535471DE47477901599B839B68A7D3824E2F06BED8D31A8150B1C6FF76C39EE8"
+    },
+    "artifacts": {
+      "vivecraftCore": {
+        "version": "26.2-1.3.15+qc.v71.rc4",
+        "sha256": "289C27057489B1D9B81583776F458179A1D5D5842451B35E598ADCBEB3213189",
+        "sizeBytes": 10068021
+      },
+      "veq": {
+        "version": "0.7.0-v70-canary.1",
+        "sha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+        "sizeBytes": 441660,
+        "frozenByteForByte": true
+      },
+      "coreVeqPairSha256": "9D2C0830A34963FF3D5F336B465A6B8D11C153E82A738D0528E8D1821F25A8B1",
+      "pojlibAar": {
+        "sha256": "7CE62B90112B74790100F5A8685412CA477D8086167598975A67DDC9E7FD7F2F",
+        "sizeBytes": 88700612,
+        "cleanBuildsMatchedByteForByte": true,
+        "jdk": "Unity bundled Temurin 11.0.14.1+1",
+        "d8Version": "4.0.52",
+        "d8BuilderSha256": "346CA459BD3B4B3A1148F6C8AD31B69049E84F269132EDDD6D28E2D513DD360E"
+      },
+      "expectedSignerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+    },
+    "hostVerification": {
+      "vivecraftCommonSuitesPassed": 43,
+      "vivecraftCommonTestsPassed": 156,
+      "veqJavaExecSelfTestsPassed": 59,
+      "veqStaticVerifiersPassed": 9,
+      "veqGradleTasksExecuted": 86,
+      "pojlibSuitesPerVariant": 21,
+      "pojlibTestsPerVariant": 102,
+      "pojlibSuiteExecutionsAllVariants": 42,
+      "pojlibTestsAllVariants": 204,
+      "twoCleanCoreBuildsMatched": true,
+      "twoCleanPojlibBuildsMatched": true,
+      "standaloneD8CompatibilityPreflightPassed": true,
+      "deviceTouched": false
+    },
+    "jvmMemoryPolicy": {
+      "xmsMiB": 512,
+      "automaticXmxTargetMiB": 1536,
+      "additionalNativeHeadroomMiB": 1024,
+      "automaticXmxMinMiB": 1536,
+      "automaticXmxMaxMiB": 2048,
+      "manualXmxMaxMiB": 2048,
+      "changedFromRc3": false
+    },
+    "exactCandidateGates": {
+      "hostBuildAndArtifactAudit": "PASS",
+      "questInstallAndRuntime": "NOT_RUN",
+      "threeNormalColdStarts": "NOT_RUN",
+      "manualVrInteraction": "PENDING",
+      "lifecycleRecovery": "PENDING",
+      "memoryRuntimeContract": "PENDING",
+      "freshNinetyMinuteSoak1": "PENDING",
+      "freshNinetyMinuteSoak2": "PENDING",
+      "balancedRc3Rc4Performance": "PENDING",
+      "stableBuild": "PENDING",
+      "stablePromotionAndInstall": "PENDING",
+      "threeStableStarts": "PENDING",
+      "finalStableThirtyMinuteGate": "PENDING"
+    },
+    "rc3EvidencePolicy": {
+      "classification": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "maySatisfyRc4Acceptance": false,
+      "preserveV71LabRc3LockAndReceipts": true
+    },
+    "stablePromotionAllowed": false,
+    "stablePackageModified": false
+  },
+  "v71Rc3LabCandidate": {
+    "recordedDate": "2026-09-06",
+    "status": "persistent-rc3-integrated-apk-built-three-cold-starts-passed-manual-performance-and-two-new-soaks-pending",
+    "stableV69": {
+      "package": "com.qcxr.qcxr.dev262",
+      "versionCode": 69,
+      "versionName": "6.0.1-26.2-vivecraft-personal.10",
+      "apkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+      "state": "installed-untouched",
+      "promotionAllowed": false
+    },
+    "target": {
+      "package": "com.qcxr.qcxr.canary262",
+      "versionCode": 71,
+      "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.3",
+      "delivery": "persistent-integrated-managed-baseline",
+      "apkBuilt": true,
+      "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.3-integrated-local.apk",
+      "apkSha256": "B89181443E40E99FFA6DD094253631F59A4B0E01C21D10C5C3ADD0BBDF39AD8F",
+      "apkSizeBytes": 128431385,
+      "apkArtifactAuditPassed": true,
+      "questRuntimeTested": true,
+      "scope": "current-exact-integrated-launcher-resource-release-build",
+      "currentIntegratedApkBuildPending": false
+    },
+    "source": {
+      "branch": "feature/quest3-v71-dual-hand-bow",
+      "commit": "e9c5a8cbc0d5e730cc6422dfbaf6e79b9c310f4f",
+      "launcherIntegrationCommit": "449021f7b88398b5da1365d89be6babe26ccc6ea",
+      "buildHarnessLockCommit": "6fb688a8badf488ff51b449f591ebdb1496858f9",
+      "buildScriptSha256": "269EF9E86DEB86770754572E566E53A85BD704B90EF1632D3DB2FF7F725696D7"
+    },
+    "previousRc2Reversion": {
+      "lastObservedRuntimePayload": "rc2",
+      "cause": "rc3-was-one-shot-marker-delivered-and-terminal-marker-reconciliation-restored-the-managed-rc2-baseline",
+      "persistentRc3RemediationPending": false,
+      "memoryRetunedRuntimeRevalidationPending": false
+    },
+    "artifacts": {
+      "vivecraftCore": {
+        "version": "26.2-1.3.15+qc.v71.rc3",
+        "sha256": "14B230B69AF24A53C459116AF2B2869F014690E6408D4881B5B1395C1EC38A26",
+        "sizeBytes": 10063450
+      },
+      "veq": {
+        "version": "0.7.0-v70-canary.1",
+        "sha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+        "sizeBytes": 441660
+      },
+      "pojlibAar": {
+        "sha256": "D7FF9C3EE2CCB332F88DE9A44E40E5BDA38F390142DC64905AEFD720FC3ADED6",
+        "sizeBytes": 88696931,
+        "cleanBuildsMatchedByteForByte": true,
+        "nativeBuildIdsOmittedForReproducibility": true
+      }
+    },
+    "jvmMemoryPolicy": {
+      "xmsMiB": 512,
+      "automaticXmxTargetMiB": 1536,
+      "additionalNativeHeadroomMiB": 1024,
+      "automaticXmxMinMiB": 1536,
+      "automaticXmxMaxMiB": 2048,
+      "manualXmxMaxMiB": 2048,
+      "rolloutState": "exact-integrated-lab-three-cold-starts-passed-two-new-soaks-pending",
+      "reason": "release-on-flattened-the-diagnosed-unity-launcher-resource-growth"
+    },
+    "coldStartRuntimeEvidence": {
+      "result": "passed-exact-current-integrated-launcher-resource-release-lab",
+      "normalLauncherStartCount": 3,
+      "allThreeRetainedExactRc3": true,
+      "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.3-integrated-local.apk",
+      "apkSha256": "B89181443E40E99FFA6DD094253631F59A4B0E01C21D10C5C3ADD0BBDF39AD8F",
+      "coreSha256": "14B230B69AF24A53C459116AF2B2869F014690E6408D4881B5B1395C1EC38A26",
+      "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+      "effectiveXmxMiBByStart": [
+        1536,
+        1536,
+        1536
+      ],
+      "graphicsBackend": "Vulkan",
+      "xrRuntime": "OpenXR",
+      "world": "FPS Stress Test",
+      "launcherMemoryLog": "Xms=512MiB, Xmx=1536MiB (auto)",
+      "appliesToPojlibAarSha256": "D7FF9C3EE2CCB332F88DE9A44E40E5BDA38F390142DC64905AEFD720FC3ADED6",
+      "remainingGates": [
+        "manual-vr-interaction",
+        "balanced-performance",
+        "two-90-minute-memory-soaks",
+        "stable-promotion"
+      ]
+    },
+    "previousPayloadNinetyMinuteSoakEvidence": {
+      "result": "completed-supporting-only",
+      "rawCaptureDurationMinutes": 91.194,
+      "artifactPaths": [
+        "artifacts/memory/v71-resource-release-soak-old-20260906/smaps-aggregates.jsonl.1",
+        "artifacts/memory/v71-resource-release-soak-old-20260906/smaps-aggregates.jsonl"
+      ],
+      "appliesToCurrentIntegratedApkSha256": false,
+      "countsTowardRequiredExactNewSoaks": false,
+      "acceptanceClaim": false
+    },
+    "lowMemoryEvidence": {
+      "classification": "android-lmkd-low-memory-no-static-proof-of-unbounded-source-leak",
+      "previousJvmXmxMiB": 3168,
+      "sessions": [
+        {
+          "pid": 24943,
+          "foregroundLifetime": "PT1H7M38S",
+          "processSizeKiB": 2913004,
+          "approxProcessSizeGiB": 2.78,
+          "exitReason": "LOW_MEMORY"
+        },
+        {
+          "pid": 10534,
+          "foregroundLifetime": "PT1H4M13S",
+          "processSizeKiB": 2837748,
+          "approxProcessSizeGiB": 2.71,
+          "exitReason": "LOW_MEMORY"
+        }
+      ],
+      "firstRc3SoakAttempt": {
+        "result": "stopped-early-process-memory-guardrail-exceeded",
+        "elapsedMinutes": 5.036,
+        "pssMiB": 2481.24,
+        "rssMiB": 2534.08,
+        "automaticTargetAtRuntimeMiB": 1800,
+        "replacementAutomaticTargetMiB": 1536,
+        "countsTowardRequiredSoaks": false
+      },
+      "memoryRetunedSoakAttempt1": {
+        "result": "stopped-early-process-memory-guardrail-exceeded",
+        "elapsedMinutes": 5.04,
+        "pidStable": true,
+        "focusStayedOnLab": true,
+        "gameJvmStayedAlive": true,
+        "pssMiB": 2523.72,
+        "vmRssMiB": 1968.38,
+        "vmSwapMiB": 18.64,
+        "memAvailableMiB": 1862.63,
+        "pssGrowthFromFirstSampleMiB": 159.26,
+        "automaticTargetAtRuntimeMiB": 1536,
+        "countsTowardRequiredSoaks": false,
+        "nextAction": "attribute-anonymous-memory-before-changing-quality-or-stable"
+      },
+      "requiredGate": {
+        "soakCount": 2,
+        "minutesPerSoak": 90,
+        "noLmkOrCrash": true,
+        "pidMustRemainStable": true,
+        "maxPssMiB": 2457.6,
+        "maxPostWarmGrowthMiBPerMinute": 2.0,
+        "passed": false
+      }
+    },
+    "longGateState": {
+      "threeColdStartsKeepRc3": true,
+      "manualVrInteractionPassed": false,
+      "performanceGatePassed": false,
+      "requiredExactNewSoakCount": 2,
+      "exactNewSoaksPassed": 0,
+      "memorySoakGatePassed": false,
+      "stablePromotionAllowed": false
+    }
+  },
+  "source": {
+    "baseline": "077f6440",
+    "integrationBranch": "release/quest3-vivecraft-personal-v69",
+    "acceptedGameplayTag": "personal-v67-rc2.7-accepted",
+    "acceptedGameplayCommit": "0174c883b3cdc23ce7617bf4ec26830f5503848d",
+    "v68FailClosedPinCommit": "da42b86713babaf30713e6d658aa0e8c13a83d5e",
+    "v68ReleasePayloadCommit": "84de53d32ac728211f888927d6fdfaf8d7ee3ff4",
+    "v68BuildTip": "817910a2f9f98e26fdcfc2b3a91292efc22e8182",
+    "integrationFunctionalTip": "0174c883b3cdc23ce7617bf4ec26830f5503848d",
+    "repackScriptCommit": "7120e772",
+    "rollbackScriptCommit": "abba908d8938160bef48b605ee1e706300acb0c4",
+    "bowFixCommit": "5729c58462d5be580e53640be8af58637dc29026",
+    "veqFunctionalCommit": "65ff0e2c",
+    "artifactLockCommit": "5a9fe634",
+    "vivecraftUpstream": "014d47e3",
+    "minecraft": "26.2",
+    "fabricLoader": "0.19.5",
+    "unity": "2022.3.62f3",
+    "overlayEngineCommit": "ecb89b61",
+    "gripCommit": "24c36e28",
+    "vepUiCommit": "4dc5d2d3",
+    "multiSurfaceAdapterCommit": "ea2f685b",
+    "globalScreenClaimCommit": "908e285f",
+    "featureSettingsCommit": "52ede4b5",
+    "contextualContainerCommit": "65ff0e2c",
+    "overlayRenderingFixCommit": "57124cdf",
+    "gripReleaseFixCommit": "d0145ea6",
+    "vepUiHardeningCommit": "38315099",
+    "deferredOptionalIconFixCommit": "1736ec2e",
+    "pointerCancelOwnershipCommit": "fc337250185383ac1b50cb7d0eef9a349c9f94f5",
+    "exactCarriedOwnershipCommit": "cc925efad2c77f3eadb6a8158259f8d99002da67",
+    "containerSubclassLatchCommit": "a4a86d43190686e6b96839551326ec52715a5f00",
+    "rightBOffhandFixCommit": "992cd06fcbf5e0c2132659d47a0a2586a8bc0afb",
+    "originalVepWristContentCommit": "cdcef81c",
+    "rightBRegressionCommit": "5dfd6559",
+    "cropAndPotionLayoutCommit": "d7eed965",
+    "surfaceGuiMetricsCommit": "d4d35a1b",
+    "v69CameraParkInitialCommit": "90cad740",
+    "v69CameraParkHardenedCommit": "78b080e0",
+    "v69CameraParkAcceptanceCommit": "640fdf5d",
+    "v69StableBuildGateCommit": "b601c06457df41ae284650ea7426b8a51f12452d",
+    "v71LabBranch": "feature/quest3-v71-dual-hand-bow",
+    "v71LabRc1Commit": "f33647e5f5288b76c4fa50737bf08d207e3a1b59",
+    "v71LabRc1Tag": "v71-lab-rc1",
+    "v71LabBCloseFixCommit": "eb3018d126b872cf74638489cd0b7108b0713961",
+    "v71LabRc2Commit": "9b725fcacdd49846b87cf5c103df6768134b158a",
+    "v71LabRc2Lock": "V71_LAB_RC2.lock.json",
+    "v71AcceptedWristReference": "d92ad5c2"
+  },
+  "bundledArtifacts": {
+    "apk": {
+      "path": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-26.2-personal.13-local.apk",
+      "sha256": "DFC2A264432D44AD6D0D2A13023DF17BA03BE341C5FA74BBBD9A0D043C2A94A7",
+      "sizeBytes": 128492965,
+      "needsBuild": false,
+      "verificationStatus": "passed-full-unity-host-artifact-gates-device-install-pending",
+      "signatureSchemeV2": true,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+      "zipAligned16KiB": true,
+      "abi": [
+        "arm64-v8a"
+      ],
+      "minSdk": 29,
+      "targetSdk": 34,
+      "previousV60Sha256": "1A40872C966704744955C7B28F72F9A2820AA4AD0EC2F7E7E6B1C561D44F5A4A"
+    },
+    "vivecraft": {
+      "version": "26.2-1.3.15+qc.v71.rc8-mining",
+      "path": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "sha256": "ADDB01FA168033C42F97C615DAF97CBB927B9E94400606EEF27CFBE930015EAB"
+    },
+    "lwjgl": {
+      "path": "Pojlib/src/main/assets/lwjgl/lwjgl-glfw-classes.bin",
+      "sha256": "DD19A303D574FCFA68F82300186693BCCC2EF9C6AACDC3ECC3D422EC6DDA4DC9"
+    },
+    "pojlibAar": {
+      "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+      "sha256": "64B27CF1D89B506A0A203C7FC81D8E0DFE0916DCC103B649D16C18A8CEFDCF38",
+      "needsRebuild": false,
+      "previousV60Sha256": "EA1FD9281F4912B20804B7DB45BAED5F5E8478D4B022AB2C894F3A7B9CB8B917",
+      "sizeBytes": 88751133
+    }
+  },
+  "managedMods": [
+    {
+      "slug": "Fabric-API",
+      "version": "0.160.0+26.2",
+      "sha256": "5F3DFF88E1661166E222213302B25ACE6C36DC3683804CBD4B5ACF93138EA05E"
+    },
+    {
+      "slug": "Sodium",
+      "version": "mc26.2-0.9.2-beta.1-fabric",
+      "sha256": "6652B40EE7F0F6D146C668CD288F861D271BC935C12F767D33B6B07BDCB7857A"
+    },
+    {
+      "slug": "Lithium",
+      "version": "mc26.2-0.25.3-fabric",
+      "sha256": "FDDE92E238E8075F89AD7F701F2A3D5854AF88BA9A67657184A4407B104AC563"
+    },
+    {
+      "slug": "Ferrite-Core",
+      "version": "9.0.0-fabric",
+      "sha256": "213966C72ED967ACC7392BEB28A866FBA301FF56B9976C2E7801C2DB7DE6BF22"
+    },
+    {
+      "slug": "BadOptimizations",
+      "version": "2.4.1",
+      "sha256": "06CEE46D81D3A0AFB8E993DFBE4B990A3BE92F52ABDE3590CC396490CB6EB4D2"
+    },
+    {
+      "slug": "Placeholder-API",
+      "version": "3.1.0-beta.1+26.2",
+      "sha256": "C2CA2B5C397A0C198A32E7AF68D2D0A011BC2C7BAEAE5CFFD3996EFD65C5069E"
+    },
+    {
+      "slug": "Mod-Menu",
+      "version": "20.0.1",
+      "sha256": "81BFBCA06012C57C74949072F2FFAAD06360BADEE4D00DC59BFAEAC80DD24BD8"
+    },
+    {
+      "slug": "ImmersiveMC",
+      "version": "1.6.0-alpha4.1",
+      "sha256": "2BCAA1B4A9F2E8CC47B8F0C28866A2C2328B49F0EDE5111AC0BA0B4FD17CD342"
+    },
+    {
+      "slug": "Xaero-Minimap",
+      "version": "fabric-26.2-26.5.0",
+      "sha256": "E12BBDCC149E865F0724F380C4DE3026FC4F11312E6BB2394734C85E568B4343"
+    }
+  ],
+  "addOnSlot": {
+    "slug": "Vivecraft-Essentials-Quest",
+    "state": "pinned-host-artifact",
+    "manifestIncluded": true,
+    "assetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+    "version": "0.7.0-v71.rc6",
+    "sha256": "FF7F6FCFDA21895764B69F3316CE7E9EBD8D890DF675C1E8007835B3814573F9",
+    "pinScript": "scripts/pin-vivecraft-essentials-quest.ps1"
+  },
+  "v67HostCanaries": {
+    "status": "host-only-dev4-built-device-disconnected-no-quest-runtime-fps-or-apk-acceptance",
+    "integrationBranch": "feature/quest3-vivecraft-personal-v67",
+    "head": "c771acffb5ad700ab80585bc1943ba4de9b9f374",
+    "questConnectedDuringGates": false,
+    "deviceTouchedByDeploySelfTest": false,
+    "canaries": [
+      {
+        "version": "0.7.0-dev.1",
+        "sourceCommit": "57678a63cdba47863a1ee9e46cb4bd0f5552abf1",
+        "path": "exports/v67-canaries/VivecraftEssentialsQuest-0.7.0-dev.1+mc26.2-fabric.jar",
+        "sizeBytes": 326079,
+        "sha256": "099471108AC02B77EBED0C5D0ADB22B8BB2DB463F2062B174E195914BDEDF579",
+        "scope": "final-surface-wrist-pose-and-visibility"
+      },
+      {
+        "version": "0.7.0-dev.2",
+        "sourceCommit": "5e6ac093aa34ef7187e3603410971d0b72a32fa9",
+        "path": "exports/v67-canaries/VivecraftEssentialsQuest-0.7.0-dev.2+mc26.2-fabric.jar",
+        "sizeBytes": 335185,
+        "sha256": "512110AB57FBC9B0F4972E545FBE8E765D8449EE33FBB39625F991BBBA7CD422",
+        "scope": "pointer-creative-and-contextual-container-contracts"
+      },
+      {
+        "version": "0.7.0-dev.3",
+        "sourceCommit": "0f80945725bc4332e6bad2b09eab2d5d4b218476",
+        "path": "exports/v67-canaries/VivecraftEssentialsQuest-0.7.0-dev.3+mc26.2-fabric.jar",
+        "sizeBytes": 346456,
+        "sha256": "9E255B0520C0A6AC165E498956C97FD10773B3FCFDE1182C8724561228E91440",
+        "scope": "independent-handed-grip-sessions"
+      },
+      {
+        "version": "0.7.0-dev.4",
+        "sourceCommit": "c771acffb5ad700ab80585bc1943ba4de9b9f374",
+        "path": "exports/v67-canaries/VivecraftEssentialsQuest-0.7.0-dev.4+mc26.2-fabric.jar",
+        "sizeBytes": 385566,
+        "sha256": "DA96F91807091DDE1432AA959BCBDF320BE08D8FD65020AB8A66DBAF99D00FF9",
+        "scope": "cumulative-per-hand-world-action-routing"
+      }
+    ],
+    "hostGates": {
+      "javaVersion": 25,
+      "vivecraftFabricBuildPassed": true,
+      "veqTaskCount": 64,
+      "veqTasksPassed": true,
+      "deploySelfTestPassed": true,
+      "deploySelfTestDeviceTouched": false
+    },
+    "questRuntimeAccepted": false,
+    "fpsAccepted": false,
+    "v67ApkBuilt": true,
+    "v67HostArtifactVerified": true,
+    "v67InstalledWithReplace": true,
+    "v67ApkAccepted": false,
+    "nextGate": "supervised-wrist-crop-pointer-alignment-and-grip-size-clarity-test"
+  },
+  "excludedDefaults": [
+    "ImmediatelyFast",
+    "EntityCulling",
+    "MoreCulling",
+    "Krypton",
+    "DistantHorizons",
+    "ViveMonkeCraft"
+  ],
+  "runtimePolicy": {
+    "graphicsBackend": "vulkan",
+    "xrProvider": "openxr",
+    "refreshPolicy": "runtime",
+    "performanceHint": "off",
+    "unattendedLocalPlayDefault": "off-until-two-phase-adb-arm",
+    "unattendedProfile": "26.2",
+    "unattendedSaveFolder": "FPS-Stress-Test",
+    "unattendedArtifactPolicy": "require-all-core-and-default-manifest-hashes",
+    "historicalV67InstalledWithReplace": true,
+    "uninstallOrClearDataUsed": false,
+    "questSmoke": "historical-v67-profile-reconciled-70-mods-veq-rc2.6-vulkan-openxr-world-loaded-frame-120-no-fatal",
+    "historicalV68InstallAndRuntimeGate": "exact-v68-was-installed-before-v69-replace",
+    "v69StableInstallGate": "passed-same-signer-adb-install-r-installed-root-hash-matched",
+    "v69StableRuntimeGate": "pending-stable-activity-did-not-start-after-install-while-unattended",
+    "manualVrInteractionGate": "accepted-on-exact-v69-lab-payload-with-camera-park-on-stable-package-runtime-pending",
+    "cameraPark": "on-after-successful-xr-handoff",
+    "autoplay": "lab-package-only-personal-package-ineligible",
+    "idleThrottle": "omitted-unaccepted",
+    "framePacingGate": "launcher-camera-park-accepted-on-lab-payload-other-v69-canaries-rejected-or-not-promoted"
+  },
+  "buildProvenance": {
+    "unityVersion": "2022.3.62f3",
+    "pojlibJdk": "unity-bundled-openjdk-11",
+    "v69PojlibBuildAndTestsPassed": true,
+    "historicalV68PojlibBuildsReproducible": 2,
+    "historicalV68PojlibAarStandaloneD8Passed": true,
+    "jdk21PojlibArtifactAccepted": false,
+    "jdk21RejectionReason": "newer-bytecode-metadata-crashed-unity-bundled-d8",
+    "finalAndroidAssembly": "v69-full-unity-cli-build",
+    "unityBuildMethod": "QuestCraftPersonalV69CliBuild.BuildAndroid",
+    "unityBuildExitCode": 0,
+    "fullUnityBuildPassed": true,
+    "historicalV68HostArtifactVerificationPassed": true,
+    "historicalV68QuestInstallWasPendingAtV68Lock": true,
+    "historicalV68QuestRuntimeWasPendingAtV68Lock": true,
+    "v69HostArtifactVerificationPassed": true,
+    "v69QuestInstallPassed": true,
+    "v69InstalledRootHashMatched": true,
+    "v69StableRuntimePending": true,
+    "historicalV67AndroidAssembly": "binary-preserving-repack-from-exact-installed-v66-base",
+    "v67AssemblyScript": "scripts/repack-v67-local-canary.ps1",
+    "v67BaseApkSha256": "708962B958B8373B46231F8DA6C7B2AC284593BB30B291B46C68931FD1A3A70D",
+    "v67ReplacedApkEntries": [
+      "AndroidManifest.xml",
+      "classes.dex",
+      "assets/bin/Data/globalgamemanagers",
+      "assets/mods.json",
+      "assets/devmods.json",
+      "assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "assets/mods/vivecraft-essentials-quest.bin"
+    ],
+    "v67ManifestPatch": "binary AndroidManifest versionCode 66 to 67 plus same-length personal.7 to personal.8 in AndroidManifest, classes.dex and globalgamemanagers; DEX SHA-1 and Adler-32 regenerated",
+    "unity2022UnavailableDuringV67Assembly": true,
+    "initialLowDiskAttemptAccepted": false,
+    "independentFinalApkVerificationPassed": true,
+    "manifestEmbeddedAssetHashVerifierStrengthened": true,
+    "initialMismatchedArtifactAccepted": false,
+    "onlyFinalVerifiedApkAccepted": true
+  },
+  "externalRollback": {
+    "applicationId": "com.qcxr.visor.dev262",
+    "versionCode": 59,
+    "versionName": "6.0.1-26.2-visor.3-perf.2",
+    "installedBaseApkSha256": "F5AB99F1AC991229A16005849364B50D7219EFA0654D4BF3037E4F5823C5B69B",
+    "running": false,
+    "profileOrDataMutated": false,
+    "partOfVivecraftStack": false
+  },
+  "deviceProtection": {
+    "historicalV67PreviousInstalledVersionCode": 66,
+    "historicalV67PreviousInstalledVersionName": "6.0.1-26.2-vivecraft-personal.7",
+    "historicalV67PreviousInstalledApkSha256": "708962B958B8373B46231F8DA6C7B2AC284593BB30B291B46C68931FD1A3A70D",
+    "previousInstalledVersionCode": 68,
+    "previousInstalledVersionName": "6.0.1-26.2-vivecraft-personal.9",
+    "previousInstalledApkSha256": "0F218BB5542E90EA19E22E6763AE5A4D10995B6A2494439108385FC8DD2C00E1",
+    "previousApkPreserved": true,
+    "sameSignerConfirmedBeforeReplace": true,
+    "installMode": "adb-install-r",
+    "firstInstallTimePreserved": true,
+    "preInstallBackupPath": "backups/v67-rc1-preinstall-20260902-1300",
+    "preInstallBackupScope": "v66-apk-instances-options-veq-config-vivecraft-and-veq-jars-no-account-files",
+    "latestFullWorldBackupPath": "../../exports/v68-freeze-20260902/v65-p1-final-preinstall-20260901-183844",
+    "latestFullWorldBackupPathBasis": "relative-to-canonical-worktree-root-local-only-not-tracked",
+    "latestFullWorldBackupManifestSha256": "87871F3678214166C0F9C54EDADE134E7E6BC4199BDD60BE935A5BE1764B71C9",
+    "latestFullWorldBackupSavesTarSha256": "F1818B61EB49540C96F3D0FD6C592E2CAFA6CF319580C12C6FAF7339AFCC06B2",
+    "historicalV67InstalledVersionCode": 67,
+    "historicalV67InstalledVersionName": "6.0.1-26.2-vivecraft-personal.8",
+    "historicalV67InstalledApkSha256": "021D153988265B39464F89C6CA6336302F14E9C4827950D9CB24EA7122A891F1",
+    "historicalV67EmbeddedVeqVersion": "0.7.0-rc.2.6",
+    "historicalV67EmbeddedVeqSha256": "1E0019D2B9E0AED3B0D8F624C5A8608AF037548692D373C8876706792BEF73D3",
+    "installedVersionCode": 69,
+    "installedVersionName": "6.0.1-26.2-vivecraft-personal.10",
+    "installedApkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+    "installedBaseApkRootSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+    "installedRootHashMatched": true,
+    "installedApkEmbeddedVeqVersion": "0.7.0",
+    "installedApkEmbeddedVeqSha256": "6575A2A436F1FF74898950A9D781B18641707621CAFAE064BB61A9709C1696B9",
+    "acceptedHotDeployedVeqVersion": "0.7.0-rc.2.7",
+    "acceptedHotDeployedVeqSha256": "90D854125ACCBA23802D0FE7788A8C2FFBA24AA0CF90FBEC5A90DDB3DDE866E5",
+    "targetV68VersionCode": 68,
+    "targetV68ApkSha256": "0F218BB5542E90EA19E22E6763AE5A4D10995B6A2494439108385FC8DD2C00E1",
+    "targetV68Installed": true,
+    "targetV69VersionCode": 69,
+    "targetV69ApkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+    "targetV69Installed": true,
+    "targetV69StableRuntimeAfterInstallPassed": false,
+    "rollbackV66PayloadAtVersionCode67Path": "artifacts/v67-rollback/QuestCraft-Vivecraft-26.2-v66-payload-vc67-personal.8-rollback.apk",
+    "rollbackV66PayloadAtVersionCode67Sha256": "5C0E8C71F8D7A9A25A57BC7B0565851C4A238208A3B7DAFF51057E17FB1C4AB4",
+    "accountOrMicrosoftFilesCopied": false,
+    "uninstallOrClearDataUsed": false
+  },
+  "runtimeEvidence": {
+    "currentV71LabRc2": {
+      "status": "runtime-smoke-passed-manual-acceptance-pending",
+      "sourceCommit": "9b725fcacdd49846b87cf5c103df6768134b158a",
+      "baseRc1Commit": "f33647e5f5288b76c4fa50737bf08d207e3a1b59",
+      "bCloseFixCommit": "eb3018d126b872cf74638489cd0b7108b0713961",
+      "lockPath": "V71_LAB_RC2.lock.json",
+      "package": "com.qcxr.qcxr.canary262",
+      "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+      "profile": "26.2",
+      "delivery": "exact-jar-pair-over-existing-v70-lab-shell-not-a-v71-apk",
+      "labShellVersionCode": 70,
+      "labShellVersionName": "6.0.1-26.2-vivecraft-personal.11-rc.1",
+      "labShellApkSha256": "B40988DFB668FEE151969395E82CCEFE38FDA4F89BBE081B79B88F1F24695102",
+      "labShellApkSizeBytes": 126701141,
+      "vivecraftArtifactVersion": "26.2-1.3.15+qc.v71.rc2",
+      "vivecraftArtifactPath": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc2-fabric.jar",
+      "vivecraftArtifactSha256": "AAC5852BD1495AA0121A078F87312A644608F209A9190AE539CDC4F7763CD8FC",
+      "vivecraftArtifactSizeBytes": 10062636,
+      "vivecraftArtifactScope": "quest-client-and-matching-fabric-26.2-server",
+      "veqArtifactVersion": "0.7.0-v70-canary.1",
+      "veqArtifactPath": "../../exports/v71-lab-rc1-f33647e5/VivecraftEssentialsQuest-v71-lab-client.jar",
+      "veqArtifactSha256": "8EB67999FA9334CF3B18F250B420668B912A2EE4F2B201DB51EE1E265744427A",
+      "veqArtifactSizeBytes": 435540,
+      "veqArtifactScope": "quest-client-only-unchanged-from-v71-rc1",
+      "pairDigestScheme": "sha256-utf8(core=<uppercase-sha256>\\nveq=<uppercase-sha256>\\n)",
+      "pairSha256": "9952EA068712375E2364C0DF0EDBD9F876620D2E8EE10EF10106D6F6DEC6EBBE",
+      "bowAtlasPath": "assets/vivecraft/textures/misc/bow_guide_atlas.png",
+      "bowAtlasSha256": "971D0518655FCE01A692DBF5766CDA38273F09BB42EC71D971D0012A71C7360E",
+      "bowAtlasSizeBytes": 1620298,
+      "bowAtlasVerifiedInsideCoreJar": true,
+      "sampleResourcePacks": [
+        {
+          "name": "Arcane Rift",
+          "path": "artifacts/v71-bow-resource-packs/bow-guide-arcane-mc26.2.zip",
+          "sha256": "6F3607227BAF001AA46CD9B5FBE943C1194DE3683B5DBD0A88B03BEEEAC9E323",
+          "sizeBytes": 660,
+          "defaultEnabled": false
+        },
+        {
+          "name": "Frost Crystal",
+          "path": "artifacts/v71-bow-resource-packs/bow-guide-frost-mc26.2.zip",
+          "sha256": "3E09F7A76673B65979496DDE552CC067F8887AAA8DA1465DC1EC0323581580F6",
+          "sizeBytes": 651,
+          "defaultEnabled": false
+        },
+        {
+          "name": "Emerald Pulse",
+          "path": "artifacts/v71-bow-resource-packs/bow-guide-emerald-mc26.2.zip",
+          "sha256": "04D540115512ACFD62FC3CEE023B89BFAD07F9ADA524274925379128050B52F7",
+          "sizeBytes": 662,
+          "defaultEnabled": false
+        }
+      ],
+      "sampleResourcePackProfileDestination": "instances/26.2/resourcepacks/",
+      "sampleResourcePacksManaged": false,
+      "sampleResourcePacksAutomaticallyEnabled": false,
+      "optionsTxtModified": false,
+      "vivecraftCommonTests": 143,
+      "hostTestFailures": 0,
+      "hostTestErrors": 0,
+      "hostTestSkipped": 0,
+      "fabricBuildPassed": true,
+      "deviceDeployPerformed": true,
+      "runtimeSmokePassed": true,
+      "physicalCoreSha256Verified": true,
+      "physicalVeqSha256Verified": true,
+      "runtimeMarkersConsumed": true,
+      "sampleResourcePacksCopiedToLab": true,
+      "sampleResourcePacksEnabled": false,
+      "manualVrInteractionGatePassed": false,
+      "bothEyeBowVisualGatePassed": false,
+      "performanceGatePassed": false,
+      "coldStartGatePassed": false,
+      "soakGatePassed": false,
+      "stableV71BuiltOrInstalled": false,
+      "stablePackageModified": false,
+      "accountFilesReadOrCopied": false,
+      "uninstallOrClearDataUsed": false,
+      "notes": "RC2 exact pair was deployed to Lab and runtime-smoked in GamerPotion's FPS Stress Test with Vulkan/OpenXR stereo submission. Raw Quest-B Inventory/Creative close and both-eye bow/resource-pack visuals still require manual headset acceptance. Stable v69 remains untouched."
+    },
+    "currentV71LabRc1": {
+      "status": "runtime-smoke-passed-manual-and-performance-acceptance-pending",
+      "sourceCommit": "f33647e5f5288b76c4fa50737bf08d207e3a1b59",
+      "sourceTag": "v71-lab-rc1",
+      "evidenceCommit": "67e9959640781b600d654772c3c8a2c0b6c1c4c3",
+      "package": "com.qcxr.qcxr.canary262",
+      "delivery": "exact-jar-pair-over-existing-v70-lab-shell-not-a-v71-apk",
+      "installedLabShellVersionCode": 70,
+      "installedLabShellVersionName": "6.0.1-26.2-vivecraft-personal.11-rc.1",
+      "installedLabShellApkAuditPath": "local-temp-only-not-release-artifact",
+      "installedLabShellApkSha256": "B40988DFB668FEE151969395E82CCEFE38FDA4F89BBE081B79B88F1F24695102",
+      "installedLabShellApkSizeBytes": 126701141,
+      "installedLabShellSignerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+      "installedLabShellSignatureSchemeV2": true,
+      "installedLabShellZipAligned16KiB": true,
+      "installedLabShellAbi": [
+        "arm64-v8a"
+      ],
+      "installedLabShellMinSdk": 29,
+      "installedLabShellTargetSdk": 34,
+      "vivecraftArtifactVersion": "26.2-1.3.15",
+      "vivecraftArtifactPath": "../../exports/v71-lab-rc1-f33647e5/vivecraft-26.2-v71-lab-universal-client-server.jar",
+      "vivecraftArtifactSha256": "0661CB8877BD55B21C2A6D9F3759A66C74910F816934D4B8E72341C7946398D9",
+      "vivecraftArtifactSizeBytes": 8440058,
+      "vivecraftArtifactScope": "quest-client-and-matching-fabric-26.2-server",
+      "veqArtifactVersion": "0.7.0-v70-canary.1",
+      "veqArtifactPath": "../../exports/v71-lab-rc1-f33647e5/VivecraftEssentialsQuest-v71-lab-client.jar",
+      "veqArtifactSha256": "8EB67999FA9334CF3B18F250B420668B912A2EE4F2B201DB51EE1E265744427A",
+      "veqArtifactSizeBytes": 435540,
+      "veqArtifactScope": "quest-client-only",
+      "sourceBundlePath": "../../exports/v71-lab-rc1-f33647e5/questcraft-vivecraft-v71-lab-source.bundle",
+      "sourceBundleSha256": "3FA3C8F732323B678924899F0DA38921BA4FBD628DFDF59AC8574B00866E5780",
+      "sourceBundleSizeBytes": 117568001,
+      "sourceBundleScope": "code-through-f33647e5-does-not-include-evidence-commit-67e99596",
+      "hostTestsPassed": true,
+      "fabricBuildPassed": true,
+      "veqCheckAndBuildPassed": true,
+      "independentReviewP0": 0,
+      "independentReviewP1": 0,
+      "exactBaselineRollbackProvenBeforeDeploy": true,
+      "pairDeployedAtomically": true,
+      "pairMarkersConsumed": true,
+      "physicalProfileHashesMatched": true,
+      "fabricReportedModCount": 70,
+      "graphicsBackend": "vulkan-adreno",
+      "xrProvider": "openxr",
+      "openXrSessionFocused": true,
+      "openXrViewCount": 2,
+      "submittedFramesObservedAtLeast": 3600,
+      "benchmarkWorldLoaded": true,
+      "filteredFatalOrMixinApplyOrLinkageError": false,
+      "knownNonFatalRuntimeWarnings": [
+        "missing optional narrator libflite.so",
+        "retained Sodium target/workaround warning",
+        "retained surface-extent configure warnings"
+      ],
+      "startupFreeMemoryGiBApprox": 0.2,
+      "dynamicRefreshSafetySample": {
+        "durationSeconds": 60,
+        "meanAppFps": 74.93,
+        "medianAppFps": 75,
+        "p10AppFps": 73,
+        "exactPidPercent": 100,
+        "focusedPercent": 100,
+        "validForComparison": true,
+        "performanceAcceptanceClaim": false
+      },
+      "wristReferenceCommit": "d92ad5c2",
+      "wristKnownVisibleCostFpsApprox": 4,
+      "integratedServerPairedStrikeAvailable": true,
+      "remoteServerPairedStrikeValidated": false,
+      "manualLeftHandYValidated": false,
+      "manualVrInteractionGatePassed": false,
+      "performanceGatePassed": false,
+      "coldStartGatePassed": false,
+      "soakGatePassed": false,
+      "stableV71BuiltOrInstalled": false,
+      "stablePackageModified": false,
+      "accountFilesReadOrCopied": false,
+      "uninstallOrClearDataUsed": false,
+      "notes": "Lab JAR hot-deploy only over the independently verified v70 Lab shell. Stable v69 remains untouched. Runtime startup is proven; headset interaction, remote-server negotiation, balanced performance, cold-start and soak acceptance remain pending."
+    },
+    "currentV69Stable": {
+      "releaseBranch": "release/quest3-vivecraft-personal-v69",
+      "stableBuildGateCommit": "b601c06457df41ae284650ea7426b8a51f12452d",
+      "cameraParkInitialCommit": "90cad740",
+      "cameraParkHardenedCommit": "78b080e0",
+      "cameraParkAcceptanceCommit": "640fdf5d",
+      "package": "com.qcxr.qcxr.dev262",
+      "label": "QuestCraft Vivecraft Personal 26.2",
+      "versionCode": 69,
+      "versionName": "6.0.1-26.2-vivecraft-personal.10",
+      "apkSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+      "apkSizeBytes": 126700777,
+      "pojlibAarSha256": "88A172AF772E9DE600864831D617729E9F8E04DFBEB4BB30FC54B9F7407D6DD3",
+      "pojlibAarSizeBytes": 86970097,
+      "vivecraftSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+      "veqVersion": "0.7.0",
+      "veqSha256": "6575A2A436F1FF74898950A9D781B18641707621CAFAE064BB61A9709C1696B9",
+      "hostBuildPassed": true,
+      "apkArtifactVerificationPassed": true,
+      "signatureSchemeV2": true,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+      "zipAligned16KiB": true,
+      "abi": [
+        "arm64-v8a"
+      ],
+      "minSdk": 29,
+      "targetSdk": 34,
+      "installedWithReplace": true,
+      "installedOverExactV68": true,
+      "sameSigner": true,
+      "installedBaseApkRootSha256": "05381EBB9F25ACC4D2ED4C24D83DD2C4C4BF52366D2BCC89A5D85361FC749034",
+      "installedRootHashMatched": true,
+      "uninstallOrClearDataUsed": false,
+      "cameraParkEnabled": true,
+      "autoplayPolicy": "lab-package-only-personal-package-ineligible",
+      "idleThrottleIncluded": false,
+      "labManualInteractionGatePassed": true,
+      "labPerformanceAndSoakGatePassed": true,
+      "labPayloadGameplayHashesMatchStable": true,
+      "stablePackageLaunchedAfterInstall": false,
+      "questRuntimeTestPassed": false,
+      "stableRuntimeClaim": false,
+      "performanceClaimScope": "exact-lab-payload-with-camera-park-on-not-post-install-stable-runtime",
+      "notes": "The exact Stable APK passed Host gates and was installed with adb install -r over exact v68; its pulled base.apk hash matched. The user accepted functionality on the exact Lab gameplay payload with Camera Park ON, which approved promotion. The Stable activity did not start while unattended after installation, so no post-install Stable runtime, eye, controller, cold-start or soak claim is made. Idle Throttle is omitted."
+    },
+    "currentV68HostCandidate": {
+      "acceptedGameplaySourceCommit": "0174c883b3cdc23ce7617bf4ec26830f5503848d",
+      "acceptedGameplayTag": "personal-v67-rc2.7-accepted",
+      "v68BuildTip": "817910a2f9f98e26fdcfc2b3a91292efc22e8182",
+      "vivecraftSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+      "veqVersion": "0.7.0",
+      "veqSha256": "6575A2A436F1FF74898950A9D781B18641707621CAFAE064BB61A9709C1696B9",
+      "veqGameplayEntriesEqualToAcceptedRc27": 240,
+      "pojlibAarSha256": "136AC1E2C788E06F720B87B5C5A9DF5C52D363F3F862928AD6934575656E3E51",
+      "pojlibAarSizeBytes": 86905783,
+      "pojlibReproducibleBuildCount": 2,
+      "pojlibBuildJdk": "unity-openjdk-11",
+      "standaloneD8Passed": true,
+      "unityBuildExitCode": 0,
+      "apkSha256": "0F218BB5542E90EA19E22E6763AE5A4D10995B6A2494439108385FC8DD2C00E1",
+      "apkSizeBytes": 126641877,
+      "apkArtifactVerificationPassed": true,
+      "package": "com.qcxr.qcxr.dev262",
+      "versionCode": 68,
+      "versionName": "6.0.1-26.2-vivecraft-personal.9",
+      "signatureSchemeV2": true,
+      "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+      "zipAligned16KiB": true,
+      "abi": [
+        "arm64-v8a"
+      ],
+      "minSdk": 29,
+      "targetSdk": 34,
+      "managedManifestCount": 4,
+      "managedManifestsIdentical": true,
+      "managedModCount": 11,
+      "installedWithReplace": false,
+      "questRuntimeTestPassed": false,
+      "questInstallAndRuntimeGate": "pending",
+      "performanceClaim": false,
+      "notes": "Host build and artifact verification only. Gameplay is entry-equivalent to the user-accepted rc2.7 hot-deploy, but v68 still requires same-signer install, reconciliation, cold starts, supervised interaction and soak."
+    },
+    "acceptedV67Rc27HotDeploy": {
+      "sourceCommit": "0174c883b3cdc23ce7617bf4ec26830f5503848d",
+      "tag": "personal-v67-rc2.7-accepted",
+      "veqVersion": "0.7.0-rc.2.7",
+      "veqSha256": "90D854125ACCBA23802D0FE7788A8C2FFBA24AA0CF90FBEC5A90DDB3DDE866E5",
+      "userManualFunctionalGatePassed": true,
+      "partOfInstalledV67Apk": false,
+      "installedV67ApkEmbeddedVeqVersion": "0.7.0-rc.2.6",
+      "performanceClaim": false,
+      "notes": "Manual acceptance belongs to the hot-deployed rc2.7 JAR; the installed v67 APK itself embeds rc2.6."
+    },
+    "currentV67Rc1Candidate": {
+      "historical": true,
+      "installedApkEmbeddedVeqVersion": "0.7.0-rc.2.6",
+      "vivecraftSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+      "veqVersion": "0.7.0-rc.2.6",
+      "veqSha256": "1E0019D2B9E0AED3B0D8F624C5A8608AF037548692D373C8876706792BEF73D3",
+      "pojlibAarSha256": "146869B64C30618ED89C9FEB109DAE08F660E330DDD12A35D002D8167E387583",
+      "apkSha256": "021D153988265B39464F89C6CA6336302F14E9C4827950D9CB24EA7122A891F1",
+      "hostTestsPassed": true,
+      "independentP0OrP1Found": false,
+      "apkArtifactVerificationPassed": true,
+      "installedWithReplace": true,
+      "firstInstallTimePreserved": true,
+      "uninstallOrClearDataUsed": false,
+      "launcherOpened": true,
+      "physicalProfileReconciled": true,
+      "physicalVivecraftSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+      "physicalVeqDelivery": "veq-dev.jar-while-rc1-is-supervised",
+      "physicalVeqSha256": "1E0019D2B9E0AED3B0D8F624C5A8608AF037548692D373C8876706792BEF73D3",
+      "fabricModCount": 70,
+      "veqLoaded": true,
+      "graphicsBackend": "vulkan",
+      "xrProvider": "openxr",
+      "benchmarkWorldLoaded": true,
+      "submittedFramesObservedAtLeast": 120,
+      "filteredFatalOrMixinApplyOrLinkageError": false,
+      "questRuntimeStartupPassed": true,
+      "manualVrInteractionGate": "pending-wrist-crop-pointer-alignment-and-grip-size-clarity",
+      "performanceClaim": false,
+      "notes": "User confirmed the prior crash was already resolved. RC1 changes surface GUI metrics only; the running-world smoke is not manual visual or FPS acceptance."
+    },
+    "currentV66Candidate": {
+      "vivecraftSha256": "917B75DA63D7EBBCB7CE5A415DCBCB723159E53264A2C4CB8994A8D377C85C85",
+      "veqVersion": "0.6.0+mc26.2",
+      "veqSha256": "F59E7204181CB667F8A4B2DB3CD493E7317E028E00B199D540B45787410989FB",
+      "pojlibAarSha256": "FA63DEB13E7F34A82E06A59D96E68599978D79466A16EAAE1D299DD80981F931",
+      "apkSha256": "708962B958B8373B46231F8DA6C7B2AC284593BB30B291B46C68931FD1A3A70D",
+      "hostTestsPassed": true,
+      "apkArtifactVerificationPassed": true,
+      "installedWithReplace": true,
+      "firstInstallTimePreserved": true,
+      "uninstallOrClearDataUsed": false,
+      "launcherOpened": true,
+      "physicalProfileReconciled": true,
+      "physicalVivecraftSha256BeforeReconciliation": "415394F749B12FD0121B4CAAA7FDF7FCF26306692CDBCAB1373438A3261CA356",
+      "physicalVeqSha256BeforeReconciliation": "766724914B2E3333E5BB3D4BE9BCDFD7B45728C2266152435EC8DF91A02A85A6",
+      "physicalVivecraftSha256": "917B75DA63D7EBBCB7CE5A415DCBCB723159E53264A2C4CB8994A8D377C85C85",
+      "physicalVeqSha256": "F59E7204181CB667F8A4B2DB3CD493E7317E028E00B199D540B45787410989FB",
+      "fabricModCount": 70,
+      "veqLoaded": true,
+      "graphicsBackend": "vulkan",
+      "xrProvider": "openxr",
+      "benchmarkWorldLoaded": true,
+      "submittedFramesObservedAtLeast": 1200,
+      "filteredFatalOrMixinApplyOrLinkageError": false,
+      "controllersActiveDuringSmoke": false,
+      "questRuntimeTestPassed": true,
+      "manualVrInteractionGate": "pending-wrist-and-right-b",
+      "notes": "Unattended startup smoke only; no manual Wrist, Right-B, both-eye, soak, or FPS acceptance claim."
+    },
+    "currentV65Candidate": {
+      "vivecraftSha256": "415394F749B12FD0121B4CAAA7FDF7FCF26306692CDBCAB1373438A3261CA356",
+      "veqVersion": "0.5.0+mc26.2",
+      "veqSha256": "766724914B2E3333E5BB3D4BE9BCDFD7B45728C2266152435EC8DF91A02A85A6",
+      "pojlibAarSha256": "A573E689D967059FD153BD8ECDF015393E9CD36D350D7E313367EC95A3E716A4",
+      "apkSha256": "EDF5A730E0F5FA1B333349C9D3029D6B4E2E32ACD097BD8C0604D009D4A6A7F0",
+      "hostTestsPassed": true,
+      "apkArtifactVerificationPassed": true,
+      "installedWithReplace": true,
+      "firstInstallTimePreserved": true,
+      "uninstallOrClearDataUsed": false,
+      "launcherOpenXrVulkanSmokePassed": true,
+      "physicalProfileReconciled": true,
+      "physicalManagedModCount": 11,
+      "physicalManagedModsAllHashesMatched": true,
+      "physicalVivecraftSha256": "415394F749B12FD0121B4CAAA7FDF7FCF26306692CDBCAB1373438A3261CA356",
+      "physicalVeqSha256": "766724914B2E3333E5BB3D4BE9BCDFD7B45728C2266152435EC8DF91A02A85A6",
+      "physicalVivecraftSha256BeforeReconciliation": "C1496C3DAE04A9598B0345CD82BE59CC41EE32DC1CCAA1C606999E741D3A1CE4",
+      "physicalVeqSha256BeforeReconciliation": "A0880DA2EEB3D815635E9F51D277FA5EDAB240F958A5FA29DCB05BEBA90CEE6C",
+      "fabricModCount": 70,
+      "veqLoaded": true,
+      "graphicsBackend": "vulkan",
+      "xrProvider": "openxr",
+      "renderTargets": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "benchmarkWorldLoaded": true,
+      "submittedFramesObservedAtLeast": 4800,
+      "filteredFatalOrMixinApplyOrLinkageError": false,
+      "controllersActiveDuringSmoke": false,
+      "questRuntimeTestPassed": true,
+      "manualVrInteractionGate": "pending",
+      "stationaryDynamicRefreshSoak": "running-final-p1-candidate"
+    },
+    "finalP1Review": {
+      "commits": [
+        "fc337250185383ac1b50cb7d0eef9a349c9f94f5",
+        "cc925efad2c77f3eadb6a8158259f8d99002da67",
+        "a4a86d43190686e6b96839551326ec52715a5f00"
+      ],
+      "hostTasksPassed": 53,
+      "independentReviewP0": 0,
+      "independentReviewP1": 0,
+      "cancelDispatch": "nonvirtual-Screen-release-plus-explicit-subclass-latch-hooks",
+      "unknownContextualOverridePolicy": "fail-closed-without-same-owner-cancel-capability"
+    },
+    "preP1ReferenceSoak": {
+      "apkSha256": "76C7AC1C4CB2906EF4610130EEB9D7649E1C46794C92CD7943AB12284BFEBD42",
+      "veqSha256": "A0880DA2EEB3D815635E9F51D277FA5EDAB240F958A5FA29DCB05BEBA90CEE6C",
+      "durationSeconds": 1200,
+      "samples": 1201,
+      "meanAppFps": 73.15,
+      "medianAppFps": 73,
+      "p10AppFps": 71,
+      "exactPidPercent": 100,
+      "focusedPercent": 100,
+      "validForComparison": true,
+      "appliesToFinalP1Candidate": false,
+      "rawLogsPersisted": false
+    },
+    "runtimeRegressionCaughtBeforeFinalAcceptance": {
+      "symptom": "Components not bound yet during early optional-icon construction",
+      "affectedApkAccepted": false,
+      "fixCommit": "1736ec2e",
+      "fix": "defer and cache optional ItemStack icons after component binding",
+      "correctedCandidateWorldLoaded": true
+    },
+    "currentV63Candidate": {
+      "vivecraftSha256": "FD4023BA52A4D1E14532F126D4E3123048BF46BAC380CFAF9FC9D8972C305D85",
+      "veqVersion": "0.4.0+mc26.2",
+      "veqSha256": "E9AC2FC0A91083D3DE461F207F4FE9F864730CC819A7ADA360B35DA07BA21F09",
+      "hostTestsPassed": true,
+      "strictReviewDecision": "accepted-no-p0-or-p1",
+      "pojlibAarSha256": "FA626CC955B3F0D255B2922F086363C397633F009D7F199BB090715BA6255714",
+      "apkSha256": "0A65715BCD20E64285014173BCE4714073925B691122434A70B81E39BE074A69",
+      "apkBuildAndVerificationPending": false,
+      "installedWithReplace": true,
+      "uninstallOrClearDataUsed": false,
+      "physicalProfileReconciled": true,
+      "profileReconciliationMethod": "adb-shell-atomic-after-exact-hash-verification",
+      "physicalVivecraftSha256": "FD4023BA52A4D1E14532F126D4E3123048BF46BAC380CFAF9FC9D8972C305D85",
+      "physicalVeqSha256": "E9AC2FC0A91083D3DE461F207F4FE9F864730CC819A7ADA360B35DA07BA21F09",
+      "physicalManagedModCount": 11,
+      "physicalManagedModsAllHashesMatched": true,
+      "questRuntimeTestPassed": false,
+      "manualVrInteractionGate": "pending"
+    },
+    "previousV61Candidate": {
+      "vivecraftSha256": "574C45923BA8EBB598B17F4E1D8641068590A619B4E9748597F9811FBE510FEE",
+      "veqVersion": "0.2.0+mc26.2",
+      "veqSha256": "1419CCFA78FF390EC38E2A448F1051365075D64A96CF94F6A2EA997C2CAA8A1E",
+      "hostTestsPassed": true,
+      "pojlibRebuildPending": false,
+      "pojlibAarSha256": "89CC26FCCD60ECA6A06091063D17E821F459B15D4102559FFFDD6A881CFEA7AB",
+      "apkSha256": "A5142D3C556FAE9C1A487E460ED314D5E6957161E742F506CC54B270D2F88198",
+      "apkBuildAndVerificationPending": false,
+      "installedWithReplace": true,
+      "uninstallOrClearDataUsed": false,
+      "physicalProfileReconciled": true,
+      "physicalVivecraftSha256": "574C45923BA8EBB598B17F4E1D8641068590A619B4E9748597F9811FBE510FEE",
+      "physicalVeqSha256": "1419CCFA78FF390EC38E2A448F1051365075D64A96CF94F6A2EA997C2CAA8A1E",
+      "wristConfigSchema": 2,
+      "wristActivationMode": "VEP_AIM",
+      "wristV1BackupPresent": true,
+      "fabricLoader": "0.19.4",
+      "veqLoaded": true,
+      "graphicsBackend": "vulkan",
+      "xrProvider": "openxr",
+      "renderTargets": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "externalScreenOverlayRenderTargetCreated": true,
+      "benchmarkWorldIntegratedServerStarted": true,
+      "benchmarkWorldSpawnProgressPercent": 100,
+      "submittedFramesObservedAtLeast": 4200,
+      "filteredFatalOrMixinApplyOrLinkageError": false,
+      "questRuntimeTestPassed": true,
+      "controllersActiveDuringSmoke": false,
+      "compatibilitySample60Seconds": {
+        "samples": 61,
+        "meanAppFps": 77.2,
+        "medianAppFps": 77,
+        "p10AppFps": 73,
+        "exactPidPercent": 100,
+        "focusPercent": 100,
+        "validForComparison": true,
+        "rawLogsPersisted": false,
+        "balancedAb": false,
+        "visibleOverlayCostMeasured": false,
+        "performanceGainClaim": false
+      },
+      "performanceClaim": false,
+      "manualVrInteractionGate": "pending"
+    },
+    "measurementBaseline": {
+      "appliesTo": [
+        "samples60Seconds",
+        "stationarySoak",
+        "openXrTelemetryAb",
+        "openXrThreadSettingsAb",
+        "coldStarts",
+        "perfettoDiagnostic"
+      ],
+      "apkSha256": "72AC7664CFD126A2FA9E4253F9E191118FA37C11A0B20DDC167468838662081F",
+      "vivecraftSha256": "200568FF0FB8555405EB69B3884FA96C0535477DEF6EB6B8AF988913336209DA",
+      "veqSha256": "CE07FE184E285F9ED17989F72365C6A9BC646BA67C9E7E7C43E1EBE07A7F9C78",
+      "pojlibAarSha256": "5BFCAC4CF800562E857A89E132CDC5BC86FDE9C2CD195218A3BD1C4AE599D068",
+      "isFinalVeq011Artifact": false
+    },
+    "managedProfileJarCount": 11,
+    "fabricReportedModCount": 70,
+    "graphicsBackend": "vulkan-adreno",
+    "openxrRenderPasses": [
+      "LEFT",
+      "RIGHT"
+    ],
+    "qgoPolicy": "dynamic-cpu4-gpu4",
+    "samples60Seconds": [
+      {
+        "meanAppFps": 72.92,
+        "medianAppFps": 73,
+        "p10AppFps": 70
+      },
+      {
+        "meanAppFps": 74.53,
+        "medianAppFps": 73,
+        "p10AppFps": 71,
+        "p95AppGpuMs": 6.1,
+        "maxTempC": 43
+      },
+      {
+        "meanAppFps": 76.02,
+        "medianAppFps": 76,
+        "p10AppFps": 72,
+        "p95AppGpuMs": 6.05,
+        "maxTempC": 43
+      }
+    ],
+    "stationarySoak": {
+      "durationMinutes": 20,
+      "vrApiSamples": 1201,
+      "meanAppFps": 73.81,
+      "medianAppFps": 73,
+      "p10AppFps": 71,
+      "qgoPolicy": "dynamic-cpu4-gpu4",
+      "exactPidAndFullFocus": true
+    },
+    "openXrTelemetryAb": {
+      "order": "A1-A2-A3-B1-B2-B3-A-after",
+      "baselineMatchedStalePerSecond": 3.721,
+      "canaryMatchedStalePerSecond": 4.077,
+      "matchedStaleChangePercent": 9.6,
+      "direction": "worse",
+      "decision": "rejected-do-not-integrate"
+    },
+    "openXrThreadSettingsAb": {
+      "order": "baseline-pool-then-C1-C2-C3",
+      "baselineMatchedStalePerSecond": 3.79,
+      "canaryMatchedStalePerSecond": 4.007,
+      "matchedStaleChangePercent": 5.7,
+      "normalizedFpsDeficitBaselineHz": 0.349,
+      "normalizedFpsDeficitCanaryHz": 0.353,
+      "cpuGpuP95ChangePercent": -0.6,
+      "temperatureConfounded": true,
+      "direction": "no-accepted-benefit",
+      "decision": "rejected-do-not-integrate"
+    },
+    "coldStarts": {
+      "count": 3,
+      "authenticatedProfileReconciled": true,
+      "benchmarkWorldEntered": true,
+      "settingsHashesPreserved": true,
+      "accountFilesReadOrCopied": false
+    },
+    "finalVeq011RuntimeSmoke": {
+      "apkSha256": "1A40872C966704744955C7B28F72F9A2820AA4AD0EC2F7E7E6B1C561D44F5A4A",
+      "pojlibAarSha256": "EA1FD9281F4912B20804B7DB45BAED5F5E8478D4B022AB2C894F3A7B9CB8B917",
+      "installedWithReplace": true,
+      "sameSigner": true,
+      "managedProfileJarCount": 11,
+      "fabricReportedModCount": 70,
+      "vivecraftPhysicalSha256": "200568FF0FB8555405EB69B3884FA96C0535477DEF6EB6B8AF988913336209DA",
+      "veqPhysicalSha256": "D716B84BC096DE9D423106A68246134CE6A9FA761AADFF00C657FF0F3AEDC54E",
+      "benchmarkWorldEntered": true,
+      "openXrSubmittedFrameObserved": 600,
+      "filteredLogMatchedFatalOrMixinOrLinkageError": false,
+      "maxTempC": 50,
+      "performanceClaim": false,
+      "coldStartRevalidationClaim": false,
+      "singleUnattendedCompatibilitySmokeOnly": true,
+      "accountFilesReadOrCopied": false
+    },
+    "perfettoDiagnostic": {
+      "durationSeconds": 15,
+      "sha256": "953CA52C8603B8B8E1EB3833822843AA4019C11B986146D02C33099697DDFEAE",
+      "storedOutsideGit": true,
+      "systemTuningChanged": false
+    },
+    "rawLogsPersisted": false
+  },
+  "knownLimitations": [
+    "The exact v71 RC3 integrated Lab APK B8918144 passed its artifact audit and three normal cold starts retained RC3 with Xms512/Xmx1536 auto, but manual VR interaction, balanced performance, and two new 90-minute soaks remain pending; the older 90-minute capture is supporting evidence only and does not accept this APK.",
+    "v71 Lab RC2 passed startup and Vulkan/OpenXR stereo runtime smoke, but still requires both-eye bow, B-close, controller, balanced performance, cold-start, remote-server and soak gates.",
+    "v71 Lab RC1 is runtime-smoke-passed only; manual headset interaction, balanced FPS, three cold starts, remote Tailscale and 30-minute soak gates remain pending.",
+    "Paired Strike works on the integrated server, but a remote Fabric 26.2 server must run the exact matching universal Vivecraft JAR before the feature negotiates; old or Vanilla peers fail closed.",
+    "The accepted Wrist path intentionally retains its known visible cost of about four FPS; v71 restores correctness rather than claiming a new Wrist performance improvement.",
+    "Intermittent VrApi Stale values between zero and display refresh remain a frame-pacing acceptance blocker.",
+    "32 of 36 root native ELF files use 4 KiB LOAD alignment; ZIP alignment alone is 16 KiB compliant.",
+    "The Sodium 0.9.1 comparison exhausted the Dynamic-refresh match gate and produced no eligible win; 0.9.2-alpha.4 remains the conservative retained version.",
+    "The exact v69 Stable APK passed Host gates and was installed with the expected signer and matching pulled base.apk hash, but its activity did not start after installation; post-install Stable runtime, cold-start, eye, controller and soak checks remain unclaimed.",
+    "The user's manual functional acceptance and the Camera Park performance/soak evidence belong to the exact Lab payload with Camera Park ON; they approved Stable promotion but are not a post-install Stable-package runtime claim.",
+    "Launcher Idle Throttle was not accepted and is omitted from v69 Stable; unattended autoplay remains restricted to the Lab package.",
+    "The v66 corrective candidate passed Host, packaging, APK-verification, same-signer installation, exact profile reconciliation, and unattended Vulkan/OpenXR world-start gates; supervised Wrist and Right-B interaction remain pending.",
+    "The historical v67 dev.1 through dev.4 artifacts are Host-only; the v67 APK embeds rc2.6, while the later user-accepted rc2.7 was a separate hot-deployed JAR.",
+    "The locked stack includes Xaero Minimap only; full Xaero World Map requires a separate optional mod and is not claimed by this build.",
+    "v66 optional integrations expose compatible key mappings and native container screens; it does not embed the Xaero minimap texture in the wrist and has no dedicated JEI or Inventory Profiles Next adapter."
+  ],
+  "v69LabScreening": {
+    "package": "com.qcxr.qcxr.canary262",
+    "versionCode": 69,
+    "versionName": "6.0.1-26.2-vivecraft-personal.10-rc.1",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "labApkSha256": "0C4F73FB08FDF0584E6D0DD342813AA4D07A060BE090141C92BF3147E3CE9099",
+    "pojlibAarSha256": "24F9CA1E47D276D6672C738C371E91823C0DA86F22DC6D7C38BA2F9805670D90",
+    "baselineCoreSha256": "3638F258C7DAAB8391975DB8C39AE254F67A1FD96AA540650D07E5318A0D842F",
+    "baselineVeqSha256": "6575A2A436F1FF74898950A9D781B18641707621CAFAE064BB61A9709C1696B9",
+    "benchmarkWorldMasterSha256": "9E9875E59D7C66C5E1C11E6557024D8033A33AC53A06F8D8B9065DFB76B31B90",
+    "stableTouchedDuringScreening": false,
+    "decisions": {
+      "openXrInput": "rejected-after-refresh-gated-confirmation",
+      "historyRings": "rejected-frame-pacing-regression",
+      "openXrHardening": "rejected-frame-pacing-regression",
+      "openXrCopyBatch": "rejected-dominated-twice",
+      "veqFrameSnapshot": "not-promoted-inconclusive-dynamic-refresh",
+      "sodium091": "not-promoted-keep-0.9.2-alpha.4",
+      "removeLithium": "not-promoted-keep-0.25.3",
+      "removeFerriteCore": "early-reject-guardrail-keep-9.0.0",
+      "removeBadOptimizations": "not-promoted-keep-2.4.1",
+      "arrayDualPassV1": "initial-on-invalidated-external-harness-load",
+      "arrayDualPassV2": "rejected-clean-two-pair-guardrail-failure",
+      "launcherCameraPark": "accepted-and-promoted-to-v69-stable-source-after-manual-lab-gate"
+    },
+    "launcherCameraPark": {
+      "initialCommit": "90cad740",
+      "hardenedCommit": "78b080e0",
+      "defaultEnabledInLab": true,
+      "stableIncluded": true,
+      "stableTouchedDuringScreening": false,
+      "stableInstalledAfterPromotion": true,
+      "evidence": [
+        "artifacts/benchmarks/v69-launcher-camera-park-20260903",
+        "artifacts/benchmarks/v69-launcher-camera-park-final-20260903"
+      ],
+      "initialThreePairAb": {
+        "allThreePairsPassed": true,
+        "refreshHz": 72.0,
+        "temperatureC": 42.0,
+        "off": {
+          "meanFps": 70.34,
+          "p10Fps": 68.0,
+          "p95CpuAndGpuMs": 14.71,
+          "meanStalePerSecond": 4.89
+        },
+        "on": {
+          "meanFps": 71.51,
+          "p10Fps": 70.0,
+          "p95CpuAndGpuMs": 13.61,
+          "meanStalePerSecond": 2.26
+        },
+        "fpsImprovementPercent": 1.66,
+        "p10ImprovementPercent": 2.94,
+        "p95CpuAndGpuImprovementPercent": 7.48,
+        "staleImprovementPercent": 53.78
+      },
+      "preHardeningSoak": {
+        "durationMinutes": 30,
+        "meanFps": 71.8,
+        "p10Fps": 70.0,
+        "p95CpuAndGpuMs": 13.54,
+        "meanStalePerSecond": 1.64,
+        "maxTemperatureC": 42.0,
+        "crashObserved": false
+      },
+      "hardenedFinalSamples": {
+        "sampleCount": 3,
+        "allSamplesExactRefreshAndTemperature": true,
+        "refreshHz": 72.0,
+        "temperatureC": 42.0,
+        "samples": [
+          {
+            "meanFps": 72.21,
+            "p10Fps": 71.0,
+            "p95CpuAndGpuMs": 11.09,
+            "meanStalePerSecond": 1.44
+          },
+          {
+            "meanFps": 72.05,
+            "p10Fps": 71.0,
+            "p95CpuAndGpuMs": 12.05,
+            "meanStalePerSecond": 1.38
+          },
+          {
+            "meanFps": 72.13,
+            "p10Fps": 71.0,
+            "p95CpuAndGpuMs": 12.36,
+            "meanStalePerSecond": 1.23
+          }
+        ],
+        "aggregate": {
+          "meanFps": 72.13,
+          "p10Fps": 71.0,
+          "p95CpuAndGpuMs": 11.83,
+          "meanStalePerSecond": 1.35
+        }
+      },
+      "coldStarts": {
+        "count": 3,
+        "xrHandoffPassed": true,
+        "parkedCameraCount": 3,
+        "oneShotOverrideCompletionPassed": true,
+        "offThenOnIsolationPassed": true
+      },
+      "finalThirtyMinuteSoak": {
+        "durationMinutes": 30,
+        "vrApiSamples": 1801,
+        "meanFps": 72.16,
+        "p10Fps": 71.0,
+        "p95CpuAndGpuMs": 12.13,
+        "meanStalePerSecond": 1.28,
+        "p95AppMs": 5.61,
+        "refreshHz": 72.0,
+        "refreshMinHz": 72.0,
+        "refreshMaxHz": 72.0,
+        "firstTemperatureC": 42.0,
+        "lastTemperatureC": 41.0,
+        "maxTemperatureC": 42.0,
+        "meanFreeMemoryMb": 628.0,
+        "minFreeMemoryMb": 402.0,
+        "exactPidPollPercent": 100.0,
+        "focusedPollPercent": 100.0,
+        "standaloneTrBefore": 0,
+        "standaloneTrAfter": 0,
+        "validForComparison": true,
+        "aggregateReportSha256": "CA1CF7BF2260D42023DC70F4D82E5151E20926E734AEFA16CAC67FCDA93458E1"
+      },
+      "manualInteractionGatePassed": true,
+      "performanceCandidateAccepted": true,
+      "stablePromotionApproved": true,
+      "stablePackageRuntimeAfterInstallPassed": false
+    }
+  },
+  "arrayDualPassCanary": {
+    "sourceBranch": "agent/vivecraft-array-dual-pass-v60",
+    "sourceCommit": "0b7cd4a8d83f4a60e5c1c0d92ec03af48d655dde",
+    "packagedBranch": "agent/vivecraft-array-apk-v60",
+    "packagedCommit": "7efb183d56525a0725aea19eca5dc969e972bb3f",
+    "jarSha256": "4923F8449202F7A1D4F222254C9857583CF4B3167F0A40E4A53B6D710F7BCDBC",
+    "aarSha256": "581C161C71F30028054632220ABADF50FF4C8C46A4C299E64FB5CFD6FDE7FE2D",
+    "apkSha256": "AA5DC9EA6D79549BDB0D042FB46E5E1FC8918EDE0C34E67D012D6E7ABF6E2213",
+    "defaultEnabled": false,
+    "questRuntimeSmokePassed": true,
+    "runtimeLayout": "one-swapchain-two-array-layers",
+    "runtimeFallbackObserved": false,
+    "manualStereoGatePassed": false,
+    "performanceDecision": "rejected-clean-v69-v2-two-pair-guardrail-failure",
+    "stableIncluded": false,
+    "trueMultiview": false,
+    "usesGlViewIndex": false,
+    "v69Retest": {
+      "decision": "rejected-clean-two-pair-guardrail-failure",
+      "initialEvidenceStatus": "invalidated-excluded-external-harness-load",
+      "invalidReason": "A stale Lab rollback shell left tr consuming about 91 percent of one CPU core after the v1 OFF capture and throughout both ON captures.",
+      "cleanRetestEvidence": "artifacts/benchmarks/v69-array-clean-retest-20260903",
+      "stableTouched": false,
+      "trueMultiviewClaim": false,
+      "v1": {
+        "sourceCommit": "85813037",
+        "jarSha256": "C3CCF6F5A1BDD7992DA348E3319A8DE7ED8452E92A1A46BDD2B04DDF3B5B41D0",
+        "off": {
+          "evidenceStatus": "pre-contamination-standalone-not-a-complete-pair",
+          "renderMode": "dual_pass",
+          "meanFps": 71.05,
+          "p10Fps": 69.0,
+          "p95CpuAndGpuMs": 14.78,
+          "meanStaleAtStableRefresh": 2.62,
+          "meanStalePerSecond": 2.83,
+          "meanDisplayRefreshHz": 72.13,
+          "firstTempC": 44.0,
+          "lastTempC": 45.0
+        },
+        "on": {
+          "evidenceStatus": "invalidated-excluded-external-tr-load",
+          "renderMode": "array_dual_pass",
+          "meanFps": 64.75,
+          "p10Fps": 62.0,
+          "p95CpuAndGpuMs": 16.46,
+          "meanStaleAtStableRefresh": 9.83,
+          "meanStalePerSecond": 9.83,
+          "meanDisplayRefreshHz": 72.0,
+          "firstTempC": 45.0,
+          "lastTempC": 45.0
+        }
+      },
+      "v2": {
+        "sourceCommit": "2a6aa9fa",
+        "jarSha256": "43C815363AD3700E5A92615B7886EAB7432A0649E1B7D1BACFE143114292C0C8",
+        "evidenceStatus": "invalidated-excluded-external-tr-load",
+        "renderMode": "array_dual_pass",
+        "meanFps": 63.8,
+        "p10Fps": 59.0,
+        "p95CpuAndGpuMs": 18.34,
+        "meanStaleAtStableRefresh": 10.35,
+        "meanStalePerSecond": 10.35,
+        "meanDisplayRefreshHz": 72.0,
+        "firstTempC": 46.0,
+        "lastTempC": 45.0
+      },
+      "cleanRetest": {
+        "sourceCommit": "2a6aa9fa",
+        "jarSha256": "43C815363AD3700E5A92615B7886EAB7432A0649E1B7D1BACFE143114292C0C8",
+        "order": "OFF1-ON1-ON2-OFF2",
+        "refreshHz": 72.0,
+        "allSamplesExactRefresh": true,
+        "allSamplesCpuGpuLevel4": true,
+        "allPairsTemperatureComparable": true,
+        "pair1": {
+          "off": {
+            "meanFps": 66.45,
+            "p10Fps": 63.0,
+            "p95CpuAndGpuMs": 16.21,
+            "meanStaleAtStableRefresh": 7.52,
+            "firstTempC": 45.0,
+            "lastTempC": 46.0,
+            "sha256": "1432F0D93B3EB562C02917DC17D17831C4200905539CFF87E1F306D1BF4C5026"
+          },
+          "on": {
+            "meanFps": 69.26,
+            "p10Fps": 62.0,
+            "p95CpuAndGpuMs": 16.58,
+            "meanStaleAtStableRefresh": 4.3,
+            "firstTempC": 45.0,
+            "lastTempC": 45.0,
+            "sha256": "774896130424CB033615CE81DC3563DB9E09AD09F144611B8B9CBAE3B3F5A5CD"
+          },
+          "fpsImprovementPercent": 4.23,
+          "p10ImprovementPercent": -1.59,
+          "p95CpuAndGpuImprovementPercent": -2.28,
+          "staleImprovementPercent": 42.82,
+          "guardrailsPass": false
+        },
+        "pair2": {
+          "off": {
+            "meanFps": 67.28,
+            "p10Fps": 63.0,
+            "p95CpuAndGpuMs": 15.53,
+            "meanStaleAtStableRefresh": 6.49,
+            "firstTempC": 46.0,
+            "lastTempC": 46.0,
+            "sha256": "FB2358AC5794721FD269BE9E0B062BEEA7CFC62F33E4BEF686E6059AF784AF60"
+          },
+          "on": {
+            "meanFps": 64.73,
+            "p10Fps": 61.0,
+            "p95CpuAndGpuMs": 16.24,
+            "meanStaleAtStableRefresh": 9.13,
+            "firstTempC": 45.0,
+            "lastTempC": 46.0,
+            "sha256": "27BC0CBFAD41DEDA47C7CE58A8204D7048CD7CAC1827303BEE62FB7EF832F890"
+          },
+          "fpsImprovementPercent": -3.79,
+          "p10ImprovementPercent": -3.17,
+          "p95CpuAndGpuImprovementPercent": -4.57,
+          "staleImprovementPercent": -40.68,
+          "guardrailsPass": false
+        },
+        "aggregate": {
+          "offMeanFps": 66.87,
+          "onMeanFps": 67.0,
+          "fpsImprovementPercent": 0.19,
+          "offP10Fps": 63.0,
+          "onP10Fps": 61.5,
+          "p10ImprovementPercent": -2.38,
+          "offP95CpuAndGpuMs": 15.87,
+          "onP95CpuAndGpuMs": 16.41,
+          "p95CpuAndGpuImprovementPercent": -3.4,
+          "offMeanStaleAtStableRefresh": 7.01,
+          "onMeanStaleAtStableRefresh": 6.72,
+          "staleImprovementPercent": 4.14
+        },
+        "decision": "rejected",
+        "reason": "Both comparable pairs failed the P10 guardrail; pair 2 also failed FPS and regressed P95 and stale delivery. A third pair cannot repair the required per-pair guardrail."
+      }
+    }
+  },
+  "rejectedCanaries": {
+    "openXrPerFrameTelemetry": {
+      "branch": "agent/vivecraft-openxr-diagnostics-v60",
+      "stagingCommit": "f711e82b",
+      "sourceCommit": "4d5f13b60908b1610e6a03d0173ba21545bc0312",
+      "jarSha256": "D2B6D90F44942842092ABA0B02F33425AFEAE1D5A556A8F9ADB308DE5CFF908E",
+      "apkSha256": "ABB3C3AB4A17DC5B7D15A57F54BC6BC34CAF18002C7D0CEF0F8FBE916ED2BB6F",
+      "questTested": true,
+      "stableIncluded": false,
+      "reason": "Exact-refresh matched stale delivery was 9.6 percent worse and frame-time P95 did not improve."
+    },
+    "openXrRendererThreadSettings": {
+      "branch": "agent/vivecraft-thread-settings-v60",
+      "commit": "36d986ae171325678b28fcc5ae06db9347aa5922",
+      "apkSha256": "654F2D8FFF932BD61663EDC43D42D7B9A8A26100843D3B96881941AEC86DE5D6",
+      "questRuntimeGatePassed": true,
+      "questTested": true,
+      "stableIncluded": false,
+      "reason": "Exact-refresh matched stale delivery was 5.7 percent worse, normalized FPS did not improve, and the 0.6 percent CPU plus GPU P95 gain was below the 2 percent gate. Hotter non-randomized runs are a confound, so the extension remains an isolated canary rather than an accepted optimization."
+    }
+  }
+}

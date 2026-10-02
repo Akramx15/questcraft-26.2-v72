@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "harness": {
+    "id": "questcraft-mods-ab-canary-v1",
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenPackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "minecraftVersion": "26.2",
+    "stateRelative": ".questcraft/questcraft-mods-ab-canary-v1",
+    "maxLaunches": 1,
+    "maxExpiryMinutes": 30
+  },
+  "experiments": [
+    {
+      "id": "sodium-0.9.1",
+      "operation": "replace",
+      "slug": "Sodium",
+      "target": "mods/Sodium.jar",
+      "baseline": {
+        "sha256": "A6D1CED177A1C57147E8C1C8043650D5F93E1F2824C9952F3FB67AE05633A0A7",
+        "sizeBytes": 1880490,
+        "fabricId": "sodium",
+        "fabricVersion": "0.9.2-alpha.4+mc26.2",
+        "environment": "client",
+        "fabricLoaderDependency": ">=0.16.0",
+        "minecraftDependency": "~26.2",
+        "javaDependency": "<absent>"
+      },
+      "candidate": {
+        "sha256": "DE406C7A0CA5E748DFBE44740278400882A44E3109E2584B243EC02D4003344B",
+        "sizeBytes": 1834384,
+        "fabricId": "sodium",
+        "fabricVersion": "0.9.1+mc26.2",
+        "environment": "client",
+        "fabricLoaderDependency": ">=0.16.0",
+        "minecraftDependency": "<absent>",
+        "javaDependency": "<absent>",
+        "provenance": "Modrinth official mc26.2-0.9.1-fabric artifact; locally preserved and independently checksummed",
+        "sourceUrl": "https://modrinth.com/mod/sodium/version/mc26.2-0.9.1-fabric",
+        "checksumEvidence": "exports/QuestCraft-Visor-26.2-PC-client-mods-20260830/SHA256SUMS.txt"
+      }
+    },
+    {
+      "id": "without-lithium",
+      "operation": "disable",
+      "slug": "Lithium",
+      "target": "mods/Lithium.jar",
+      "baseline": {
+        "sha256": "FDDE92E238E8075F89AD7F701F2A3D5854AF88BA9A67657184A4407B104AC563",
+        "sizeBytes": 912850,
+        "fabricId": "lithium",
+        "fabricVersion": "0.25.3+mc26.2",
+        "environment": "*",
+        "fabricLoaderDependency": ">=0.15.1",
+        "minecraftDependency": "~26.2",
+        "javaDependency": "<absent>"
+      },
+      "candidate": {
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "sizeBytes": 0,
+        "fabricId": "lithium",
+        "fabricVersion": "<absent>",
+        "environment": "<absent>",
+        "fabricLoaderDependency": "<absent>",
+        "minecraftDependency": "<absent>",
+        "javaDependency": "<absent>",
+        "provenance": "No candidate file: the exact baseline JAR is atomically held outside mods"
+      }
+    },
+    {
+      "id": "without-ferrite-core",
+      "operation": "disable",
+      "slug": "Ferrite-Core",
+      "target": "mods/Ferrite-Core.jar",
+      "baseline": {
+        "sha256": "213966C72ED967ACC7392BEB28A866FBA301FF56B9976C2E7801C2DB7DE6BF22",
+        "sizeBytes": 72677,
+        "fabricId": "ferritecore",
+        "fabricVersion": "9.0.0",
+        "environment": "*",
+        "fabricLoaderDependency": ">=0.14.21",
+        "minecraftDependency": ">=26.1 <27",
+        "javaDependency": "<absent>"
+      },
+      "candidate": {
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "sizeBytes": 0,
+        "fabricId": "ferritecore",
+        "fabricVersion": "<absent>",
+        "environment": "<absent>",
+        "fabricLoaderDependency": "<absent>",
+        "minecraftDependency": "<absent>",
+        "javaDependency": "<absent>",
+        "provenance": "No candidate file: the exact baseline JAR is atomically held outside mods"
+      }
+    },
+    {
+      "id": "without-bad-optimizations",
+      "operation": "disable",
+      "slug": "BadOptimizations",
+      "target": "mods/BadOptimizations.jar",
+      "baseline": {
+        "sha256": "06CEE46D81D3A0AFB8E993DFBE4B990A3BE92F52ABDE3590CC396490CB6EB4D2",
+        "sizeBytes": 60709,
+        "fabricId": "badoptimizations",
+        "fabricVersion": "2.4.1",
+        "environment": "client",
+        "fabricLoaderDependency": ">=0.18.4",
+        "minecraftDependency": ">=26.2",
+        "javaDependency": "<absent>"
+      },
+      "candidate": {
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "sizeBytes": 0,
+        "fabricId": "badoptimizations",
+        "fabricVersion": "<absent>",
+        "environment": "<absent>",
+        "fabricLoaderDependency": "<absent>",
+        "minecraftDependency": "<absent>",
+        "javaDependency": "<absent>",
+        "provenance": "No candidate file: the exact baseline JAR is atomically held outside mods"
+      }
+    }
+  ],
+  "allowedSha256": [
+    "A6D1CED177A1C57147E8C1C8043650D5F93E1F2824C9952F3FB67AE05633A0A7",
+    "DE406C7A0CA5E748DFBE44740278400882A44E3109E2584B243EC02D4003344B",
+    "FDDE92E238E8075F89AD7F701F2A3D5854AF88BA9A67657184A4407B104AC563",
+    "213966C72ED967ACC7392BEB28A866FBA301FF56B9976C2E7801C2DB7DE6BF22",
+    "06CEE46D81D3A0AFB8E993DFBE4B990A3BE92F52ABDE3590CC396490CB6EB4D2",
+    "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  ]
+}

@@ -1,0 +1,26 @@
+.gradle/
+.gradle-home-pojlib/
+/.gradle-home*/
+build/
+**/build/
+**/build.*/
+**/.cxx/
+**/.gradle/
+local.properties
+/.research/
+/device-artifacts/
+/benchmark-captures/
+/artifacts/
+/exports/
+/.v71-*-build-backup/
+
+# Build output can contain local paths and signing arguments. Signing material
+# must never be committed.
+*.log
+*.log.gz
+*.apk
+*.aab
+*.jks
+*.keystore
+
+/.tools/

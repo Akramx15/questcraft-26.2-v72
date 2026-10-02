@@ -1,0 +1,192 @@
+plugins {
+    alias(libs.plugins.shadow)
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+sourceSets.main.java {
+    include "org/questcraft/veq/**"
+}
+
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+
+version = "${rootProject.version}+mc${libs.versions.minecraftVersion.get()}-fabric"
+
+dependencies {
+    // Vivecraft is required at runtime but remains external to this add-on JAR.
+    def localVivecraftJar = rootProject.ext.resolveVivecraftFabricJar.call()
+    implementation(files(localVivecraftJar))
+
+    shadowCommon(project(path: ":mod-core", configuration: "transformProductionFabric")) { transitive = false }
+    common(project(":mod-core")) { transitive = false }
+
+    String fabricApiVersion = "${libs.versions.fabric.api.get()}+${libs.versions.minecraftVersion.get()}"
+    implementation(libs.fabric.loader)
+    implementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
+    compileOnly("maven.modrinth:modmenu:20.0.1")
+}
+
+processResources {
+    inputs.property "version", parent.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": parent.version
+    }
+}
+
+shadowJar {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    exclude "architectury.common.json"
+    exclude "org.joml"
+    exclude "org.lwjgl"
+    exclude "org.slf4j"
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+    configurations = [project.configurations.shadowCommon]
+    // With Loom's no-remap plugin the shaded artifact is already in the
+    // runtime namespace, so it is the distributable jar (matching Visor's
+    // own 26.2 build). The small platform-only jar is not deployable by
+    // itself because it omits the common addon classes and mixin config.
+    archiveClassifier.set("")
+    from(rootProject.file('LICENCE.md')) {
+        rename { 'LICENSE_VivecraftEssentialsQuest.md' }
+    }
+    from(rootProject.file('VEP_UI_NOTICE.md')) {
+        into 'META-INF'
+        rename { 'VEP_UI_NOTICE.md' }
+    }
+}
+
+tasks.register('verifyVivecraftEssentialsQuestRelease') {
+    group = 'verification'
+    description = 'Checks metadata, license provenance, and that Visor remains a separate mod.'
+    dependsOn tasks.named('shadowJar')
+    doLast {
+        def artifact = tasks.named('shadowJar').get().archiveFile.get().asFile
+        def zip = new java.util.zip.ZipFile(artifact)
+        try {
+            def names = java.util.Collections.list(zip.entries())*.name
+            if (names.any {
+                it.startsWith('org/vmstudio/visor/')
+                        || it.startsWith('org/vmstudio/essentials/')
+                        || it.startsWith('org/vivecraft/')
+                        || it.startsWith('com/terraformersmc/modmenu/')
+            }) {
+                throw new GradleException(
+                        'VEQ artifact must not embed Visor/VEP runtime, Vivecraft, or Mod Menu classes')
+            }
+            if (!names.contains('LICENSE_VivecraftEssentialsQuest.md')) {
+                throw new GradleException('VEQ LGPL license is missing from the artifact')
+            }
+            def provenanceEntry = zip.getEntry('META-INF/VEP_UI_NOTICE.md')
+            if (provenanceEntry == null) {
+                throw new GradleException('VEP UI provenance notice is missing from the artifact')
+            }
+            String provenance = new String(
+                    zip.getInputStream(provenanceEntry).readAllBytes(),
+                    java.nio.charset.StandardCharsets.UTF_8)
+            if (!provenance.contains('https://github.com/snooped-xl/VisorEssentialsPlus')
+                    || !provenance.contains('GNU Lesser General Public License v3.0 or later')
+                    || !provenance.contains('OpenXR/AtumVR')
+                    || !provenance.contains('bow, shield')) {
+                throw new GradleException('VEP UI provenance notice is incomplete')
+            }
+            if (!names.contains('assets/visor_essentials/textures/gui/inventory.png')
+                    || !names.contains('assets/visor_essentials/textures/gui/inventory_simplified.png')
+                    || !names.contains('assets/visor_essentials/lang/en_us.json')
+                    || !names.contains('assets/visor_essentials/textures/gui/container/crafting_table.png')
+                    || !names.contains('org/questcraft/veq/client/gui/VepWristInventoryScreen.class')
+                    || !names.contains('org/questcraft/veq/client/overlay/VepWristOverlayView.class')
+                    || !names.contains('org/questcraft/veq/client/overlay/VepMultiSurfaceAdapter.class')
+                    || !names.contains('org/questcraft/veq/client/overlay/VepSurfacePointerRenderer.class')
+                    || names.contains('org/questcraft/veq/client/overlay/VepCarriedItemScreen.class')
+                    || names.contains('org/questcraft/veq/client/overlay/VepCarriedItemOverlay.class')) {
+                throw new GradleException('Embedded VEP wrist overlay payload is incomplete')
+            }
+            if (names.contains('org/questcraft/veq/client/gui/WristInventoryScreen.class')) {
+                throw new GradleException('Legacy desktop inventory screen leaked into VEQ')
+            }
+            def wristScreen = zip.getEntry(
+                    'org/questcraft/veq/client/gui/VepWristInventoryScreen.class')
+            String wristConstants = new String(
+                    zip.getInputStream(wristScreen).readAllBytes(),
+                    java.nio.charset.StandardCharsets.ISO_8859_1)
+            if (wristConstants.contains('setScreen')
+                    || !wristConstants.contains('ServerboundContainerClosePacket')) {
+                throw new GradleException('Embedded wrist close lifecycle is unsafe')
+            }
+            def metadata = new groovy.json.JsonSlurper().parse(
+                    zip.getInputStream(zip.getEntry('fabric.mod.json')))
+            if (metadata.id != 'vivecraft_essentials_quest'
+                    || metadata.version != rootProject.version.toString()
+                    || metadata.depends?.vivecraft != '*'
+                    || metadata.entrypoints?.modmenu != ['org.questcraft.veq.fabric.VeqModMenu']) {
+                throw new GradleException('Unexpected VEQ Fabric metadata: ' + metadata)
+            }
+            def mixins = new groovy.json.JsonSlurper().parse(
+                    zip.getInputStream(zip.getEntry('vivecraft_essentials_quest.mixins.json')))
+            if (!mixins.client?.contains('VivecraftMainSettingsMixin')
+                    || !names.contains('org/questcraft/veq/mixin/VivecraftMainSettingsMixin.class')) {
+                throw new GradleException('Vivecraft settings navigation bridge is missing from the VEQ artifact')
+            }
+
+            // The mixin intentionally targets one pinned Vivecraft method.
+            // Gate that contract here because a string-valued @Inject target
+            // is not checked by javac and would otherwise fail only at launch.
+            def vivecraft = new java.util.zip.ZipFile(rootProject.ext.resolveVivecraftFabricJar.call())
+            try {
+                def target = vivecraft.getEntry(
+                        'org/vivecraft/client/gui/settings/VivecraftMainSettings.class')
+                if (target == null) {
+                    throw new GradleException('Pinned Vivecraft settings screen class is missing')
+                }
+                byte[] targetBytes = vivecraft.getInputStream(target).readAllBytes()
+                String constants = new String(targetBytes, java.nio.charset.StandardCharsets.ISO_8859_1)
+                if (!constants.contains('getEntries') || !constants.contains('()Ljava/util/List;')) {
+                    throw new GradleException('Pinned Vivecraft getEntries() navigation contract changed')
+                }
+
+                def radialBase = vivecraft.getEntry(
+                        'org/vivecraft/client/gui/framework/screens/TwoHandedScreen.class')
+                if (radialBase == null) {
+                    throw new GradleException('Pinned Vivecraft radial base screen is missing')
+                }
+                String radialConstants = new String(
+                        vivecraft.getInputStream(radialBase).readAllBytes(),
+                        java.nio.charset.StandardCharsets.ISO_8859_1)
+                if (!radialConstants.contains('lastHoveredButtonId1')
+                        || !radialConstants.contains('lastHoveredButtonId2')
+                        || !radialConstants.contains('triggerHapticPulse')) {
+                    throw new GradleException('Pinned Vivecraft radial transition-haptic contract changed')
+                }
+            } finally {
+                vivecraft.close()
+            }
+        } finally {
+            zip.close()
+        }
+    }
+}
+
+check.dependsOn tasks.named('verifyVivecraftEssentialsQuestRelease')
+
+sourcesJar {
+    def commonSources = project(":mod-core").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}

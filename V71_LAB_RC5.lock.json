@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "status": "host-built-and-audited",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "headStationaryChangeCommit": "54ac002c7e72cf83ed7c0f78276d88847348bb6d",
+    "rc5IdentityCommit": "65d2873ee955f4aaf37c334e91c4ee72c5a3b64c",
+    "payloadIntegrationCommit": "649cac8f2e5d63b751fca1eba101f4a44a5a0821",
+    "optionsOwnershipRepairCommit": "3775183e5ac2728096b94b60d1d59398ffab2f90",
+    "hostBuildCommit": "ade6e2524bcc1fa38d92c9e9224fb8dc3e79d1d8",
+    "scriptHashScheme": "sha256-utf8-normalized-lf",
+    "buildScript": "scripts/build-v71-lab-rc5-integrated.ps1",
+    "buildScriptSha256": "1CF586A43DCC78E2C383CBC99CD7E649DC27F195BD02890F4A01AA82AF72412E"
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "delivery": "integrated-persistent-managed-baseline",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.5.2",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.5.2-integrated-local.apk",
+    "apkSha256": "AAD1B8F94DE7D4F65BF481CE65FCA83FAFFC7B0961435E95EF3F1899CF038879",
+    "apkSizeBytes": 128439489,
+    "artifactAuditPassed": true,
+    "stableTouched": false
+  },
+  "predecessor": {
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.5.1",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.5.1-integrated-local.apk",
+    "apkSha256": "F53A3AED167AF2396B498F030862C01F5590C63C9E80ABE7C0D786AC5EA95EA2",
+    "apkSizeBytes": 128437825,
+    "immutableRuntimeEvidenceBoundary": true
+  },
+  "historicalPredecessors": [
+    {
+      "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.5",
+      "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.5-integrated-local.apk",
+      "apkSha256": "4F3908599D8236A3A617EF8634C4BB2B39BDBFB3A10D2EF33C7FE00B97355661",
+      "apkSizeBytes": 128430965,
+      "immutableRuntimeEvidenceBoundary": true
+    }
+  ],
+  "optionsOwnershipRepair": {
+    "commit": "3775183e5ac2728096b94b60d1d59398ffab2f90",
+    "apiSha256": "7CABCEFB2F54E4869887EB80C646843810EEC92F8958B49342EEA6F2ADCDC586",
+    "prelaunchGateSha256": "FED6D89DB63B5129D62DD60EC3A37823B27C116AF6C14723E75C0FA3DFD29CDF",
+    "installerSha256": "8D918A476D003669BF3C354390140DAC16AAC186FC41762151D3847B13EC2FA0",
+    "implementationSha256": "6D5E80F2F66AC061985250C68B492B3D4702CE5B696AC4F8F8D41ACDDDBD743B",
+    "maximumOptionsBytes": 4194304,
+    "alreadyWritableIsNoOp": true,
+    "replacementPreservesExactBytes": true,
+    "rejectsSymlinksAndNonRegularFiles": true,
+    "liveOptionsTouchedDuringHostBuild": false,
+    "resourcepacksTouchedDuringHostBuild": false
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\nveq=<uppercase-sha256>\n)",
+    "sha256": "5B4ADB12406108D74D3F3E592857B419DD893BD3522898B06BDCF17B0F6126BB",
+    "core": {
+      "sourcePath": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc5-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc5",
+      "minecraftDependency": "26.2.x",
+      "javaDependency": ">=25",
+      "sha256": "494BC1CB9CED37C4F2193704CDA1ED4B4F3461DDFB5E75A1C3475D0124159F00",
+      "sizeBytes": 10064652
+    },
+    "veq": {
+      "sourcePath": "Vivecraft-Essentials-Quest/mod-fabric/build/libs/VivecraftEssentialsQuest-0.7.0-v70-canary.1+mc26.2-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v70-canary.1",
+      "minecraftDependency": "26.2",
+      "javaDependency": ">=25",
+      "sha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+      "sizeBytes": 441660
+    }
+  },
+  "persistentBaseline": {
+    "normalLaunchRequiresMarker": false,
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v5",
+    "legacyRc4Namespace": "questcraft-vivecraft-core-canary-v4",
+    "absentMarkerAction": "retain-integrated-rc5",
+    "normalColdStartsPersistent": true,
+    "runtimeValidation": "PENDING_NOT_INSTALLED"
+  },
+  "runtimeBinding": {
+    "expectedGameLogRelativePath": "instances/26.2/logs/latest.log",
+    "expectedGameLogMinecraftVersion": "26.2",
+    "expectedGameLogCoreVersion": "26.2-1.3.15+qc.v71.rc5",
+    "expectedGameLogVeqVersion": "0.7.0-v70-canary.1",
+    "validation": "PENDING_NO_DEVICE_ACTION_IN_HOST_BUILD"
+  },
+  "pojlibAar": {
+    "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+    "sha256": "5CBC6468A4E2CB4F98CB8BBE005C387AEA12E9AD43360BA5CA76167DC86D470A",
+    "sizeBytes": 88706771,
+    "cleanBuildsMatchedByteForByte": true,
+    "jdk": "Unity bundled Temurin 11.0.14.1+1",
+    "nativeBuildIdsOmittedForReproducibility": true
+  },
+  "unitySource": {
+    "projectSettingsPath": "QCXR-XR-Wrapper/ProjectSettings/ProjectSettings.asset",
+    "projectSettingsSha256": "E45F52C082C8E49C24C2EE12C5793D2C8E03136E4FC9E7515158AFB2995DD36E",
+    "restoredAfterEveryBuildAttempt": true
+  },
+  "hostVerification": {
+    "sourceArtifactHashesVerified": true,
+    "embeddedAssetHashesVerified": true,
+    "manifestCopiesVerified": true,
+    "pojlibAarCleanBuildCount": 2,
+    "pojlibAarReproducible": true,
+    "pojlibUnitTestFiles": 24,
+    "pojlibUnitTests": 116,
+    "pojlibUnitTestFailures": 0,
+    "pojlibUnitTestErrors": 0,
+    "pojlibUnitTestSkipped": 0,
+    "pojlibUnitTestsPassed": true,
+    "buildGateSelfTestPassed": true,
+    "integratedApkBuilt": true,
+    "integratedApkArtifactAuditPassed": true,
+    "deviceTouched": false
+  },
+  "acceptance": {
+    "hostBuildPassed": true,
+    "runtimePassed": false,
+    "stablePromotionAllowed": false
+  },
+  "notes": "RC5.2 is a Lab-only packaging successor that preserves the exact RC5 Core and VEQ bytes while moving Pojlib's byte-preserving options inode ownership repair to a fail-closed, network-independent prelaunch gate. RC5 and RC5.1 APKs plus all earlier runtime artifacts and receipts remain immutable and cannot satisfy RC5.2 runtime acceptance. This Host build gate never invokes ADB and does not read or write a live options.txt or resourcepacks."
+}

@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "package": "org.vmstudio.essentials.core.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "client.LocalPlayerMixin",
+    "client.MinecraftMixin",
+    "client.GuiScreenMixin",
+    "client.KeyboardHandlerMixin",
+    "client.MouseHandlerMixin",
+    "client.compat.visor.GameScreenOverlayMixin",
+    "client.compat.visor.GameActionSetMixin",
+    "client.compat.visor.GameplayKeyActionMixin",
+    "client.compat.visor.MenuActionSetMixin",
+    "client.compat.visor.MouseClickHandlerMixin",
+    "client.compat.xaero.ImprovedFramebufferMixin",
+    "client.compat.xaero.XaeroRenderTypeMixin",
+    "client.gui.ScreenBackgroundMixin",
+    "client.multiplayer.MultiPlayerGameModeMixin",
+    "client.accessor.KeyMappingAccessor",
+    "client.gui.containers.AbstractContainerScreenMixin"
+  ],
+  "minVersion": "0.8.4",
+  "mixins": [
+    "common.bow.BowItemMixin"
+  ]
+}

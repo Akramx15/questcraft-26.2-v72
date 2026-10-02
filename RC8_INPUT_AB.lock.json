@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "status": "HOST_AUDITED_NOT_DEVICE_RUN",
+  "recordedDate": "2026-09-08",
+  "sourceBase": "496a506ede1af3926b46bcaf4ef1611d6baf8ea9",
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.8",
+    "apkSha256": "A8E364630A8BA22853FD8135818DB4E9430FE856305754B1FD6C420E429B2416"
+  },
+  "baseline": {
+    "fabricVersion": "26.2-1.3.15+qc.v71.rc8-mining",
+    "sha256": "ADDB01FA168033C42F97C615DAF97CBB927B9E94400606EEF27CFBE930015EAB",
+    "sizeBytes": 10078822
+  },
+  "companion": {
+    "fabricId": "vivecraft_essentials_quest",
+    "fabricVersion": "0.7.0-v71.rc6",
+    "sha256": "FF7F6FCFDA21895764B69F3316CE7E9EBD8D890DF675C1E8007835B3814573F9",
+    "sizeBytes": 444150
+  },
+  "candidate": {
+    "fabricId": "vivecraft",
+    "fabricVersion": "26.2-1.3.15+qc.v71.rc8-input.1",
+    "sha256": "9B9C1999E999C4810CA6CECE98BB0D9557939D0326AFEBBCCB58CD4816F216DD",
+    "sizeBytes": 10085812,
+    "sourceCommit": "a9487d9ee137d39430148c2f384de4d7d9988d86",
+    "versionCommits": [
+      "a988fed3fbd6e4915454206052f4a0aa6958adbc",
+      "181b2e0b9005d856ed66702789723d2985e3449e"
+    ]
+  },
+  "transaction": {
+    "harnessId": "questcraft-vivecraft-core-canary-v9",
+    "schemaVersion": 2,
+    "maxLaunches": 1,
+    "openXrCopyBatchMode": "OFF",
+    "candidateStagedOutsideMods": true,
+    "markerCommittedLast": true,
+    "rollbackSha256": "ADDB01FA168033C42F97C615DAF97CBB927B9E94400606EEF27CFBE930015EAB"
+  },
+  "hostArtifactsHashMode": "utf8-lf-canonical-sha256",
+  "hostArtifacts": [
+    {
+      "path": "scripts/quest-v71-rc8-input-canary.ps1",
+      "sha256": "560388F0B659B585AFC7A7318C8505B4A36AF4A29E8390E7670051AE351DA3A5"
+    },
+    {
+      "path": "scripts/test-quest-v71-rc8-input-canary-host.ps1",
+      "sha256": "72A2BA8B71C73622EB574C4E3558720A0A27BA904D90B348E128462C3883221D"
+    },
+    {
+      "path": "scripts/test-quest-v71-rc8-input-canary-transactions.ps1",
+      "sha256": "545BB87AA20A73A8F259CD975EFEEFCBF955BA03C9E6DB4835F4C6D00D1B3BE2"
+    },
+    {
+      "path": "scripts/verify-v71-rc8-input-runtime-log.ps1",
+      "sha256": "6B85F4C46AAFBED59689A6AE8D46831D8191664B42F5F1586CC9B8A2D02BC749"
+    },
+    {
+      "path": "scripts/capture-verify-v71-rc8-input-runtime-log.ps1",
+      "sha256": "83AAA52DA3286D7C5284CCCBCEA67F65A1EE5CC69A55F5EC429B54CFB9AE0EDD"
+    },
+    {
+      "path": "RC8_INPUT_AB_RUNBOOK.md",
+      "sha256": "31605099C034904E1B9A1CD7080069D6D0A4AC22B00CDAC8BC227FBA443CAD7C"
+    }
+  ],
+  "hostValidation": {
+    "syntaxFilesPassed": 5,
+    "helperSelfTestPassed": true,
+    "identityAndBoundaryCasesPassed": 43,
+    "windowsUsbPnpFixtureCasesPassed": 20,
+    "fakePnpApiCalls": 6,
+    "transportResolutionCasesPassed": 8,
+    "deployFaultCasesPassed": 5,
+    "rollbackCasesPassed": 1,
+    "fingerprintCasesPassed": 1,
+    "bashSyntaxCasesPassed": 7,
+    "realAdbInvocations": 0
+  },
+  "evidenceBoundary": {
+    "hostOnly": true,
+    "deviceTouched": false,
+    "realAdbInvocations": 0,
+    "stableTouched": false,
+    "questRuntimeAccepted": false,
+    "fpsClaimAllowed": false,
+    "stablePromotionAllowed": false
+  }
+}

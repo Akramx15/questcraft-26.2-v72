@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "status": "HOST_BUILT_AND_AUDITED",
+  "recordedDate": "2026-09-07",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "coreCommit": "68893e6a1a0d101337e0a6000dfeec7c42ed21ab",
+    "coreBuildCommand": ".\\gradlew.bat --offline --no-daemon clean :common:check :fabric:build '-Pproject.build.excludeForge=true' '-Pproject.build.excludeNeoforge=true' '-Pmod_version=1.3.15+qc.v71.rc7'",
+    "coreCleanBuildsMatchedByteForByte": true,
+    "scriptHashScheme": "sha256-utf8-normalized-lf",
+    "buildScriptSha256": "3E259A2624D83B1A3FBF3D88298A73A3A141371BFF1FABD518D1BC203994F349",
+    "packagingFiles": [
+      { "path": "CHECKSUMS.sha256", "sha256": "02AB8B7D535198CAE127EA2B335ED7743A81EE94E4D330173B37A17CD21ECCC2" },
+      { "path": "Pojlib/mods.json", "sha256": "7E89F8ACF72B2567FA52F5EDB89A06E007B704EA870A3658451646A8D6BBAE28" },
+      { "path": "Pojlib/devmods.json", "sha256": "4F24CF192D49FCC0D1EDC3F34064660610965DBA0D20A6BEAF9F31583C21DD42" },
+      { "path": "Pojlib/src/main/assets/mods.json", "sha256": "7E89F8ACF72B2567FA52F5EDB89A06E007B704EA870A3658451646A8D6BBAE28" },
+      { "path": "Pojlib/src/main/assets/devmods.json", "sha256": "4F24CF192D49FCC0D1EDC3F34064660610965DBA0D20A6BEAF9F31583C21DD42" },
+      { "path": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin", "sha256": "A1A522C2BB949DBDC2A3AE475B900407324441DA50D94E012A7C734B32E498D3" },
+      { "path": "Pojlib/src/main/java/pojlib/VivecraftCoreCanaryGate.java", "sha256": "E0FCA0B23159CC403767B549724E7B6AA1F00F5A56F10427740DA081F634D1D5" },
+      { "path": "Pojlib/src/main/java/pojlib/LauncherResourceReleasePolicy.java", "sha256": "66FB85D6F3C9E599E0024A28076EC46605305C12346F1BDBF101A887C326F9A0" },
+      { "path": "Pojlib/src/test/java/pojlib/LauncherResourceReleasePolicyTest.java", "sha256": "5420A363EE882876EC0BF6F119BB0ED22B11DBC627B0E1D4F9B9AE9F655A5235" },
+      { "path": "Pojlib/src/test/java/pojlib/LauncherResourceReleaseSourceIntegrationTest.java", "sha256": "C8197993A791D5CD1FD356652896032CA6A7F00EBA1B00B3A659DFD476FC0E96" },
+      { "path": "Pojlib/src/test/java/pojlib/Rc62IdentityContractTest.java", "sha256": "6E4844698177E853FE94B3A23D4F3D350BB3F2435FFFDF9161BED90AD7EA8F81" },
+      { "path": "Pojlib/src/test/java/pojlib/Rc7IdentityContractTest.java", "sha256": "97FA2F9060A710CBD3CEF161658760A6DF7F4EB5BB848C8075736FA091DDA51E" },
+      { "path": "Pojlib/src/test/java/pojlib/VivecraftCoreCanarySourceIntegrationTest.java", "sha256": "2B4BD4333B54E08417F61518BB9B109AB8458DC0A82A739D24AD2F0AD94A2C58" },
+      { "path": "Pojlib/src/test/java/pojlib/VivecraftCoreCanaryTransactionTest.java", "sha256": "558693BAF47D6B529A8D9DCDBB524F81E75995923A5BA9E12DA48DE6FD60E267" },
+      { "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar", "sha256": "33CC5A1E33CE9AA6DEA4548CE45A6896692656D89DC4F79BAF9862342CCC083F" },
+      { "path": "QCXR-XR-Wrapper/Assets/Scripts/InstanceButton.cs", "sha256": "DBE2BFCD0974FA5D538639EDDB063CAFE6BAE3A6C21BD700801334F0F4812D8C" },
+      { "path": "QCXR-XR-Wrapper/Assets/Editor/QuestCraftV71Rc7LabCliBuild.cs", "sha256": "711E08403BDB5FF0B3B5530ECA44AE2E2E7CB51A64A707F68F9E05767F29F2BE" },
+      { "path": "QCXR-XR-Wrapper/Assets/Editor/QuestCraftV71Rc7LabCliBuild.cs.meta", "sha256": "9F6896C4A351450C4119140056DDFD52B479CCB11BDDF26E9A1EED954571F6EC" },
+      { "path": "scripts/verify-dev-apk.ps1", "sha256": "883E12E4AA878EF7F1424142C9AF63DC045C3E62AB39FFD97C57F66C9F8F9B81" }
+    ]
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.7",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.7-integrated-local.apk",
+    "apkSha256": "6AC3D0A1EECAE657367B427BF9A97983C68F6A0D01E166DD195694E3B0B0E7D7",
+    "apkSizeBytes": 128468737,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "runtimeValidation": "PENDING_NOT_RUN",
+    "stableTouched": false
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\\nveq=<uppercase-sha256>\\n)",
+    "sha256": "24FBE7C7F94A07173017F2B131D6849E0B091878DEEAFF74D17BB92D4AF1EDCD",
+    "core": {
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc7",
+      "sha256": "A1A522C2BB949DBDC2A3AE475B900407324441DA50D94E012A7C734B32E498D3",
+      "sizeBytes": 10080472
+    },
+    "veq": {
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v71.rc6",
+      "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "sizeBytes": 443280,
+      "frozenFromRc62": true
+    }
+  },
+  "pojlibAar": {
+    "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+    "sha256": "33CC5A1E33CE9AA6DEA4548CE45A6896692656D89DC4F79BAF9862342CCC083F",
+    "sizeBytes": 88735580,
+    "cleanBuildsMatchedByteForByte": true,
+    "jdk": "Temurin-11.0.14.1+1"
+  },
+  "runtimeBinding": {
+    "expectedGameLogRelativePath": "instances/26.2/logs/latest.log",
+    "expectedGameLogMinecraftVersion": "26.2",
+    "expectedGameLogCoreVersion": "26.2-1.3.15+qc.v71.rc7",
+    "expectedGameLogVeqVersion": "0.7.0-v71.rc6",
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v8",
+    "veqHarnessStateNamespace": "questcraft-veq-v71-canary-v4",
+    "validation": "PENDING_NO_DEVICE_ACTION"
+  },
+  "acceptance": {
+    "hostCoreTestsPassed": true,
+    "coreCleanBuildsMatchedByteForByte": true,
+    "pojlibTestsPassed": true,
+    "pojlibCleanBuildsMatchedByteForByte": true,
+    "hostApkAuditPassed": true,
+    "questRuntimePassed": false,
+    "stablePromotionAllowed": false
+  },
+  "evidenceBoundary": {
+    "deviceTouched": false,
+    "adbUsed": false,
+    "networkUsed": false,
+    "stableTouched": false,
+    "runtimeEvidenceMayBeInferredFromHostArtifacts": false
+  },
+  "notes": "Persistent Lab-only RC7 packaging boundary. RC7 adds same-block dual-hand mining coordination plus a Lab-only stopped-session OpenXR CPU throttle. No Quest, runtime, stereo, controller, passthrough-resume, performance, or Stable claim exists until supervised testing."
+}

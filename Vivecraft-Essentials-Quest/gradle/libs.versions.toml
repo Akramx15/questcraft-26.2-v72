@@ -1,0 +1,45 @@
+
+
+[versions]
+
+# Gradle plugins
+shadow                  = "9.2.2"
+architectury            = "3.5-SNAPSHOT"
+architectury-loom       = "1.17-SNAPSHOT"
+
+#Annotations
+lombok                  = "1.18.46"
+jetbrains               = "26.1.0"
+
+#Core
+minecraftVersion        = "26.2"
+
+mixin                   = "0.15.2+mixin.0.8.7"
+
+# Compile-only source annotations used by Visor's API classes.
+fabric-loader           = "0.19.3"
+fabric-api              = "0.158.0"
+
+# NeoForge
+neoforgeVersion         = "21.1.234"
+
+
+[libraries]
+
+# Annotations
+lombok           = { module = "org.projectlombok:lombok",           version.ref = "lombok" }
+jetbrains        = { module = "org.jetbrains:annotations",         version.ref = "jetbrains" }
+mixin             = { module = "net.fabricmc:sponge-mixin",         version.ref = "mixin" }
+fabric-loader     = { module = "net.fabricmc:fabric-loader",        version.ref = "fabric-loader" }
+fabric-api        = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+
+# Core
+[bundles]
+annotations        = [ "lombok", "jetbrains" ]
+
+
+
+[plugins]
+architectury         = { id = "architectury-plugin",               version.ref = "architectury" }
+architectury-loom    = { id = "dev.architectury.loom-no-remap",    version.ref = "architectury-loom" }
+shadow               = { id = "com.gradleup.shadow",              version.ref = "shadow" }

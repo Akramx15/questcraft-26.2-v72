@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "HOST_CONTRACT_LOCKED_RUNTIME_EVIDENCE_PENDING",
+  "candidateBuildLockPath": "V71_LAB_RC5.lock.json",
+  "candidateIdentitySource": "dynamic-read-at-producer-start",
+  "scriptHashScheme": "sha256-utf8-normalized-lf",
+  "producers": {
+    "lifecycleRecoveryScriptSha256": "7C5997AB67FAEF50F1CFD2EAFCB6547F7F0493150C32E6EE7933666B71BA5BB6",
+    "memorySoakScriptSha256": "5F07BA4A71A3886077A3C34CFA876C05254C8095C6C28BE689B9B03040C10547",
+    "memoryRuntimeContractScriptSha256": "891B701E478289726C27D2DD00F795683A973C23A51A1B33A6C77D18174B02C0",
+    "performanceHarnessScriptSha256": "8D2A8E28D902657F6BC3A824D3FEDFD4FFE017C125F37E5FF6F93B8A2E734873",
+    "stableEvidenceGateScriptSha256": "37D00C51C44417EF15877592380D87202A5037F0DF0ADE5A533E2E290684EBCD",
+    "autoplayHarnessScriptSha256": "261E6881B334DECD8CB41A640F1EE765E024278FC677128B472234C923CD7196"
+  },
+  "performanceDependencies": {
+    "pair-harness": "5651CAE7D93DDFE3D9FA031E5B5CB5182AA56029D80D6BC22FA1014815A72AC4",
+    "core-canary-harness": "4AB4715CE7233C67CFFCB73DBF9FC3401658974146E390FA8CF4CD782E6910A3",
+    "veq-lab-harness": "C84A06BFBB2FB36C22280730742949CCB5DE862234682B48E1988C5B0F171006",
+    "world-reset-harness": "DE0500CA3CEEBAE2A371B257F191AC09DC6746147D47F48E53F262BAAA0F4726",
+    "autoplay-harness": "261E6881B334DECD8CB41A640F1EE765E024278FC677128B472234C923CD7196",
+    "vrapi-benchmark-harness": "8FC046C6239E30823BB2B9408D1F0B3FD0B689C9A3F7B39FB8CFAFD0D211EE33",
+    "apk-verifier": "8087CE975CA505A5BCE6E2C258DD14FE4902FF2F6BC991B568AB70EC326FA925"
+  },
+  "historicalRc4Artifacts": {
+    "immutable": true,
+    "coreWorkspaceRelativePath": "artifacts/candidates/v71-rc4/vivecraft-26.2-1.3.15+qc.v71.rc4-fabric.jar",
+    "coreSha256": "289C27057489B1D9B81583776F458179A1D5D5842451B35E598ADCBEB3213189",
+    "coreSizeBytes": 10068021,
+    "veqWorkspaceRelativePath": "artifacts/candidates/v71-rc4/VivecraftEssentialsQuest-0.7.0-v70-canary.1+mc26.2-fabric.jar",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "veqSizeBytes": 441660
+  },
+  "memoryPolicy": {
+    "xmsMiB": 512,
+    "automaticXmxTargetMiB": 1536,
+    "additionalNativeHeadroomMiB": 1024,
+    "automaticXmxMinMiB": 1536,
+    "xmxMaxMiB": 2048,
+    "manualXmxMaxMiB": 2048
+  },
+  "coldStartRuntimeEvidence": {
+    "result": "PENDING_NOT_RUN",
+    "normalLauncherStartCount": 0,
+    "allThreeRetainedExactRc5": false,
+    "lifecycleReceiptPath": "artifacts/acceptance/v71-lab-rc5-lifecycle-recovery-receipt.json",
+    "lifecycleReceiptSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "stablePackageModified": false
+  },
+  "launcherResourceReleaseEvidence": {
+    "policy": "default-on-only-for-exact-v71-rc5-lab-and-stable-identities-lab-authenticated-ab-may-override",
+    "designRationaleCarriedFromRc3": true,
+    "exactRc5RuntimeValidated": false,
+    "result": "PENDING_NOT_RUN",
+    "stableTouched": false
+  },
+  "evidenceBoundary": {
+    "rc4ReceiptsAreDiagnosticOnly": true,
+    "rc4ReceiptsMaySatisfyRc5Acceptance": false,
+    "historicalRc4ArtifactsMutable": false,
+    "deviceTouchedWhileCreatingThisLock": false
+  }
+}

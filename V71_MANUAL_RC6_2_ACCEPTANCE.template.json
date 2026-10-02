@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "V71_RC6_2_MANUAL_VR_INTERACTION",
+  "status": "PENDING_USER_OBSERVATION",
+  "candidateBuildLockPath": "V71_LAB_RC6_2.lock.json",
+  "identity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "apkSha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+    "coreVersion": "26.2-1.3.15+qc.v71.rc6.2",
+    "coreSha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+    "veqVersion": "0.7.0-v71.rc6",
+    "veqSha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD"
+  },
+  "observedUtc": null,
+  "userConfirmed": false,
+  "observations": {
+    "shield_hidden_only_while_wrist_visible": "PENDING_USER_OBSERVATION",
+    "shield_blocking_and_inventory_unchanged": "PENDING_USER_OBSERVATION",
+    "shield_returns_on_close": "PENDING_USER_OBSERVATION",
+    "grip_visible_over_blocks_in_1x1_tunnel": "PENDING_USER_OBSERVATION",
+    "grip_selectable_both_hands": "PENDING_USER_OBSERVATION",
+    "reverseHands": {
+      "applicability": "PENDING_USER_SELECTION",
+      "resultIfApplicable": "PENDING_USER_OBSERVATION"
+    }
+  },
+  "evidenceRules": {
+    "source": "USER_OBSERVATION_ONLY",
+    "mayInferFromLogs": false,
+    "mayInferFromScreenshotsOrAutomation": false,
+    "allApplicableObservationsMustPass": true,
+    "notes": "Do not change PENDING to PASS unless the user personally observed the exact locked RC6.2 Lab identity. If reverse hands is enabled or part of the run, its result is required; otherwise record NOT_APPLICABLE with the user's confirmation."
+  }
+}

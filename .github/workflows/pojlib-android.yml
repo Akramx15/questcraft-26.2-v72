@@ -1,0 +1,73 @@
+name: Pojlib Android
+
+on:
+  push:
+    paths:
+      - "Pojlib/**"
+      - ".github/workflows/pojlib-android.yml"
+  pull_request:
+    paths:
+      - "Pojlib/**"
+      - ".github/workflows/pojlib-android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  aar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out source and native LFS objects
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+          cache-dependency-path: Pojlib/gradle/wrapper/gradle-wrapper.properties
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x Pojlib/gradlew
+
+      - name: Install pinned Android toolchain
+        shell: bash
+        run: >-
+          sdkmanager
+          "platforms;android-34"
+          "build-tools;30.0.3"
+          "ndk;26.1.10909125"
+
+      - name: Regenerate Android LWJGL runtime
+        working-directory: Pojlib
+        run: ./gradlew --no-daemon :jre_lwjgl3glfw:mergeLwjglRuntime
+
+      - name: Validate Android LWJGL runtime
+        shell: bash
+        run: |
+          jar --validate --file Pojlib/src/main/assets/lwjgl/lwjgl-glfw-classes.bin
+          if jar tf Pojlib/src/main/assets/lwjgl/lwjgl-glfw-classes.bin | grep -qx \
+            'META-INF/linux/arm64/org/lwjgl/openal/libopenal.so.sha1'; then
+            echo 'Unexpected Linux OpenAL ARM64 hash sidecar remains in the Android runtime.' >&2
+            exit 1
+          fi
+
+      - name: Build release AAR
+        working-directory: Pojlib
+        run: ./gradlew --no-daemon clean assembleRelease
+
+      - name: Upload release AAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: pojlib-release-aar
+          path: Pojlib/build/outputs/aar/*.aar
+          if-no-files-found: error

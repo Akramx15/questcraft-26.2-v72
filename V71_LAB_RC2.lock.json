@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "status": "integrated-build-pending-runtime-smoke",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "rc1Commit": "f33647e5f5288b76c4fa50737bf08d207e3a1b59",
+    "bCloseFixCommit": "eb3018d126b872cf74638489cd0b7108b0713961",
+    "rc2Commit": "9b725fcacdd49846b87cf5c103df6768134b158a"
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "delivery": "integrated-managed-baseline",
+    "labShellVersionCode": 71,
+    "labShellVersionName": "6.0.1-26.2-vivecraft-personal.12-rc.2",
+    "labShellApkSha256": null,
+    "labShellApkSizeBytes": null,
+    "stableTouched": false
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\\nveq=<uppercase-sha256>\\n)",
+    "sha256": "9952EA068712375E2364C0DF0EDBD9F876620D2E8EE10EF10106D6F6DEC6EBBE",
+    "core": {
+      "path": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc2-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc2",
+      "minecraftDependency": "26.2.x",
+      "javaDependency": ">=25",
+      "sha256": "AAC5852BD1495AA0121A078F87312A644608F209A9190AE539CDC4F7763CD8FC",
+      "sizeBytes": 10062636,
+      "scope": "quest-client-and-matching-fabric-26.2-server"
+    },
+    "veq": {
+      "path": "../../exports/v71-lab-rc1-f33647e5/VivecraftEssentialsQuest-v71-lab-client.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v70-canary.1",
+      "minecraftDependency": "26.2",
+      "javaDependency": ">=25",
+      "sha256": "8EB67999FA9334CF3B18F250B420668B912A2EE4F2B201DB51EE1E265744427A",
+      "sizeBytes": 435540,
+      "scope": "quest-client-only-unchanged-from-v71-rc1"
+    }
+  },
+  "bowResources": {
+    "defaultStyleResources": [
+      "assets/vivecraft/bow_guide_styles/classic.json",
+      "assets/vivecraft/bow_guide_styles/energy.json"
+    ],
+    "atlas": {
+      "path": "assets/vivecraft/textures/misc/bow_guide_atlas.png",
+      "sha256": "971D0518655FCE01A692DBF5766CDA38273F09BB42EC71D971D0012A71C7360E",
+      "sizeBytes": 1620298,
+      "verifiedInsideCoreJar": true
+    },
+    "sampleResourcePacks": [
+      {
+        "name": "Arcane Rift",
+        "path": "artifacts/v71-bow-resource-packs/bow-guide-arcane-mc26.2.zip",
+        "sha256": "6F3607227BAF001AA46CD9B5FBE943C1194DE3683B5DBD0A88B03BEEEAC9E323",
+        "sizeBytes": 660,
+        "defaultEnabled": false
+      },
+      {
+        "name": "Frost Crystal",
+        "path": "artifacts/v71-bow-resource-packs/bow-guide-frost-mc26.2.zip",
+        "sha256": "3E09F7A76673B65979496DDE552CC067F8887AAA8DA1465DC1EC0323581580F6",
+        "sizeBytes": 651,
+        "defaultEnabled": false
+      },
+      {
+        "name": "Emerald Pulse",
+        "path": "artifacts/v71-bow-resource-packs/bow-guide-emerald-mc26.2.zip",
+        "sha256": "04D540115512ACFD62FC3CEE023B89BFAD07F9ADA524274925379128050B52F7",
+        "sizeBytes": 662,
+        "defaultEnabled": false
+      }
+    ],
+    "profileDestination": "instances/26.2/resourcepacks/",
+    "managedManifestIncluded": false,
+    "optionsTxtMutationAllowed": false,
+    "automaticActivationAllowed": false
+  },
+  "hostVerification": {
+    "vivecraftCommonTests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "fabricBuildPassed": true,
+    "fabricMetadataVerified": true,
+    "coreContainsDefaultStylesAndAtlas": true,
+    "samplePackBuildPassed": true,
+      "deviceTouched": true
+  },
+  "integratedBuild": {
+    "state": "pending",
+    "embeddedManagedBaseline": true,
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v2",
+    "veqHarnessStateNamespace": "questcraft-veq-v71-canary-v2",
+    "legacyV1StateIgnored": true,
+    "normalColdStartsPersistent": true,
+    "launcherConnectivityTimeoutIncluded": true,
+    "apkSha256": null,
+    "apkSizeBytes": null
+  },
+  "oneShotCanaryHistory": {
+    "harness": "scripts/quest-v70-lab-pair.ps1",
+    "explicitExpectedSha256Required": true,
+    "allowDeviceWriteRequired": true,
+    "rootFallbackDefault": false,
+    "maximumLaunches": 1,
+    "expiryMinutes": 15,
+    "compensatingRollbackOrder": [
+      "Core",
+      "VEQ"
+    ],
+    "samplePacksDeployedSeparately": true,
+    "uninstallOrClearDataAllowed": false,
+    "deviceDeployPerformed": true,
+    "physicalCoreSha256Verified": true,
+    "physicalVeqSha256Verified": true,
+    "runtimeMarkersConsumed": true,
+    "samplePacksCopiedToLab": true,
+    "samplePacksEnabled": false,
+    "optionsTxtResourcePacks": "[\"vanilla\"]"
+  },
+  "acceptance": {
+    "hostGatePassed": true,
+    "runtimeSmokePassed": true,
+    "manualVrInteractionPassed": false,
+    "bothEyeBowVisualPassed": false,
+    "resourcePackManualEnableDisablePassed": false,
+    "pairedStrikeRemoteServerPassed": false,
+    "performanceGatePassed": false,
+    "coldStartGatePassed": false,
+    "soakGatePassed": false,
+    "stablePromotionAllowed": false
+  }
+}

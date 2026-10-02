@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "status": "PENDING_EVIDENCE",
+  "candidateBuildLockPath": "V71_LAB_RC5.lock.json",
+  "identityRelockRequiredAfterFinalBuild": true,
+  "labIdentity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "DYNAMIC_FROM_V71_LAB_RC5_LOCK",
+    "apkPath": "DYNAMIC_FROM_V71_LAB_RC5_LOCK",
+    "apkSha256": "DYNAMIC_FROM_V71_LAB_RC5_LOCK",
+    "apkSizeBytes": 0,
+    "artifactAudit": "PENDING",
+    "coreSha256": "494BC1CB9CED37C4F2193704CDA1ED4B4F3461DDFB5E75A1C3475D0124159F00",
+    "coreSizeBytes": 10064652,
+    "coreVersion": "26.2-1.3.15+qc.v71.rc5",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "veqSizeBytes": 441660,
+    "veqVersion": "0.7.0-v70-canary.1",
+    "coreVeqPairSha256": "5B4ADB12406108D74D3F3E592857B419DD893BD3522898B06BDCF17B0F6126BB",
+    "pojlibAarSha256": "DYNAMIC_FROM_V71_LAB_RC5_LOCK",
+    "pojlibAarSizeBytes": 0,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "runtimeBinding": {
+    "expectedGameLogRelativePath": "instances/26.2/logs/latest.log",
+    "expectedGameLogMinecraftVersion": "26.2",
+    "expectedGameLogCoreVersion": "26.2-1.3.15+qc.v71.rc5",
+    "expectedGameLogVeqVersion": "0.7.0-v70-canary.1"
+  },
+  "stableTarget": {
+    "package": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "mustRemainUntouchedUntilPromotion": true
+  },
+  "producerScripts": {
+    "memorySoakPath": "scripts/quest-v71-memory-soak-rc5.ps1",
+    "memorySoakSha256": "5F07BA4A71A3886077A3C34CFA876C05254C8095C6C28BE689B9B03040C10547",
+    "memoryRuntimeContractPath": "scripts/quest-v71-memory-runtime-contract-rc5.ps1",
+    "memoryRuntimeContractSha256": "891B701E478289726C27D2DD00F795683A973C23A51A1B33A6C77D18174B02C0",
+    "performanceHarnessPath": "scripts/quest-v71-rc4-rc5-ab.ps1",
+    "performanceHarnessSha256": "8D2A8E28D902657F6BC3A824D3FEDFD4FFE017C125F37E5FF6F93B8A2E734873",
+    "lifecycleRecoveryPath": "scripts/quest-v71-lab-lifecycle-recovery-rc5.ps1",
+    "lifecycleRecoverySha256": "7C5997AB67FAEF50F1CFD2EAFCB6547F7F0493150C32E6EE7933666B71BA5BB6"
+  },
+  "validatorScript": {
+    "path": "scripts/v71-rc5-stable-evidence-gate.ps1",
+    "sha256": "37D00C51C44417EF15877592380D87202A5037F0DF0ADE5A533E2E290684EBCD",
+    "readOnly": true,
+    "deviceCapable": false
+  },
+  "memorySoaks": [
+    {
+      "round": 1,
+      "status": "PENDING",
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    },
+    {
+      "round": 2,
+      "status": "PENDING",
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    }
+  ],
+  "performance": {
+    "status": "PENDING",
+    "requiredResult": "PASS_RC5_NO_PERSISTENT_REGRESSION",
+    "runManifestPath": null,
+    "runManifestSha256": null,
+    "comparisonPath": null,
+    "comparisonSha256": null,
+    "requiresExactRc4VsRc5": true,
+    "requiresIdenticalOptionsAndResourcePacks": true,
+    "reports": [
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null }
+    ]
+  },
+  "lifecycleRecovery": {
+    "status": "PENDING",
+    "receiptPath": null,
+    "receiptSha256": null,
+    "requiredReceiptType": "V71_LAB_RC5_LIFECYCLE_RECOVERY"
+  },
+  "memoryRuntimeContract": {
+    "status": "PENDING",
+    "receiptPath": null,
+    "receiptSha256": null,
+    "requiredReceiptType": "V71_RC5_MEMORY_RUNTIME_CONTRACT"
+  },
+  "manual": {
+    "status": "PENDING",
+    "receiptPath": null,
+    "receiptSha256": null,
+    "requiredReceiptType": "V71_RC5_MANUAL_VR_INTERACTION"
+  },
+  "evidenceBoundary": {
+    "rc4ReceiptsAreDiagnosticOnly": true,
+    "rc4ReceiptsMaySatisfyRc5Acceptance": false,
+    "stableTouched": false,
+    "rawLogsPersisted": false,
+    "deviceSerialPersisted": false,
+    "accountDataPersisted": false
+  },
+  "notes": "Fail-closed RC5 acceptance skeleton. Mutable APK/Pojlib identity is sourced only from V71_LAB_RC5.lock.json and must be materialized here when evidence is promoted to ACCEPTED_FOR_STABLE_BUILD. Historical RC4 artifacts and receipts remain immutable and diagnostic-only. No runtime, soak, manual, or performance claim has been made."
+}

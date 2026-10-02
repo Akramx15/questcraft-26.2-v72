@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "status": "integrated-rc3-launcher-resource-release-apk-built-three-cold-starts-passed-manual-performance-and-two-new-soaks-pending",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "rc3Commit": "e9c5a8cbc0d5e730cc6422dfbaf6e79b9c310f4f",
+    "integrationBuildCommit": "449021f7b88398b5da1365d89be6babe26ccc6ea",
+    "buildHarnessLockCommit": "6fb688a8badf488ff51b449f591ebdb1496858f9",
+    "scriptHashScheme": "sha256-utf8-normalized-lf",
+    "buildScriptSha256": "21F5226238057ABDAA53367F624F52D375A3643F4CC23824F57627D6944ADA26",
+    "stableEvidenceGateScriptSha256": "7F9FD2D8E73776B1D58D4E82C28432802B27532B3A22A351B1F7FD526D953E6D",
+    "memoryRuntimeContractScriptSha256": "FAC04DEAE071822EE1B0BD817DB11667DE58E4A72147BD58C1EB92D5942D1C7C",
+    "performanceHarnessScriptSha256": "85989A3DE0DB2509CC093145F103E1AB6FE6FB88E0048C361662EB6F274428F7",
+    "lifecycleRecoveryScriptSha256": "E285F01F2B8F4808E01DEFA44789687EF9FD70370908D785D298247DEA07A4CF",
+    "autoplayHarnessScriptSha256": "261E6881B334DECD8CB41A640F1EE765E024278FC677128B472234C923CD7196"
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "delivery": "integrated-persistent-managed-baseline",
+    "labShellVersionCode": 71,
+    "labShellVersionName": "6.0.1-26.2-vivecraft-personal.12-rc.3",
+    "labShellApkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.3-integrated-local.apk",
+    "labShellApkSha256": "B89181443E40E99FFA6DD094253631F59A4B0E01C21D10C5C3ADD0BBDF39AD8F",
+    "labShellApkSizeBytes": 128431385,
+    "labShellApkScope": "current-exact-integrated-launcher-resource-release-build",
+    "artifactAuditPassed": true,
+    "auditedPackage": "com.qcxr.qcxr.canary262",
+    "auditedVersionCode": 71,
+    "auditedVersionName": "6.0.1-26.2-vivecraft-personal.12-rc.3",
+    "stableTouched": false
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\\nveq=<uppercase-sha256>\\n)",
+    "sha256": "65989E7E428EC7904289B8D07F4290DF8FA49F4B27F42BBFF43EA1D659FBE21B",
+    "core": {
+      "path": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc3-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc3",
+      "minecraftDependency": "26.2.x",
+      "javaDependency": ">=25",
+      "sha256": "14B230B69AF24A53C459116AF2B2869F014690E6408D4881B5B1395C1EC38A26",
+      "sizeBytes": 10063450,
+      "scope": "quest-client-and-matching-fabric-26.2-server"
+    },
+    "veq": {
+      "path": "Vivecraft-Essentials-Quest/mod-fabric/build/libs/VivecraftEssentialsQuest-0.7.0-v70-canary.1+mc26.2-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v70-canary.1",
+      "minecraftDependency": "26.2",
+      "javaDependency": ">=25",
+      "sha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+      "sizeBytes": 441660,
+      "scope": "quest-client-only"
+    }
+  },
+  "persistentBaseline": {
+    "normalLaunchRequiresMarker": false,
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v3",
+    "veqHarnessStateNamespace": "questcraft-veq-v71-canary-v3",
+    "legacyNamespacesIgnored": [
+      "questcraft-vivecraft-core-canary-v1",
+      "questcraft-vivecraft-core-canary-v2",
+      "questcraft-veq-v70-canary-v1",
+      "questcraft-veq-v71-canary-v2"
+    ],
+    "absentMarkerAction": "retain-integrated-rc3",
+    "terminalMarkerAction": "restore-exact-integrated-rc3",
+    "normalColdStartsPersistent": true
+  },
+  "memoryPolicy": {
+    "xmsMiB": 512,
+    "automaticXmxTargetMiB": 1536,
+    "additionalNativeHeadroomMiB": 1024,
+    "automaticXmxMinMiB": 1536,
+    "xmxMaxMiB": 2048,
+    "manualXmxMaxMiB": 2048,
+    "rolloutState": "exact-integrated-lab-three-cold-starts-passed-two-new-soaks-pending",
+    "reason": "release-on-flattened-the-diagnosed-unity-launcher-resource-growth"
+  },
+  "performanceLevelLease": {
+    "scope": "lab-campaign-only",
+    "cpuProperty": "debug.oculus.cpuLevel",
+    "gpuProperty": "debug.oculus.gpuLevel",
+    "targetCpuLevel": 4,
+    "targetGpuLevel": 4,
+    "snapshot": "exact-runtime-values-including-unset-before-first-mutation",
+    "apply": "after-exact-world-ready-and-before-warmup-for-every-round",
+    "verification": "immediate-property-readback-plus-vrapi-level4-coverage",
+    "restoration": "exact-original-values-after-every-round-and-again-in-outer-finally",
+    "refreshPropertiesModified": false,
+    "adaptivePropertiesModified": false,
+    "stablePackageLaunchedOrTargeted": false,
+    "runtimeCampaignState": "pending"
+  },
+  "memoryEvidenceProducers": {
+    "current": {
+      "scope": "global-current-producer-and-required-for-soak-2",
+      "commit": "ea74d55c1c7334c3625570fd1927da48ec1e29bf",
+      "gitBlob": "2473d370ca4017fc3374a6c8437442c94a46fc75",
+      "rawSha256": "C6FE7345ACE4978599A4C15FA5AAA846A3AE664A9AB5485215F72AFD4DF41202"
+    },
+    "legacyRoundOneOnly": {
+      "scope": "only-the-already-running-first-soak-started-at-the-trusted-timeline-time",
+      "commit": "ec112fc8944eda1a95134959f90ec9afacf590f2",
+      "gitBlob": "940590e490f3546e8d279122d82a302f7bd54d57",
+      "rawSha256": "FD443A5E4A1D63BDBBFA648B4BE57C694B5121BA3E98D6E25A58D8B0E8311ED9",
+      "trustedLaunchLocal": "2026-09-06T09:16:23+03:00",
+      "trustedLaunchUtc": "2026-09-06T06:16:23Z",
+      "permittedMemorySoakIndex": 0,
+      "trustBoundary": "The launch timestamp is a trusted observation recorded in this task, not cryptographic provenance. The Stable gate limits this producer to soak 1 within 60 seconds of that timestamp and still locks and independently recomputes its raw samples."
+    }
+  },
+  "launcherResourceReleaseEvidence": {
+    "policy": "default-on-only-for-exact-v71-lab-and-stable-identities-lab-authenticated-ab-may-override",
+    "stableTouched": false,
+    "releaseOff": {
+      "worldWindowMinutes": 15.21,
+      "pssGrowthMiB": 443.57,
+      "olsGrowthMiBPerMinute": 31.78
+    },
+    "releaseOn": {
+      "worldWindowMinutes": 47.64,
+      "pssGrowthMiB": 34.09,
+      "olsGrowthMiBPerMinute": 0.62,
+      "lastWindowMinutes": 29.386,
+      "lastWindowPssGrowthMiB": 11.321
+    },
+    "conclusion": "unity-launcher-resources-were-the-dominant-long-session-growth-source",
+    "permanentIntegratedLabRuntimePending": true
+  },
+  "previousPayloadNinetyMinuteSoakEvidence": {
+    "result": "completed-supporting-only",
+    "rawCaptureDurationMinutes": 91.194,
+    "artifactPaths": [
+      "artifacts/memory/v71-resource-release-soak-old-20260906/smaps-aggregates.jsonl.1",
+      "artifacts/memory/v71-resource-release-soak-old-20260906/smaps-aggregates.jsonl"
+    ],
+    "appliesToCurrentIntegratedApkSha256": false,
+    "countsTowardRequiredExactNewSoaks": false,
+    "acceptanceClaim": false,
+    "notes": "This older-payload 90-minute capture supports the launcher-resource-release diagnosis only. It cannot accept the exact B8918144 integrated APK; two new exact-payload soaks remain required."
+  },
+  "firstMemorySoakAttempt": {
+    "result": "stopped-early-process-memory-guardrail-exceeded",
+    "elapsedMinutes": 5.036,
+    "pssMiB": 2481.24,
+    "rssMiB": 2534.08,
+    "automaticTargetAtRuntimeMiB": 1800,
+    "replacementAutomaticTargetMiB": 1536,
+    "countsTowardRequiredSoaks": false
+  },
+  "memoryRetunedSoakAttempt1": {
+    "result": "stopped-early-process-memory-guardrail-exceeded",
+    "elapsedMinutes": 5.04,
+    "pid": 19164,
+    "pidStable": true,
+    "focusStayedOnLab": true,
+    "gameJvmStayedAlive": true,
+    "pssMiB": 2523.72,
+    "vmRssMiB": 1968.38,
+    "vmSwapMiB": 18.64,
+    "memAvailableMiB": 1862.63,
+    "pssGrowthFromFirstSampleMiB": 159.26,
+    "automaticTargetAtRuntimeMiB": 1536,
+    "countsTowardRequiredSoaks": false,
+    "nextAction": "attribute-anonymous-memory-before-changing-quality-or-stable"
+  },
+  "pojlibAar": {
+    "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+    "sha256": "D7FF9C3EE2CCB332F88DE9A44E40E5BDA38F390142DC64905AEFD720FC3ADED6",
+    "sizeBytes": 88696931,
+    "cleanBuildsMatchedByteForByte": true,
+    "nativeBuildIdsOmittedForReproducibility": true
+  },
+  "hostVerification": {
+    "sourceArtifactHashesVerified": true,
+    "embeddedAssetHashesVerified": true,
+    "manifestCopiesVerified": true,
+    "pojlibTestsPassed": true,
+    "pojlibTestsPassedCount": 102,
+    "reproduciblePojlibAarPassed": true,
+    "vivecraftCommonTestsPassed": true,
+    "vivecraftCommonTestsPassedCount": 147,
+    "veqCleanCheckBuildPassed": true,
+    "veqGradleTasksExecuted": 86,
+    "buildTransactionSelfTestsPassed": true,
+    "buildTransactionSelfTestsPassedCount": 9,
+    "sharedBuildLockPassed": true,
+    "killOnJobClosePassed": true,
+    "nativeExitCodePassed": true,
+    "apkLifecycleMarkersSplitByPayload": true,
+    "currentIntegratedApkBuildPending": false,
+    "currentIntegratedApkArtifactAuditPassed": true,
+    "deviceTouched": true
+  },
+  "coldStartRuntimeEvidence": {
+    "result": "passed-exact-current-integrated-launcher-resource-release-lab",
+    "normalLauncherStartCount": 3,
+    "allThreeRetainedExactRc3": true,
+    "appliesToApkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.3-integrated-local.apk",
+    "appliesToApkSha256": "B89181443E40E99FFA6DD094253631F59A4B0E01C21D10C5C3ADD0BBDF39AD8F",
+    "persistentManagedCoreSha256": "14B230B69AF24A53C459116AF2B2869F014690E6408D4881B5B1395C1EC38A26",
+    "persistentManagedVeqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "effectiveXmxMiBByStart": [
+      1536,
+      1536,
+      1536
+    ],
+    "graphicsBackend": "Vulkan",
+    "xrRuntime": "OpenXR",
+    "world": "FPS Stress Test",
+    "launcherMemoryLog": "Xms=512MiB, Xmx=1536MiB (auto)",
+    "appliesToPojlibAarSha256": "D7FF9C3EE2CCB332F88DE9A44E40E5BDA38F390142DC64905AEFD720FC3ADED6",
+    "scope": "exact-current-integrated-lab-startup-persistence-smoke-only",
+    "stablePackageModified": false
+  },
+  "acceptance": {
+    "integratedBuildPassed": true,
+    "apkArtifactAuditPassed": true,
+    "threeColdStartsKeepRc3": true,
+    "manualVrInteractionPassed": false,
+    "performanceGatePassed": false,
+    "requiredExactNewSoakCount": 2,
+    "exactNewSoaksPassed": 0,
+    "memorySoakGatePassed": false,
+    "stablePromotionAllowed": false
+  }
+}

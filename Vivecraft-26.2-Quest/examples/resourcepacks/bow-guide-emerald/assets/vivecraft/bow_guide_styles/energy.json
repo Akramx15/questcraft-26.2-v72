@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "mode": "ribbon",
+  "texture": "vivecraft:textures/misc/bow_guide_atlas.png",
+  "vMin": 0.751,
+  "vMax": 0.999,
+  "widthMeters": 0.060,
+  "startColor": "#B9FFD9F0",
+  "endColor": "#4DFF9CE0",
+  "dashOnMeters": 0.52,
+  "dashOffMeters": 0.09,
+  "pulseCount": 2,
+  "pulseCyclesPerSecond": 1.8,
+  "pulseWidth": 0.08,
+  "pulseStrength": 0.85,
+  "impactShape": "diamond",
+  "impactSizeMeters": 0.065,
+  "impactColor": "#68FFB8F5",
+  "impactPulseCyclesPerSecond": 1.8,
+  "impactPulseAmplitude": 0.20
+}

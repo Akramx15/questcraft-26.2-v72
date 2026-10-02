@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "minecraft_version": "26.2",
+  "mods": [
+    {
+      "slug": "Xaeros-Minimap",
+      "name": "Xaero's Minimap",
+      "version": "26.5.0",
+      "official_version_number": "fabric-26.2-26.5.0",
+      "version_id": "tBIPWIKW",
+      "loader": "fabric",
+      "default": true,
+      "file_name": "xaerominimap-fabric-26.2-26.5.0.jar",
+      "download_link": "https://cdn.modrinth.com/data/1bokaNcj/versions/tBIPWIKW/xaerominimap-fabric-26.2-26.5.0.jar",
+      "source": "https://modrinth.com/mod/xaeros-minimap/version/tBIPWIKW",
+      "published": "2026-09-10T11:44:27.03569Z",
+      "dependencies": {
+        "required": [
+          "Fabric-API"
+        ]
+      },
+      "hashes": {
+        "sha1": "40282debf4cd8e91712ba26d90e78f2e3eb067e1",
+        "sha256": "e12bbdcc149e865f0724f380c4de3026fc4f11312e6bb2394734c85e568b4343",
+        "sha512": "b00df8bb410fae12b08788044f2f03cec34bfc4506da419d11d364e2f229b814dbb272d297fbe4b0cdfac18beeeed4dc8f1bdfc96fb113867857527e31965049"
+      },
+      "stage": "personal-v71-stable-hot-update",
+      "notes": "Seeded as a Personal default. After the first successful seed, normal Play never restores, replaces, or removes this JAR; future manual updates are user-owned."
+    }
+  ]
+}

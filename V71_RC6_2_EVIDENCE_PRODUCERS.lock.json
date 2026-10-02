@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "status": "HOST_CONTRACT_LOCKED_RUNTIME_EVIDENCE_PENDING",
+  "immutable": true,
+  "candidateBuildLockPath": "V71_LAB_RC6_2.lock.json",
+  "candidateIdentitySource": "immutable-read-at-producer-start",
+  "scriptHashScheme": "sha256-utf8-normalized-lf",
+  "producers": {
+    "memorySoakPath": "scripts/quest-v71-memory-soak-rc62.ps1",
+    "memorySoakScriptSha256": "75F5D720A3FC6396109D6D96820F2F75AE8A8327F317A41AE811CBBF781CD433"
+  },
+  "historicalClone": {
+    "sourcePath": "scripts/quest-v71-memory-soak-rc5.ps1",
+    "sourceNormalizedSha256": "5F07BA4A71A3886077A3C34CFA876C05254C8095C6C28BE689B9B03040C10547",
+    "sourceRemainsImmutable": true
+  },
+  "runtimeIdentity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "apkSha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+    "coreVersion": "26.2-1.3.15+qc.v71.rc6.2",
+    "coreSha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+    "veqVersion": "0.7.0-v71.rc6",
+    "veqSha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+    "pojlibAarSha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "memoryPolicy": {
+    "xmsMiB": 512,
+    "automaticXmxTargetMiB": 1536,
+    "xmxMaxMiB": 2048,
+    "requiredSoakCount": 2,
+    "minutesPerSoak": 90,
+    "sampleIntervalSeconds": 300,
+    "maxPssMiB": 2457.6,
+    "maxRssMiB": 2457.6,
+    "maxProcessSwapMiB": 512,
+    "maxPostWarmGrowthMiBPerMinute": 2.0,
+    "maxLastThirtyMinutesGrowthMiB": 128.0
+  },
+  "thermalSafety": {
+    "batteryTemperatureRecordedEverySample": true,
+    "androidThermalStatusRecordedEverySample": true,
+    "defaultMaxBatteryTemperatureC": 47.0,
+    "defaultMaxThermalStatus": 2,
+    "maximumConfigurableBatteryTemperatureC": 50.0,
+    "maximumConfigurableThermalStatus": 3,
+    "sampleModeRequiresExplicitSafetyStopAuthorization": true,
+    "onlyAllowedDeviceMutation": "adb shell am force-stop com.qcxr.qcxr.canary262 after a thermal limit is exceeded",
+    "stablePackageMayBeStopped": false
+  },
+  "memorySoaks": [
+    {
+      "round": 1,
+      "status": "PENDING",
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    },
+    {
+      "round": 2,
+      "status": "PENDING",
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    }
+  ],
+  "manualAcceptance": {
+    "templatePath": "V71_MANUAL_RC6_2_ACCEPTANCE.template.json",
+    "status": "PENDING_USER_OBSERVATION",
+    "mayBeInferredFromLogs": false
+  },
+  "evidenceBoundary": {
+    "rc6AndRc5ReceiptsAreDiagnosticOnly": true,
+    "predecessorReceiptsMaySatisfyRc62Acceptance": false,
+    "historicalFilesMutable": false,
+    "rawLogsPersisted": false,
+    "deviceSerialPersisted": false,
+    "accountDataPersisted": false,
+    "deviceTouchedWhileCreatingThisLock": false
+  }
+}

@@ -1,0 +1,134 @@
+
+
+buildscript {
+    //-------VERSIONING-------
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
+
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    def isSnapshot     = versionProps['version.snapshot'].toBoolean()
+    def version_stage= versionProps['version.stage'].toString()
+
+    def version_major  = versionProps['version.major'].toInteger()
+    def version_minor  = versionProps['version.minor'].toInteger()
+    def version_patch  = versionProps['version.patch'].toInteger()
+    def version_build  = versionProps['version.build'].toInteger()
+
+
+    if (isSnapshot) {
+        version = "${version_major}.${version_minor}.${version_patch}${version_stage}-snapshot#${version_build}"
+        System.out.println("VERSIONING-SNAPSHOT")
+    } else {
+        version = "${version_major}.${version_minor}.${version_patch}${version_stage}"
+        System.out.println("VERSIONING-RELEASE")
+
+    }
+
+    project.version = version
+    //-------VERSIONING END-------
+}
+
+plugins {
+    id 'java-library'
+    id 'idea'
+    alias(libs.plugins.architectury)
+    alias(libs.plugins.architectury.loom) apply false
+}
+
+// JAR-only Quest canaries must be distinguishable in Fabric's startup log
+// without rewriting the release version file for every supervised A/B run.
+// The checked-in version remains the release source of truth; this override is
+// explicit, local to one Gradle invocation, and validated before packaging.
+def canaryVersion = providers.gradleProperty('veq_version_override')
+        .orElse(providers.environmentVariable('VEQ_VERSION_OVERRIDE'))
+        .orNull
+if (canaryVersion != null) {
+    canaryVersion = canaryVersion.toString().trim()
+    if (!(canaryVersion ==~ /[0-9A-Za-z][0-9A-Za-z.+-]*/)) {
+        throw new GradleException("Invalid VEQ version override: ${canaryVersion}")
+    }
+    project.version = canaryVersion
+    System.out.println("VERSIONING-LOCAL-OVERRIDE ${canaryVersion}")
+}
+
+group = project_group
+base {
+    archivesName = project_name
+}
+
+tasks.named('jar') {
+    enabled = false
+}
+
+ext.resolveVivecraftFabricJar = {
+    def configuredPath = rootProject.findProperty('local_vivecraft_fabric_jar')
+            ?: System.getenv('VIVECRAFT_FABRIC_JAR')
+    def vivecraftJar = configuredPath
+            ? rootProject.file(configuredPath.toString())
+            : rootProject.file('../device-backups/visor-baseline-20260828-quest3/mods/Vivecraft.jar')
+    if (!vivecraftJar.isFile()) {
+        throw new GradleException(
+                "Missing Fabric Vivecraft dependency: ${vivecraftJar}. " +
+                "Set VIVECRAFT_FABRIC_JAR or pass " +
+                "-Plocal_vivecraft_fabric_jar=<path>.")
+    }
+    return vivecraftJar
+}
+
+architectury {
+    minecraft = libs.versions.minecraftVersion.get()
+}
+
+
+subprojects {
+    apply plugin: "java-library"
+    apply plugin: libs.plugins.architectury.asProvider().get().pluginId
+    apply plugin: libs.plugins.architectury.loom.get().pluginId
+
+
+
+    group = rootProject.group
+    version = rootProject.version
+    base {
+        archivesName = project_name
+    }
+    java {
+        withSourcesJar()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release.set(25)
+        options.compilerArgs.addAll([
+                '-Xmaxerrs',
+                '1000',
+                '-Xlint:deprecation'
+        ])
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${libs.versions.minecraftVersion.get()}"
+        compileOnly(libs.bundles.annotations)
+        annotationProcessor(libs.bundles.annotations)
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url "https://maven.fabricmc.net/" }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.neoforged.net/releases/" }
+        maven { url "https://libraries.minecraft.net/" }
+        maven { url = "https://maven.parchmentmc.org" }
+        maven { url = "https://api.modrinth.com/maven" }
+    }
+
+    idea {
+        module {
+            downloadSources = true
+            downloadJavadoc = true
+        }
+    }
+}

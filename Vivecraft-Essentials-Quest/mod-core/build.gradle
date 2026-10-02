@@ -1,0 +1,1223 @@
+architectury {
+    common(rootProject.enabled_platforms.split(","))
+}
+
+def releasedFabricTransformIdentifier =
+        'architectury_inject_VivecraftEssentialsQuest_modcore_849eb2d3888444f6bc04d4b91e5e8dc3_62c9ade18dbb5eb40b9b000721f3d820f530481dd2f157b22d870b46697a938bVivecraftEssentialsQuest070v71rc6devjar'
+
+tasks.matching { it.name == 'transformProductionFabric' }.configureEach {
+    // Architectury's default includes a per-worktree UUID and the absolute
+    // input JAR path. Override both generated transformers with the identifier
+    // already used by the frozen v71.rc6 artifact.
+    inputs.property('veqArchitecturyIdentifier', releasedFabricTransformIdentifier)
+    def configuredTransformers = getTransformers().get()
+    def reproducibilityTransformers = configuredTransformers.findAll {
+        it.class.simpleName in ['TransformExpectPlatform', 'RemapInjectables']
+    }
+    if (reproducibilityTransformers.size() != 2) {
+        throw new GradleException(
+                "Expected both Architectury generated-code transformers, found: " +
+                        configuredTransformers*.class*.name)
+    }
+    def config = new dev.architectury.transformer.shadowed.impl.com.google.gson.JsonObject()
+    config.addProperty('architectury.unique.identifier', releasedFabricTransformIdentifier)
+    reproducibilityTransformers.each {
+        it.supplyProperties(config)
+    }
+    getTransformers().set(configuredTransformers)
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+dependencies {
+    compileOnly(libs.mixin)
+    compileOnly(libs.fabric.loader)
+    // Runtime is supplied by Fabric Loader/Vivecraft. The add-on never shades
+    // Vivecraft and therefore remains independently replaceable under LGPLv3.
+    compileOnly("io.github.llamalad7:mixinextras-fabric:0.5.4")
+
+    def localVivecraftJar = rootProject.ext.resolveVivecraftFabricJar.call()
+    compileOnly(files(localVivecraftJar))
+    testImplementation(files(localVivecraftJar))
+
+}
+
+// These per-screen mixins still target the pre-26.2 immediate-mode GUI and
+// mutate fields that are final in 26.2. Keep the generic container bridge in
+// the initial port, but do not compile or advertise unsafe specializations.
+def deferredContainerMixins = [
+        'AbstractFurnaceScreenMixin.java',
+        'AnvilScreenMixin.java',
+        'BeaconScreenMixin.java',
+        'BrewingStandScreenMixin.java',
+        'CartographyTableScreenMixin.java',
+        'ContainerScreenMixin.java',
+        'CraftingScreenMixin.java',
+        'DispenserScreenMixin.java',
+        'EnchantmentScreenMixin.java',
+        'GrindstoneScreenMixin.java',
+        'HopperScreenMixin.java',
+        'HorseInventoryScreenMixin.java',
+        'LoomScreenMixin.java',
+        'MerchantScreenMixin.java',
+        'ShulkerBoxScreenMixin.java',
+        'SmithingScreenMixin.java',
+        'StonecutterScreenMixin.java'
+]
+
+// The repository retains VEP history for LGPL attribution. Only the clean
+// Vivecraft adapter namespace is compiled; none of the Visor API adapter or
+// server/network code enters the distributable artifact.
+sourceSets.main.java {
+    include "org/questcraft/veq/**"
+}
+sourceSets.main.resources {
+    include "assets/vivecraft_essentials_quest/**"
+    // Original VEP inventory/creative/container artwork and translations.
+    // Runtime classes remain in the clean org.questcraft namespace; only the
+    // LGPL-attributed UI payload is packaged here.
+    include "assets/visor_essentials/**"
+    include "META-INF/**"
+    include "vivecraft_essentials_quest.mixins.json"
+}
+sourceSets.test.java {
+    include "org/questcraft/veq/**"
+}
+
+tasks.register('runPalmUpVisibilitySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.wrist.PalmUpVisibilitySelfTest'
+}
+
+tasks.register('runGripArbitrationSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.GripArbitrationSelfTest'
+}
+
+tasks.register('runHotbarGridLayoutSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.HotbarGridLayoutSelfTest'
+}
+
+tasks.register('runHotbarRadialSelectorSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.HotbarRadialSelectorSelfTest'
+}
+
+tasks.register('runHotbarAlternatingSwapSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.HotbarAlternatingSwapSelfTest'
+}
+
+tasks.register('verifyLicensedHotbarAssets') {
+    group = 'verification'
+    def hotbarDir = file('src/main/resources/assets/vivecraft_essentials_quest/textures/gui/hotbar')
+    def notice = file('../THIRD_PARTY_NOTICES.md')
+    def packagedNotice = file('src/main/resources/META-INF/THIRD_PARTY_NOTICES.md')
+    def license = file('src/main/resources/META-INF/licenses/Visor-MPL-2.0.txt')
+    inputs.dir(hotbarDir)
+    inputs.files(notice, packagedNotice, license)
+    doLast {
+        def expected = [
+                'default.png', 'top.png', 'top_right.png', 'right.png',
+                'bottom_right.png', 'bottom.png', 'bottom_left.png', 'left.png',
+                'top_left.png', 'hotbar_main_selected0.png',
+                'hotbar_main_selected1.png', 'hotbar_offhand_selected0.png',
+                'hotbar_offhand_selected1.png'
+        ]
+        expected.each { name ->
+            if (!new File(hotbarDir, name).isFile()) {
+                throw new GradleException("Missing licensed hotbar asset: ${name}")
+            }
+        }
+        if (!notice.isFile() || !packagedNotice.isFile() || !license.isFile()) {
+            throw new GradleException('Visor MPL notice/license must accompany the hotbar assets')
+        }
+    }
+}
+
+tasks.register('runHandActionPrioritySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.HandActionPrioritySelfTest'
+}
+
+tasks.register('runLeftUseCaptureSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.LeftUseCaptureSelfTest'
+}
+
+tasks.register('runQuestHandMappingSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.QuestHandMappingSelfTest'
+}
+
+tasks.register('runGripReleaseLatchSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.GripReleaseLatchSelfTest'
+}
+
+tasks.register('runOffhandUseContinuationPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.OffhandUseContinuationPolicySelfTest'
+}
+
+tasks.register('runRadialContinuationPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.RadialContinuationPolicySelfTest'
+}
+
+tasks.register('runIndependentUseCooldownSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.IndependentUseCooldownSelfTest'
+}
+
+tasks.register('runHotbarSelectionPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.HotbarSelectionPolicySelfTest'
+}
+
+tasks.register('runPendingSwapConfirmationSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.PendingSwapConfirmationSelfTest'
+}
+
+tasks.register('runHotbarHandStateSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.HotbarHandStateSelfTest'
+}
+
+tasks.register('runGripDualSurfaceSessionSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.GripDualSurfaceSessionSelfTest'
+}
+
+tasks.register('runGripFeedbackStateSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.GripFeedbackStateSelfTest'
+}
+
+tasks.register('runGripSwapRejectionHandoffSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.GripSwapRejectionHandoffSelfTest'
+}
+
+tasks.register('runOffhandAnchorStateSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.OffhandAnchorStateSelfTest'
+}
+
+tasks.register('runGripHotbarConfigSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.config.GripHotbarConfigSelfTest'
+}
+
+tasks.register('runGripHotbarSurfaceContractSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.radial.GripHotbarSurfaceContractSelfTest'
+}
+
+tasks.register('runWristHeldItemRenderPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.WristHeldItemRenderPolicySelfTest'
+}
+
+tasks.register('verifyHandedGripAndDualRayContract') {
+    group = 'verification'
+    def vivecraftRoot = new File(rootProject.projectDir.parentFile, 'Vivecraft-26.2-Quest')
+    def keySource = new File(vivecraftRoot,
+            'common/src/main/java/org/vivecraft/client/VivecraftVRMod.java')
+    def radialSource = new File(vivecraftRoot,
+            'common/src/main/java/org/vivecraft/client_vr/gameplay/screenhandlers/RadialHandler.java')
+    def handSource = file('src/main/java/org/questcraft/veq/client/input/PerHandWorldActionRouter.java')
+    def transientSource = file('src/main/java/org/questcraft/veq/client/input/PerHandTransientState.java')
+    def ownershipSource = file('src/main/java/org/questcraft/veq/client/input/HandOwnershipSnapshot.java')
+    def targetSource = file('src/main/java/org/questcraft/veq/client/input/HandTargetSnapshot.java')
+    def bindingSource = file('src/main/java/org/questcraft/veq/client/input/QuestGripBindingPolicy.java')
+    def buttonLayoutSource = file('src/main/java/org/questcraft/veq/client/input/QuestButtonLayout.java')
+    def buttonKeysSource = file('src/main/java/org/questcraft/veq/client/input/QuestButtonKeyMappings.java')
+    def radialControllerSource = file(
+            'src/main/java/org/questcraft/veq/client/radial/RadialHotbarController.java')
+    def handMixinSource = file('src/main/java/org/questcraft/veq/mixin/MinecraftHandActionMixin.java')
+    inputs.files(keySource, radialSource, handSource, transientSource, ownershipSource,
+            targetSource, bindingSource, buttonLayoutSource, buttonKeysSource,
+            radialControllerSource, handMixinSource)
+    doLast {
+        def keyText = keySource.getText('UTF-8')
+        if (!keyText.contains('HandedKeyBinding keyRadialMenu') ||
+                !keyText.contains('HandedKeyBinding keyMainAttack') ||
+                !keyText.contains('HandedKeyBinding keyOffhandUse') ||
+                !keyText.contains('HandedKeyBinding keyOffhandUseButton') ||
+                !keyText.contains('hiddenKeyBindingSet.add(this.keyOffhandUseButton)')) {
+            throw new GradleException('Grip, main attack, trigger use, and B use must remain registered handed actions')
+        }
+        def radialText = radialSource.getText('UTF-8')
+        if (radialText.contains('controller != null ? controller : ControllerType.RIGHT') ||
+                !radialText.contains('sampleRadialRelease(activeController)') ||
+                !radialText.contains('RadialReleaseLatch.Decision.SELECT_AND_CLOSE') ||
+                !radialText.contains('new RadialSession(controller') ||
+                !radialText.contains('isControllerTracking(activeController)')) {
+            throw new GradleException('Radial opener/release must be latched and null-fail-closed')
+        }
+        def handText = handSource.getText('UTF-8')
+        def transientText = transientSource.getText('UTF-8')
+        def ownershipText = ownershipSource.getText('UTF-8')
+        def targetText = targetSource.getText('UTF-8')
+        def bindingText = bindingSource.getText('UTF-8')
+        def buttonLayoutText = buttonLayoutSource.getText('UTF-8')
+        def buttonKeysText = buttonKeysSource.getText('UTF-8')
+        def radialControllerText = radialControllerSource.getText('UTF-8')
+        def handMixinText = handMixinSource.getText('UTF-8')
+        if (!handText.contains('PerHandWorldActionPolicy.Command.MAIN_ATTACK') ||
+                !handText.contains('PerHandWorldActionPolicy.Command.MAIN_USE_BUTTON') ||
+                !handText.contains('PerHandWorldActionPolicy.Command.OFFHAND_TRIGGER_USE') ||
+                !handText.contains('PerHandWorldActionPolicy.attackBreakThisHand(') ||
+                !handText.contains('ClientNetworking.supportsOffhandAttackRouting()') ||
+                !handText.contains('ClientHandActionTickGuard.global().claimEntityAttack(') ||
+                !handText.contains('guard.coordinateButtonMiningIntents(') ||
+                !handText.contains('miningFrame.plan().routeNativeMain()') ||
+                !handText.contains('plan.customTargetSource()') ||
+                !handText.contains('attackBreakUseChannelFree(') ||
+                !handText.contains('attackBreakEntityDispatchAllowed(') ||
+                handText.contains('? !uses.mainUse() && !attackShouldRoute') ||
+                handText.contains('ClientHandActionTickGuard.global().claimButtonMiningContribution(') ||
+                !handText.contains('started && minecraft.gameMode.isDestroying()') ||
+                !handText.contains('ClientNetworking.sendActiveHand(hand, true)') ||
+                handText.contains('offhandTriggerDecision(') ||
+                !handText.contains('ClientNetworking.cannotAttackWithItemForBodyPart(') ||
+                !handText.contains('minecraft.hitResult = target.primaryHit()') ||
+                handText.count('minecraft.hitResult') != 1 ||
+                !handText.contains('IndependentHandUseLatch') ||
+                !handText.contains('PerHandTransientState') ||
+                transientText.count('IndependentUseCooldown') < 2 ||
+                !handText.contains('keyMainAttack') ||
+                !handText.contains('keyOffhandUse') ||
+                !handText.contains('keyOffhandUseButton') ||
+                handText.contains('options.keyUse') ||
+                !handText.contains('PerHandWorldActionPolicy.blockUseDecision(') ||
+                !handText.contains('getWorldBorder().isWithinBounds(') ||
+                handText.count('isMineableBlockHit(blockHit,') < 2 ||
+                !handText.contains('hit.getType() == HitResult.Type.BLOCK && !air') ||
+                !handText.contains('this.lifecycle.observe(') ||
+                !transientText.contains('this.useLatch.suppressUntilRelease()') ||
+                !transientText.contains('ExternalHandUseState.setHeld(false)') ||
+                !ownershipText.contains('bowTracker.isNotched()') ||
+                !ownershipText.contains('bowTracker.isDrawing()') ||
+                !ownershipText.contains('ExternalScreenOverlayHandler.isUsingController(controller)') ||
+                !targetText.contains('HandRaycastFluidPolicy.forUse(stack)') ||
+                !targetText.contains('new AABB(start, end).inflate(1.0D)') ||
+                !targetText.contains('entity != player.getVehicle()') ||
+                !bindingText.contains('layout.action(button).actionPaths()') ||
+                !buttonLayoutText.contains(
+                        'QuestFaceButton.RIGHT_B, QuestButtonAction.MAIN_HAND_USE') ||
+                !buttonLayoutText.contains(
+                        'QuestFaceButton.LEFT_Y, QuestButtonAction.ATTACK_BREAK_THIS_HAND') ||
+                !buttonKeysText.contains('/actions/mod/in/') ||
+                !handText.contains('QuestButtonKeyMappings.attackBreakThisHandButton()') ||
+                !handText.contains('updateMainAttacks(') ||
+                !handMixinText.contains('@Mixin(value = Minecraft.class, priority = 1000)') ||
+                !handMixinText.contains('@Inject(method = "tick", at = @At("HEAD"))')) {
+            throw new GradleException('v67 router must keep independent right attack, right B use and left trigger use')
+        }
+        // The reviewed Grip branch adds this API. Force its explicit lifecycle
+        // cancellation to be wired when that source is integrated; reflection
+        // or a dependency on the unreviewed branch would hide a stale session.
+        if (radialControllerText.contains('public static void cancel()') &&
+                !handText.contains('RadialHotbarController.cancel();')) {
+            throw new GradleException(
+                    'Grip RadialHotbarController.cancel() must be called by VR shutdown routing')
+        }
+    }
+}
+
+tasks.register('runPerHandWorldActionRouterSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.PerHandWorldActionRouterSelfTest'
+}
+
+tasks.register('runImmersiveAttackStateSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.ImmersiveAttackStateSelfTest'
+}
+
+tasks.register('verifyImmersiveMcAttackBridgeContract') {
+    group = 'verification'
+    def stateSource = file(
+            'src/main/java/org/questcraft/veq/client/input/ImmersiveAttackState.java')
+    def routerSource = file(
+            'src/main/java/org/questcraft/veq/client/input/PerHandWorldActionRouter.java')
+    def subscriberMixin = file(
+            'src/main/java/org/questcraft/veq/mixin/compat/immersivemc/' +
+                    'ImmersiveMcClientVrSubscriberMixin.java')
+    def trackerMixin = file(
+            'src/main/java/org/questcraft/veq/mixin/compat/immersivemc/' +
+                    'ImmersiveMcSwapTrackerMixin.java')
+    def mixinConfig = file('src/main/resources/vivecraft_essentials_quest.mixins.json')
+    inputs.files(stateSource, routerSource, subscriberMixin, trackerMixin, mixinConfig)
+    doLast {
+        String state = stateSource.getText('UTF-8')
+        String router = routerSource.getText('UTF-8')
+        String subscriber = subscriberMixin.getText('UTF-8')
+        String tracker = trackerMixin.getText('UTF-8')
+        String config = mixinConfig.getText('UTF-8')
+        [
+                'default -> originalKeyDown',
+                'owner != HandActionPriority.Owner.IMMERSIVE',
+                'owner != HandActionPriority.Owner.WORLD',
+                'ImmersiveAttackState.suppress(hand)',
+                'ImmersiveAttackState.beginFrame()',
+                'ImmersiveAttackState.observe(',
+                'ImmersiveAttackState.clear()',
+                '@Pseudo',
+                'require = 0',
+                'ClientVRSubscriber',
+                'handleInfos(Lcom/hammy275/immersivemc/api/client/immersive/Immersive;',
+                'Lnet/minecraft/client/KeyMapping;isDown()Z'
+        ].each { marker ->
+            if (!(state + router + subscriber).contains(marker)) {
+                throw new GradleException(
+                        "ImmersiveMC subscriber bridge contract is missing ${marker}")
+            }
+        }
+        int ownershipCapture = router.indexOf('HandOwnershipSnapshot.capture(')
+        int attackObservation = router.indexOf(
+                'ImmersiveAttackState.observe(', ownershipCapture)
+        if (ownershipCapture < 0 || attackObservation < ownershipCapture) {
+            throw new GradleException(
+                    'ImmersiveMC attack samples must be ownership-gated before observation')
+        }
+        [
+                '@Pseudo',
+                'require = 0',
+                'SwapTracker',
+                '<init>(Lnet/minecraft/world/InteractionHand;)V',
+                'Lnet/minecraft/client/KeyMapping;isDown()Z',
+                'this.veq$interactionHand'
+        ].each { marker ->
+            if (!tracker.contains(marker)) {
+                throw new GradleException(
+                        "ImmersiveMC swap bridge contract is missing ${marker}")
+            }
+        }
+        [
+                'compat.immersivemc.ImmersiveMcClientVrSubscriberMixin',
+                'compat.immersivemc.ImmersiveMcSwapTrackerMixin'
+        ].each { mixin ->
+            if (!config.contains('"' + mixin + '"')) {
+                throw new GradleException("Optional ImmersiveMC mixin is unregistered: ${mixin}")
+            }
+        }
+    }
+}
+
+tasks.register('runQuickActionLayoutSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.quickactions.QuickActionLayoutSelfTest'
+}
+
+tasks.register('runQuestGripBindingPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.QuestGripBindingPolicySelfTest'
+}
+
+tasks.register('runIndependentAttackLatchSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.IndependentAttackLatchSelfTest'
+}
+
+tasks.register('runRightTriggerOwnershipRecoverySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.RightTriggerOwnershipRecoverySelfTest'
+}
+
+tasks.register('runAttackBreakThisHandLatchSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.AttackBreakThisHandLatchSelfTest'
+}
+
+tasks.register('runOffhandAttackLatchSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.OffhandAttackLatchSelfTest'
+}
+
+tasks.register('runQuestButtonBindingsConfigSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.config.QuestButtonBindingsConfigSelfTest'
+}
+
+tasks.register('runRightBActionOriginSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.RightBActionOriginSelfTest'
+}
+
+tasks.register('runOffhandWorldPointerPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.OffhandWorldPointerPolicySelfTest'
+}
+
+tasks.register('verifyOffhandWorldPointerContract') {
+    group = 'verification'
+    def stateSource = file(
+            'src/main/java/org/questcraft/veq/client/input/OffhandWorldPointerState.java')
+    def rendererSource = file(
+            'src/main/java/org/questcraft/veq/client/render/OffhandWorldPointerRenderer.java')
+    def mixinSource = file(
+            'src/main/java/org/questcraft/veq/mixin/VREffectsHelperMixin.java')
+    def mixinConfig = file('src/main/resources/vivecraft_essentials_quest.mixins.json')
+    def routerSource = file(
+            'src/main/java/org/questcraft/veq/client/input/PerHandWorldActionRouter.java')
+    def vivecraftRoot = new File(rootProject.projectDir.parentFile, 'Vivecraft-26.2-Quest')
+    def vrRenderStateSource = new File(vivecraftRoot,
+            'common/src/main/java/org/vivecraft/client_vr/render/renderstates/VRRenderState.java')
+    def minecraftVrMixinSource = new File(vivecraftRoot,
+            'common/src/main/java/org/vivecraft/mixin/client_vr/MinecraftVRMixin.java')
+    inputs.files(stateSource, rendererSource, mixinSource, mixinConfig, routerSource,
+            vrRenderStateSource, minecraftVrMixinSource)
+    doLast {
+        String state = stateSource.getText('UTF-8')
+        String renderer = rendererSource.getText('UTF-8')
+        String mixin = mixinSource.getText('UTF-8')
+        String config = mixinConfig.getText('UTF-8')
+        String router = routerSource.getText('UTF-8')
+        String vrRenderState = vrRenderStateSource.getText('UTF-8')
+        String minecraftVrMixin = minecraftVrMixinSource.getText('UTF-8')
+        ['ControllerType.LEFT', 'InteractionHand.OFF_HAND',
+         'HandTargetSnapshot.capture(', 'WristOverlayHandler.isVisible()',
+         'teleportTracker.isAiming()', 'minecraft.isPaused()',
+         'minecraft.gui.overlay() != null',
+         'dataHolder.vrPlayer.getVRDataWorld()',
+         'QuestHandMapping.poseIndex(ControllerType.LEFT)',
+         'renderPosition.subtract(target.start())'].each { marker ->
+            if (!state.contains(marker)) {
+                throw new GradleException("Offhand pointer state is missing ${marker}")
+            }
+        }
+        if (state.contains('minecraft.hitResult') || renderer.contains('minecraft.hitResult')) {
+            throw new GradleException('Offhand pointer must never touch the global hitResult')
+        }
+        if (state.contains('vrdata_world_pre')) {
+            throw new GradleException(
+                    'Visual offhand pointer must use the frame-current render pose, not the tick pose')
+        }
+        int firstPassGate = vrRenderState.indexOf('if (!dataHolder.isFirstPass) return;')
+        int crosshairExtract = vrRenderState.indexOf(
+                'VREffectsHelper.extractCrosshairState(this.crosshairState, player);')
+        if (firstPassGate < 0 || crosshairExtract <= firstPassGate ||
+                !minecraftVrMixin.contains('vrPlayer.preRender(')) {
+            throw new GradleException(
+                    'Offhand pointer must extract once per rendered frame after preRender pose creation')
+        }
+        ['renderVRFabulous', 'renderVrFast', 'extractCrosshairState'].each { marker ->
+            if (!mixin.contains(marker)) {
+                throw new GradleException("Offhand pointer mixin is missing ${marker}")
+            }
+        }
+        if (!renderer.contains('RED = 0.20F') || !renderer.contains('GREEN = 0.90F') ||
+                !renderer.contains('BLUE = 1.00F') ||
+                !config.contains('"VREffectsHelperMixin"')) {
+            throw new GradleException('Offhand pointer must remain a registered cyan marker')
+        }
+        if (!router.contains('PerHandWorldActionPolicy.Command.MAIN_USE_BUTTON') ||
+                !router.contains('PerHandWorldActionPolicy.Command.OFFHAND_TRIGGER_USE') ||
+                router.count('minecraft.hitResult') != 1) {
+            throw new GradleException(
+                    'B/right-main and LT/left-offhand routing contract regressed')
+        }
+    }
+}
+
+tasks.register('runWristOpenAngleSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.config.WristOpenAngleSelfTest'
+}
+
+tasks.register('runXaeroWorldMapLookupSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.quickactions.XaeroWorldMapLookupSelfTest'
+}
+
+// Regression coverage is an executable main-method contract, not JUnit.
+test {
+    failOnNoDiscoveredTests = false
+}
+
+check.dependsOn tasks.named('runPalmUpVisibilitySelfTest')
+check.dependsOn tasks.named('runGripArbitrationSelfTest')
+check.dependsOn tasks.named('runHandActionPrioritySelfTest')
+check.dependsOn tasks.named('runQuestHandMappingSelfTest')
+check.dependsOn tasks.named('runGripReleaseLatchSelfTest')
+check.dependsOn tasks.named('runOffhandUseContinuationPolicySelfTest')
+check.dependsOn tasks.named('runRadialContinuationPolicySelfTest')
+check.dependsOn tasks.named('runLeftUseCaptureSelfTest')
+check.dependsOn tasks.named('runIndependentUseCooldownSelfTest')
+check.dependsOn tasks.named('runHotbarGridLayoutSelfTest')
+check.dependsOn tasks.named('runHotbarRadialSelectorSelfTest')
+check.dependsOn tasks.named('runHotbarAlternatingSwapSelfTest')
+check.dependsOn tasks.named('verifyLicensedHotbarAssets')
+check.dependsOn tasks.named('runHotbarHandStateSelfTest')
+check.dependsOn tasks.named('runHotbarSelectionPolicySelfTest')
+check.dependsOn tasks.named('runPendingSwapConfirmationSelfTest')
+check.dependsOn tasks.named('runGripDualSurfaceSessionSelfTest')
+check.dependsOn tasks.named('runGripFeedbackStateSelfTest')
+check.dependsOn tasks.named('runGripSwapRejectionHandoffSelfTest')
+check.dependsOn tasks.named('runOffhandAnchorStateSelfTest')
+check.dependsOn tasks.named('runGripHotbarConfigSelfTest')
+check.dependsOn tasks.named('runGripHotbarSurfaceContractSelfTest')
+check.dependsOn tasks.named('runWristHeldItemRenderPolicySelfTest')
+check.dependsOn tasks.named('runQuickActionLayoutSelfTest')
+check.dependsOn tasks.named('runQuestGripBindingPolicySelfTest')
+check.dependsOn tasks.named('runAttackBreakThisHandLatchSelfTest')
+check.dependsOn tasks.named('runRightBActionOriginSelfTest')
+check.dependsOn tasks.named('runOffhandWorldPointerPolicySelfTest')
+check.dependsOn tasks.named('verifyOffhandWorldPointerContract')
+check.dependsOn tasks.named('runPerHandWorldActionRouterSelfTest')
+check.dependsOn tasks.named('runImmersiveAttackStateSelfTest')
+check.dependsOn tasks.named('verifyImmersiveMcAttackBridgeContract')
+check.dependsOn tasks.named('runWristOpenAngleSelfTest')
+check.dependsOn tasks.named('runXaeroWorldMapLookupSelfTest')
+check.dependsOn tasks.named('verifyHandedGripAndDualRayContract')
+
+tasks.register('runVepInventoryLayoutSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.VepInventoryLayoutSelfTest'
+}
+
+tasks.register('runVepSurfaceSizingSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.VepSurfaceSizingSelfTest'
+}
+
+tasks.register('runVepEffectLayoutSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.VepEffectLayoutSelfTest'
+}
+
+tasks.register('runWristPointerRendererSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.WristPointerRendererSelfTest'
+}
+
+tasks.register('runContextualContainerRenderPassSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.ContextualContainerRenderPassSelfTest'
+}
+
+tasks.register('runVepExtendedContainerInputSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.VepExtendedContainerInputSelfTest'
+}
+
+tasks.register('runWristUiConfigV2MigrationSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.config.WristUiConfigV2MigrationSelfTest'
+}
+
+tasks.register('runWristSurfaceMathSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.wrist.WristSurfaceMathSelfTest'
+}
+
+tasks.register('runVepSurfaceVisibilityPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.wrist.VepSurfaceVisibilityPolicySelfTest'
+}
+
+tasks.register('runWristInputOwnershipSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.wrist.WristInputOwnershipSelfTest'
+}
+
+tasks.register('runQuickActionPersistenceSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.quickactions.QuickActionPersistenceSelfTest'
+}
+
+tasks.register('runVepFeatureConfigSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.config.VepFeatureConfigSelfTest'
+}
+
+tasks.register('verifyWristSettingsFeatureBinding') {
+    group = 'verification'
+    description = 'Prevents the settings screen from writing legacy feature fields.'
+    def source = file('src/main/java/org/questcraft/veq/client/gui/WristSettingsScreen.java')
+    inputs.file(source)
+    doLast {
+        String text = source.getText('UTF-8')
+        def required = [
+                'private final VepFeatureConfig features',
+                'features.beginEditing()',
+                'features.applyEditing()',
+                'features.cancelEditing()',
+                'features.setShowPotionEffects',
+                'features.setQuickActionDisplayMode',
+                'features.setShowStatusHud',
+                'features.setShowPlayerPreview',
+                'features.setContextualContainers',
+                'VepFeatureConfig.OptionalIntegration.XAERO',
+                'VepFeatureConfig.OptionalIntegration.JEI',
+                'VepFeatureConfig.OptionalIntegration.INVENTORY_PROFILES_NEXT'
+        ]
+        required.each { marker ->
+            if (!text.contains(marker)) {
+                throw new GradleException("Wrist settings are missing feature binding: ${marker}")
+            }
+        }
+        if (text.contains('config.setShowPotionEffects')
+                || text.contains('config.setQuickActionDisplayMode')) {
+            throw new GradleException(
+                    'Wrist settings must not write legacy potion/quick-action fields')
+        }
+        if (text.contains('features.setCreativeWrist')) {
+            throw new GradleException(
+                    'Wrist settings must not expose the redundant embedded Creative action')
+        }
+    }
+}
+
+tasks.register('verifyWristPoseEditorContract') {
+    group = 'verification'
+    description = 'Keeps pose editing transactional, live and independent of persisted state.'
+    def settingsSource = file('src/main/java/org/questcraft/veq/client/gui/WristSettingsScreen.java')
+    def trackerSource = file('src/main/java/org/questcraft/veq/client/wrist/WristInventoryTracker.java')
+    def handlerSource = file('src/main/java/org/questcraft/veq/client/overlay/WristOverlayHandler.java')
+    inputs.files(settingsSource, trackerSource, handlerSource)
+    doLast {
+        String settings = settingsSource.getText('UTF-8')
+        [
+                'config.beginEditing()',
+                'config.applyEditing()',
+                'config.cancelEditing()',
+                'WristOverlayHandler.beginCalibration',
+                'WristOverlayHandler.cancelCalibrationGrab()',
+                'WristOverlayHandler.refreshCalibrationPreview()',
+                'config.resetPose(activeController())',
+                'config.flipFace(activeController())'
+        ].each { marker ->
+            if (!settings.contains(marker)) {
+                throw new GradleException("Wrist pose editor is missing ${marker}")
+            }
+        }
+        String tracker = trackerSource.getText('UTF-8')
+        if (!tracker.contains('(!config.enabled() && !editingPose)')
+                || !tracker.contains('if (WristOverlayHandler.isCalibrating()) {')
+                || !tracker.contains('WristOverlayHandler.setVisible(true);')) {
+            throw new GradleException('Disabled wrist must remain forced-visible while editing')
+        }
+        String handler = handlerSource.getText('UTF-8')
+        [
+                'updateRoomPoseInternal(config, anchor);',
+                'this.roomPosition,',
+                'this.roomRotation,',
+                'shouldRetainVisibility()'
+        ].each { marker ->
+            if (!handler.contains(marker)) {
+                throw new GradleException("Live pose preview/visibility is missing ${marker}")
+            }
+        }
+    }
+}
+
+tasks.register('runManualVisibilityLatchSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.ManualVisibilityLatchSelfTest'
+}
+
+tasks.register('runCarriedPointerOwnershipSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.CarriedPointerOwnershipSelfTest'
+}
+
+tasks.register('runCarriedItemPositionSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.CarriedItemPositionSelfTest'
+}
+
+tasks.register('runWristPointerPressPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.WristPointerPressPolicySelfTest'
+}
+
+tasks.register('runContextualContainerPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.ContextualContainerPolicySelfTest'
+}
+
+tasks.register('runVepOptionalIntegrationsSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.compat.VepOptionalIntegrationsSelfTest'
+}
+
+tasks.register('runDeferredUtilityIconSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.compat.DeferredUtilityIconSelfTest'
+}
+
+tasks.register('verifyContextualContainerRuntimeContract') {
+    group = 'verification'
+    def runtimeSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepContextualContainerRuntime.java')
+    inputs.file(runtimeSource)
+    doLast {
+        String source = runtimeSource.getText('UTF-8')
+        ['claimGlobalScreen(', 'showContextualContainer(', 'contextualContainers()'].each { token ->
+            if (!source.contains(token)) {
+                throw new GradleException("Contextual container runtime is missing ${token}")
+            }
+        }
+        ['setScreen(', 'onClose(', 'closeContainer(', 'handleContainerInput(',
+         'ServerboundContainer', 'connection.send('].each { forbidden ->
+            if (source.contains(forbidden)) {
+                throw new GradleException(
+                        "Contextual container runtime must not own native lifecycle/network: ${forbidden}")
+            }
+        }
+    }
+}
+
+tasks.register('verifyVepUiLifecycleAndPointerContract') {
+    group = 'verification'
+    def creativeSource = file(
+            'src/main/java/org/questcraft/veq/client/gui/VepCreativeWristScreen.java')
+    def inventorySource = file(
+            'src/main/java/org/questcraft/veq/client/gui/VepWristInventoryScreen.java')
+    def inventoryBaseSource = file(
+            'src/main/java/org/questcraft/veq/client/gui/VepVrInventoryEffectScreen.java')
+    def contextualSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepContextualContainerRuntime.java')
+    def pointerSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepSurfacePointerRenderer.java')
+    def renderPassSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/ContextualContainerRenderPass.java')
+    def containerMixinSource = file(
+            'src/main/java/org/questcraft/veq/mixin/EmbeddedContainerScreenMixin.java')
+    def creativeAccessorSource = file(
+            'src/main/java/org/questcraft/veq/mixin/CreativeOutsideClickAccessor.java')
+    def mixinConfigSource = file(
+            'src/main/resources/vivecraft_essentials_quest.mixins.json')
+    def adapterSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepMultiSurfaceAdapter.java')
+    def handlerSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/WristOverlayHandler.java')
+    def wristViewSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepWristOverlayView.java')
+    def wristPressPolicySource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/WristPointerPressPolicy.java')
+    def redrawGateSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepWristFrameRedrawGate.java')
+    def screenContentSource = file(
+            'src/main/java/org/questcraft/veq/client/overlay/VepScreenContent.java')
+    inputs.files(creativeSource, inventorySource, inventoryBaseSource, contextualSource,
+            pointerSource, renderPassSource, containerMixinSource,
+            creativeAccessorSource, mixinConfigSource, adapterSource, handlerSource,
+            wristViewSource, wristPressPolicySource, redrawGateSource, screenContentSource)
+    doLast {
+        String creative = creativeSource.getText('UTF-8')
+        int creativeBackground = creative.indexOf(
+                'super.extractBackground(graphics, mouseX, mouseY, partialTick);')
+        int creativeStratum = creative.indexOf(
+                'graphics.nextStratum();', creativeBackground)
+        int creativeContent = creative.indexOf(
+                'super.extractRenderState(graphics, mouseX, mouseY, partialTick);', creativeStratum)
+        if (creativeBackground < 0 || creativeStratum < 0 || creativeContent < 0
+                || !creative.contains('void extractTransparentBackground(')) {
+            throw new GradleException(
+                    'External Creative wrist must render a transparent native background, then content')
+        }
+        ['void hardClose()', 'player.containerMenu == getMenu()',
+         'player.containerMenu = player.inventoryMenu'].each { marker ->
+            if (!creative.contains(marker)) {
+                throw new GradleException("Creative wrist lifecycle is missing ${marker}")
+            }
+        }
+        String inventory = inventorySource.getText('UTF-8')
+        if (creative.contains('VepSurfaceBackdrop.render(')
+                || inventory.contains('VepSurfaceBackdrop.render(')) {
+            throw new GradleException(
+                    'Wrist content must retain VEP transparency instead of a full rectangular plate')
+        }
+        String inventoryBase = inventoryBaseSource.getText('UTF-8')
+        int externalBackground = inventoryBase.indexOf(
+                'renderVepBackground(graphics, partialTick, mouseX, mouseY);')
+        int externalStratum = inventoryBase.indexOf(
+                'graphics.nextStratum();', externalBackground)
+        int externalContent = inventoryBase.indexOf(
+                'renderVepContent(graphics, mouseX, mouseY, partialTick);', externalStratum)
+        if (externalBackground < 0 || externalStratum < 0 || externalContent < 0) {
+            throw new GradleException(
+                    'External wrist rendering must include the VEP background before content')
+        }
+        if (!inventoryBase.contains('container/inventory/effect_background"')
+                || !inventoryBase.contains('container/inventory/effect_background_ambient"')
+                || inventoryBase.contains('effect_background_large')
+                || inventoryBase.contains('effect_background_small')) {
+            throw new GradleException(
+                    'Potion panels must use the Minecraft 26.2 nine-slice sprites')
+        }
+        if (inventory.contains('renderCreativeAction(')
+                || inventory.contains('isOverCreativeAction(')) {
+            throw new GradleException(
+                    'The redundant Creative Inventory banner must not be part of the wrist surface')
+        }
+        [creative, inventory].each { screen ->
+            if (screen.contains('VepSurfacePointerRenderer.render')
+                    || !screen.contains('hasClickedOutside(')) {
+                throw new GradleException(
+                        'Wrist screens must leave pointer composition to their surface and guard extended bounds')
+            }
+        }
+        if (!inventory.contains('VepExtendedContainerInput.isOutside(')) {
+            throw new GradleException('Inventory must guard its full extended bounds')
+        }
+        int creativeSuper = creative.indexOf(
+                'boolean vanillaOutside = super.hasClickedOutside(')
+        int creativeDecision = creative.indexOf(
+                'VepExtendedContainerInput.creativeOutsideDecision(', creativeSuper)
+        int creativeLatch = creative.indexOf(
+                '.veq$setHasClickedOutside(decision.creativeLatch())', creativeDecision)
+        String creativeAccessor = creativeAccessorSource.getText('UTF-8')
+        String mixinConfig = mixinConfigSource.getText('UTF-8')
+        if (creativeSuper < 0 || creativeDecision < 0 || creativeLatch < 0
+                || !creativeAccessor.contains('@Accessor("hasClickedOutside")')
+                || !mixinConfig.contains('"CreativeOutsideClickAccessor"')) {
+            throw new GradleException(
+                    'Creative must preserve Vanilla outside effects and synchronize its private latch')
+        }
+        String pointer = pointerSource.getText('UTF-8')
+        if (!pointer.contains('RenderHelper.drawMouseMenuQuad(graphics, mouseX, mouseY)')
+                || !pointer.contains('GuiRenderHelper.getGuiGraphics()')
+                || pointer.count('screen.extractCarriedItem(') != 1
+                || pointer.indexOf('screen.extractCarriedItem(')
+                    < pointer.indexOf('RenderHelper.drawMouseMenuQuad(')
+                || !pointer.contains('visibleBounds).resolve(surfaceWidth, surfaceHeight)')
+                || !pointer.contains('CarriedItemPosition.clamp(')
+                || pointer.contains('registerSurface(')
+                || pointer.contains('GUI_CURSOR')) {
+            throw new GradleException(
+                    'The pointer must compose locally with the carried item above it')
+        }
+        String adapter = adapterSource.getText('UTF-8')
+        String handler = handlerSource.getText('UTF-8')
+        if (adapter.contains('CarriedSurface')
+                || adapter.contains('VepCarriedItemScreen')
+                || adapter.contains('registerSurface(')) {
+            throw new GradleException(
+                    'A separate carried-item surface would recreate coplanar VR flicker')
+        }
+        int wristDeferred = handler.indexOf(
+                'ContextualContainerRenderPass.withCarriedDeferred(')
+        int wristComposited = handler.indexOf(
+                'VepSurfacePointerRenderer.renderPointerWithCarriedAbove(', wristDeferred)
+        if (wristDeferred < 0 || wristComposited < 0
+                || !handler.contains('void renderSurface(')
+                || !handler.contains('void renderCarriedItem(')) {
+            throw new GradleException(
+                    'Wrist pointer and Vanilla carried item must be ordered on one render target')
+        }
+        String redrawGate = redrawGateSource.getText('UTF-8')
+        int redrawDecision = redrawGate.indexOf('boolean shouldRedraw(')
+        int redrawCommit = redrawGate.indexOf('void markRendered(', redrawDecision)
+        if (!handler.contains('boolean usesRetainedContentTarget()')
+                || !handler.contains('void redrawCompleted(')
+                || !handler.contains('int hoverKey = hoverKey(cursor);')
+                || redrawDecision < 0 || redrawCommit < 0
+                || redrawGate.substring(redrawDecision, redrawCommit)
+                    .contains('this.snapshotValid = true')) {
+            throw new GradleException(
+                    'Wrist base redraw must use a retained target and commit only after extraction')
+        }
+        String screenContent = screenContentSource.getText('UTF-8')
+        if (!screenContent.contains('default int hoverKey(double x, double y)')
+                || !screenContent.contains('return -1;')) {
+            throw new GradleException(
+                    'Hosted Creative/contextual screens need a stable unknown hover key')
+        }
+        String wristView = wristViewSource.getText('UTF-8')
+        String wristPressPolicy = wristPressPolicySource.getText('UTF-8')
+        int wristBoundsStart = wristView.indexOf(
+                'public ExternalScreenOverlayHandler.SurfaceBounds bounds()')
+        int wristBoundsEnd = wristView.indexOf(
+                'public VepUiFeatureLayer featureLayer()', wristBoundsStart)
+        if (wristBoundsStart < 0 || wristBoundsEnd < 0) {
+            throw new GradleException('Wrist visual-bounds method could not be located')
+        }
+        String wristBounds = wristView.substring(wristBoundsStart, wristBoundsEnd)
+        if (wristBounds.contains('getCarried()')
+                || wristBounds.contains('carriedOwnership')
+                || wristBounds.contains('refreshCarriedOwnership(')) {
+            throw new GradleException(
+                    'Carried input ownership must never expand or replace the wrist visual crop')
+        }
+        if (wristView.count('losePointerPose(') < 5
+                || !wristView.contains('if (!retainCarriedRenderCursor(')
+                || !wristView.contains(
+                'cursor.set(cursor.x(), cursor.y(), controller, true, false, false)')) {
+            throw new GradleException(
+                    'Carried presentation must retain its last coordinate across ray/tracking loss')
+        }
+        if (!handler.contains('this.view.acceptsPointerPress(controller, button)')
+                || !wristView.contains('boolean acceptsPointerPress(')
+                || !wristView.contains('WristPointerPressPolicy.accepts(')
+                || !wristPressPolicy.contains('exactCarriedOwner')
+                || !wristPressPolicy.contains('!insideInteractionContent')
+                || !wristPressPolicy.contains('PointerButton.SECONDARY')) {
+            throw new GradleException(
+                    'Carried owner must retain bounded outside-click/drop input on the wrist surface')
+        }
+        int acceptedMouseDown = wristView.indexOf(
+                'boolean accepted = screen.mouseClicked(mouseEvent(index, button), false);')
+        int immediateCarriedPin = wristView.indexOf(
+                'pinCarriedOwnerAfterAcceptedPress(screen, controller);', acceptedMouseDown)
+        int pressReturn = wristView.indexOf('return true;', immediateCarriedPin)
+        if (acceptedMouseDown < 0 || immediateCarriedPin < 0 || pressReturn < 0
+                || !wristView.contains('this.carriedOwnership.pinAfterAcceptedPress(')
+                || !(acceptedMouseDown < immediateCarriedPin
+                && immediateCarriedPin < pressReturn)) {
+            throw new GradleException(
+                    'Accepted pickup must pin carried ownership before another controller is processed')
+        }
+        String contextual = contextualSource.getText('UTF-8')
+        ['PointerButton button', 'pointerScrolled(', 'pointerCancelled(',
+         'cursor.x(), cursor.y()', 'void renderCarriedItem(',
+         'VepSurfacePointerRenderer.renderPointerWithCarriedAbove(',
+         'ContextualContainerRenderPass.withCarriedDeferred(',
+         'VepSurfacePointerRenderer.canReceiveInput(',
+         'VepSurfacePointerRenderer.isInsideUnitUv(uv.x, uv.y)'].each { marker ->
+            if (!contextual.contains(marker)) {
+                throw new GradleException("Contextual pointer contract is missing ${marker}")
+            }
+        }
+        String renderPass = renderPassSource.getText('UTF-8')
+        String containerMixin = containerMixinSource.getText('UTF-8')
+        if (!renderPass.contains('try {') || !renderPass.contains('finally {')
+                || !renderPass.contains('DEFERRED_CARRIED_SCREEN.remove()')
+                || !containerMixin.contains('@Inject(method = "extractCarriedItem"')
+                || !containerMixin.contains(
+                'ContextualContainerRenderPass.isCarriedDeferred(this)')) {
+            throw new GradleException(
+                    'Contextual carried extraction must be exact-screen scoped and exception-safe')
+        }
+    }
+}
+
+tasks.register('runExternalOverlayActionSetPolicySelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.input.ExternalOverlayActionSetPolicySelfTest'
+}
+
+tasks.register('runVepSurfaceBackdropSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.VepSurfaceBackdropSelfTest'
+}
+
+tasks.register('runNativeContainerPlacementRetirementSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.NativeContainerPlacementRetirementSelfTest'
+}
+
+tasks.register('runVepVisibleListCacheSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.compat.VepVisibleListCacheSelfTest'
+}
+
+tasks.register('runVepSurfaceBoundsCacheSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.VepSurfaceBoundsCacheSelfTest'
+}
+
+tasks.register('runVepWristFrameRedrawGateSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.overlay.VepWristFrameRedrawGateSelfTest'
+}
+
+tasks.register('runVepScreenLayoutRevisionSelfTest', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'org.questcraft.veq.client.gui.VepScreenLayoutRevisionSelfTest'
+}
+
+tasks.register('verifyExternalOverlayActionSetContract') {
+    group = 'verification'
+    def mixinSource = file('src/main/java/org/questcraft/veq/mixin/MCOpenXRActionSetMixin.java')
+    def mixinConfig = file('src/main/resources/vivecraft_essentials_quest.mixins.json')
+    inputs.files(mixinSource, mixinConfig)
+    doLast {
+        String source = mixinSource.getText('UTF-8')
+        String config = mixinConfig.getText('UTF-8')
+        [
+                '@Mixin(MCOpenXR.class)',
+                'method = "updateActiveActionSets"',
+                'KeyboardHandler;SHOWING:Z',
+                'ExternalScreenOverlayHandler.ownsPointerInput()'
+        ].each { marker ->
+            if (!source.contains(marker)) {
+                throw new GradleException("External overlay action-set contract is missing ${marker}")
+            }
+        }
+        if (!config.contains('"MCOpenXRActionSetMixin"')) {
+            throw new GradleException('MCOpenXRActionSetMixin must remain registered')
+        }
+        ['VRInputActionSet.GUI', 'Minecraft;screen'].each { forbidden ->
+            if (source.contains(forbidden)) {
+                throw new GradleException(
+                        "External overlay input must not activate the GUI action set via ${forbidden}")
+            }
+        }
+    }
+}
+
+check.dependsOn tasks.named('runExternalOverlayActionSetPolicySelfTest')
+check.dependsOn tasks.named('runIndependentAttackLatchSelfTest')
+check.dependsOn tasks.named('runRightTriggerOwnershipRecoverySelfTest')
+check.dependsOn tasks.named('runOffhandAttackLatchSelfTest')
+check.dependsOn tasks.named('runQuestButtonBindingsConfigSelfTest')
+check.dependsOn tasks.named('runVepSurfaceBackdropSelfTest')
+check.dependsOn tasks.named('runNativeContainerPlacementRetirementSelfTest')
+check.dependsOn tasks.named('runVepVisibleListCacheSelfTest')
+check.dependsOn tasks.named('runVepSurfaceBoundsCacheSelfTest')
+check.dependsOn tasks.named('runVepWristFrameRedrawGateSelfTest')
+check.dependsOn tasks.named('runVepScreenLayoutRevisionSelfTest')
+check.dependsOn tasks.named('verifyExternalOverlayActionSetContract')
+check.dependsOn tasks.named('runVepInventoryLayoutSelfTest')
+check.dependsOn tasks.named('runVepSurfaceSizingSelfTest')
+check.dependsOn tasks.named('runVepEffectLayoutSelfTest')
+check.dependsOn tasks.named('runWristPointerRendererSelfTest')
+check.dependsOn tasks.named('runContextualContainerRenderPassSelfTest')
+check.dependsOn tasks.named('runVepExtendedContainerInputSelfTest')
+check.dependsOn tasks.named('runWristUiConfigV2MigrationSelfTest')
+check.dependsOn tasks.named('runWristSurfaceMathSelfTest')
+check.dependsOn tasks.named('runVepSurfaceVisibilityPolicySelfTest')
+check.dependsOn tasks.named('runWristInputOwnershipSelfTest')
+check.dependsOn tasks.named('runQuickActionPersistenceSelfTest')
+check.dependsOn tasks.named('runVepFeatureConfigSelfTest')
+check.dependsOn tasks.named('verifyWristSettingsFeatureBinding')
+check.dependsOn tasks.named('verifyWristPoseEditorContract')
+check.dependsOn tasks.named('runManualVisibilityLatchSelfTest')
+check.dependsOn tasks.named('runCarriedPointerOwnershipSelfTest')
+check.dependsOn tasks.named('runCarriedItemPositionSelfTest')
+check.dependsOn tasks.named('runWristPointerPressPolicySelfTest')
+check.dependsOn tasks.named('runContextualContainerPolicySelfTest')
+check.dependsOn tasks.named('runVepOptionalIntegrationsSelfTest')
+check.dependsOn tasks.named('runDeferredUtilityIconSelfTest')
+check.dependsOn tasks.named('verifyContextualContainerRuntimeContract')
+check.dependsOn tasks.named('verifyVepUiLifecycleAndPointerContract')

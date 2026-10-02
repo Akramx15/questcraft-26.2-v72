@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "status": "PENDING_EVIDENCE",
+  "labIdentity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.4",
+    "apkSha256": "8D4811174EC963FFB0DDD31196C425111D03F04A5A2EB4CF6ED7D2DEBB492FAA",
+    "apkSizeBytes": 128434961,
+    "artifactAudit": "PASS",
+    "coreSha256": "289C27057489B1D9B81583776F458179A1D5D5842451B35E598ADCBEB3213189",
+    "coreSizeBytes": 10068021,
+    "coreVersion": "26.2-1.3.15+qc.v71.rc4",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "veqSizeBytes": 441660,
+    "veqVersion": "0.7.0-v70-canary.1",
+    "coreVeqPairSha256": "9D2C0830A34963FF3D5F336B465A6B8D11C153E82A738D0528E8D1821F25A8B1",
+    "pojlibAarSha256": "7CE62B90112B74790100F5A8685412CA477D8086167598975A67DDC9E7FD7F2F",
+    "pojlibAarSizeBytes": 88700612,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "stableTarget": {
+    "package": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "mustRemainUntouchedUntilPromotion": true
+  },
+  "producerScripts": {
+    "memorySoakPath": "scripts/quest-v71-memory-soak-rc4.ps1",
+    "memorySoakSha256": "2D914227EC4C0343FD51C2DF2283F2447248110D40E81A290AA5879B78C78214",
+    "memoryRuntimeContractPath": "scripts/quest-v71-memory-runtime-contract-rc4.ps1",
+    "memoryRuntimeContractSha256": "7BBE86E5F4AFAD0AD39DDB7F6549637E8E5CB90D79785E647324E46EB52BBAD4",
+    "performanceHarnessPath": "scripts/quest-v71-rc3-rc4-ab.ps1",
+    "performanceHarnessSha256": "71EF6B99963B3D973389F81F8372490F511C3E9AC852CF8CB8292BF9E249887F",
+    "lifecycleRecoveryPath": "scripts/quest-v71-lab-lifecycle-recovery-rc4.ps1",
+    "lifecycleRecoverySha256": "A500C48C004517CA59A147314B05658EDB5D03CE23BCCE839649B3C31FA0EA56"
+  },
+  "memorySoaks": [
+    {
+      "round": 1,
+      "status": "PENDING",
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    },
+    {
+      "round": 2,
+      "status": "PENDING",
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null,
+      "requiresStartRuntimeReceipt": true,
+      "requiresSamePidFinalReceipt": true
+    }
+  ],
+  "performance": {
+    "status": "PENDING",
+    "requiredResult": "PASS_RC4_NO_PERSISTENT_REGRESSION",
+    "runManifestPath": null,
+    "runManifestSha256": null,
+    "comparisonPath": null,
+    "comparisonSha256": null,
+    "reports": [
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null }
+    ]
+  },
+  "lifecycleRecovery": {
+    "status": "PASS",
+    "receiptPath": "artifacts/acceptance/v71-lab-rc4-lifecycle-recovery-receipt.json",
+    "receiptSha256": "60267E644DBC13F2AA078086DF4244B8DC0F0196B516D3AB26A88F97B8F87A6A",
+    "requiredReceiptType": "V71_LAB_RC4_LIFECYCLE_RECOVERY"
+  },
+  "memoryRuntimeContract": {
+    "status": "PENDING",
+    "receiptPath": null,
+    "receiptSha256": null,
+    "requiredReceiptType": "V71_RC4_MEMORY_RUNTIME_CONTRACT"
+  },
+  "manual": {
+    "status": "PENDING",
+    "receiptPath": null,
+    "receiptSha256": null,
+    "requiredReceiptType": "V71_RC4_MANUAL_VR_INTERACTION"
+  },
+  "evidenceBoundary": {
+    "rc3ReceiptsAreDiagnosticOnly": true,
+    "rc3ReceiptsMaySatisfyRc4Acceptance": false,
+    "stableTouched": false,
+    "rawLogsPersisted": false,
+    "deviceSerialPersisted": false,
+    "accountDataPersisted": false
+  },
+  "notes": "PENDING_EVIDENCE and the zero APK identity are deliberate fail-closed values. Promotion is prohibited until a built and independently audited exact RC4 Lab APK, two new exact-RC4 90-minute soaks with PID-bound start and same-PID final runtime attestations, balanced RC3-to-RC4 A/B evidence, exact RC4 lifecycle recovery, exact RC4 memory-runtime contract, and explicit manual acceptance are each locked by path and SHA-256. Historical RC3 receipts are diagnostic only and cannot satisfy any RC4 requirement."
+}

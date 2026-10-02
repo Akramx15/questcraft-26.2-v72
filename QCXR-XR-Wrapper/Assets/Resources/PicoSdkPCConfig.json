@@ -1,0 +1,13 @@
+{
+  "general": {
+    "region": "cn"
+  },
+  "account": {
+    "access_token": ""
+  },
+  "package": {
+    "package_name": "com.qcxr.qcxr.dev262",
+    "package_version_code": 69,
+    "package_version_name": "6.0.1-26.2-vivecraft-personal.10"
+  }
+}

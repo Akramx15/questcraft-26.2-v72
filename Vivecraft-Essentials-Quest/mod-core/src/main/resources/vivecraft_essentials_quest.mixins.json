@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "package": "org.questcraft.veq.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "CalibrationClimbTrackerMixin",
+    "CalibrationInteractTrackerMixin",
+    "CreativeOutsideClickAccessor",
+    "CreativeScrollCancelMixin",
+    "EmbeddedContainerScreenMixin",
+    "HudAccessor",
+    "InteractTrackerAccessor",
+    "compat.immersivemc.ImmersiveMcClientVrSubscriberMixin",
+    "compat.immersivemc.ImmersiveMcSwapTrackerMixin",
+    "KeyMappingAccessor",
+    "MinecraftHandActionMixin",
+    "LoomScrollCancelMixin",
+    "MCOpenXRActionSetMixin",
+    "MerchantDragCancelMixin",
+    "RadialHandlerMixin",
+    "StonecutterScrollCancelMixin",
+    "VivecraftMainSettingsMixin",
+    "VREffectsHelperMixin",
+    "WristGuiTransitionMixin",
+    "XRBindingsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

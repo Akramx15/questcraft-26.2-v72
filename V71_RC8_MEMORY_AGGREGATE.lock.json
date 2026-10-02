@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "immutable": true,
+  "status": "HOST_ONLY_TESTED_NOT_RUN_ON_DEVICE",
+  "recordedDate": "2026-09-07",
+  "source": {
+    "branch": "feature/quest3-v71-rc8-mining",
+    "baseCommit": "8a7ae31b0436191d306475196c2ab064849b1d3d",
+    "hashScheme": "sha256-utf8-normalized-lf",
+    "collector": {
+      "path": "scripts/quest-v71-memory-aggregate-rc8.ps1",
+      "sha256": "4BE8D8B5D1F3A612DFCDBF9F16C4FBD28751F90EE999B92508604C771CD8DC72"
+    },
+    "hostTest": {
+      "path": "scripts/test-quest-v71-memory-aggregate-rc8-host.ps1",
+      "sha256": "818AD9286E3B64569E31F1ED243B986F3D18FD53B73299AFCABACC6111E5864C",
+      "result": "PASS",
+      "realAdbInvocations": 0
+    },
+    "safetyContract": {
+      "path": "scripts/quest-v71-memory-aggregate-rc8-safety.md",
+      "sha256": "3051585C1807A3B16AB5FF238F5E736F11D13E09FE87FF4F011020B044FA9B3D"
+    }
+  },
+  "candidate": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.8",
+    "apkSha256": "A8E364630A8BA22853FD8135818DB4E9430FE856305754B1FD6C420E429B2416",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "coreSha256": "ADDB01FA168033C42F97C615DAF97CBB927B9E94400606EEF27CFBE930015EAB",
+    "veqSha256": "FF7F6FCFDA21895764B69F3316CE7E9EBD8D890DF675C1E8007835B3814573F9",
+    "buildLockPath": "V71_LAB_RC8.lock.json",
+    "buildLockNormalizedLfSha256": "BB5147F0B5B0A3AB5C61D7012A821F0C2583BDE76F96F963C19EDDD967177EF7"
+  },
+  "authorization": {
+    "defaultAction": "SelfTest",
+    "statusIsHostOnly": true,
+    "captureRequires": [
+      "AllowDeviceRead",
+      "ConfirmExactRc8Lab",
+      "AllowHostOutput"
+    ],
+    "deviceReadsOnly": true,
+    "deviceWritesAllowed": false,
+    "stableAccessAllowed": false,
+    "installAllowed": false,
+    "launchAllowed": false,
+    "forceStopAllowed": false,
+    "clearDataAllowed": false,
+    "uninstallAllowed": false,
+    "rootAllowed": false,
+    "jfrArmingAllowed": false
+  },
+  "privacy": {
+    "aggregateCategoriesOnly": true,
+    "rawSmapsAllowed": false,
+    "smapsRollupOptional": true,
+    "rawRuntimeLogsAllowed": false,
+    "rawJfrAllowed": false,
+    "accountWorldServerDataAllowed": false,
+    "rawTemporaryFilesAllowed": false,
+    "sanitizedReceiptOnly": true
+  },
+  "evidenceBoundary": {
+    "deviceRunPerformed": false,
+    "runtimeMemoryClaimAllowed": false,
+    "leakClaimAllowed": false,
+    "performanceClaimAllowed": false,
+    "stablePromotionAllowed": false
+  }
+}

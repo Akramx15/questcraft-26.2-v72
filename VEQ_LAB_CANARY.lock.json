@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "status": "v71-integrated-rc3-persistent-baseline",
+  "harness": {
+    "id": "questcraft-veq-v71-canary-v3",
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenPackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "minecraftVersion": "26.2",
+    "target": "mods/Vivecraft-Essentials-Quest.jar",
+    "pairedTarget": "mods/Vivecraft.jar",
+    "fabricId": "vivecraft_essentials_quest",
+    "fabricVersion": "0.7.0-v70-canary.1",
+    "minecraftDependency": "26.2",
+    "javaDependency": ">=25",
+    "maxLaunches": 1,
+    "maxExpiryMinutes": 30
+  },
+  "baseline": {
+    "version": "0.7.0-v70-canary.1",
+    "acceptedGameplayCommit": "e9c5a8cbc0d5e730cc6422dfbaf6e79b9c310f4f",
+    "releasePayloadCommit": "e9c5a8cbc0d5e730cc6422dfbaf6e79b9c310f4f",
+    "assetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+    "sha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "sizeBytes": 441660
+  },
+  "candidatePolicy": {
+    "hashBinding": "explicit-expected-sha256-per-deploy",
+    "bakedCandidateHashes": [],
+    "maximumPlannedSequentialCandidates": 3,
+    "sharedFabricVersion": "0.7.0-v70-canary.1",
+    "pairedCoreAndVeqPermitsAllowed": true,
+    "pairedOtherModsFingerprintExcludesExactly": [
+      "mods/Vivecraft.jar",
+      "mods/Vivecraft-Essentials-Quest.jar"
+    ]
+  },
+  "rejectedCandidates": [
+    {
+      "id": "veq-frame-snapshot-superseded",
+      "sourceCommit": "1047f873b5111017b86cd2f8f4f19ae51c8fb0d1",
+      "version": "0.7.0-v69-frame-snapshot.1",
+      "artifactFileName": "REJECTED-VivecraftEssentialsQuest-v69-frame-snapshot-1047f873.jar",
+      "sha256": "35B71C9C432B42AF067D65BEEB1E966C2242181D085449C411B230F568800095",
+      "reason": "Hidden Wrist work, frame-index-only invalidation, and Quick Action tooltip bypass make this candidate invalid. Never deploy it."
+    }
+  ],
+  "policy": {
+    "defaultEnabled": false,
+    "expectedSha256Required": true,
+    "allowDeviceWriteRequired": true,
+    "atomicPromotionPerTargetRequired": true,
+    "compensatingRollbackOnPairedFailure": true,
+    "automaticRollbackOnFailure": true,
+    "automaticRollbackOnNextPrelaunch": true,
+    "rollbackBaseline": "integrated-rc3",
+    "legacyV1V2StateIgnored": true,
+    "stableMutationAllowed": false,
+    "deviceTested": false,
+    "performanceAccepted": false
+  }
+}

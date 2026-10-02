@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "status": "PENDING_EVIDENCE",
+  "labIdentity": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.3",
+    "apkSha256": "B89181443E40E99FFA6DD094253631F59A4B0E01C21D10C5C3ADD0BBDF39AD8F",
+    "apkSizeBytes": 128431385,
+    "coreSha256": "14B230B69AF24A53C459116AF2B2869F014690E6408D4881B5B1395C1EC38A26",
+    "veqSha256": "314D3CBD6D7A06D9AD2A5A6AC437A1B3A3C2AE2F1D9927414DB4A9B3E7AE0D8B",
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A"
+  },
+  "producerScripts": {
+    "memorySoakSha256": null,
+    "memoryRuntimeContractSha256": null,
+    "performanceHarnessSha256": null,
+    "lifecycleRecoverySha256": null
+  },
+  "memorySoaks": [
+    {
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null
+    },
+    {
+      "producerSha256": null,
+      "summaryPath": null,
+      "summarySha256": null,
+      "samplesPath": null,
+      "samplesSha256": null
+    }
+  ],
+  "performance": {
+    "runManifestPath": null,
+    "runManifestSha256": null,
+    "comparisonPath": null,
+    "comparisonSha256": null,
+    "reports": [
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null },
+      { "path": null, "sha256": null }
+    ]
+  },
+  "lifecycleRecovery": {
+    "receiptPath": null,
+    "receiptSha256": null
+  },
+  "memoryRuntimeContract": {
+    "receiptPath": null,
+    "receiptSha256": null
+  },
+  "manual": {
+    "receiptPath": null,
+    "receiptSha256": null
+  },
+  "notes": "PENDING means Stable promotion is prohibited. Lock producerSha256, summary.json, and samples.jsonl for each exact-RC3 90-minute soak. Soak 1 may use the reviewed FD443 legacy producer only for the task-observed 2026-09-06 09:16:23 +03:00 run; soak 2 must use current C6FE. Also lock the write-once memory runtime contract and its reviewed producer, run-manifest.json/comparison.json plus A1/B1/B2/A2/A3/B3, the atomic lifecycle/recovery receipt and its reviewed producer SHA-256, and the explicit-user manual receipt. The memory contract is deliberately cross-evidence and does not claim per-soak JVM-argument or launcher-release-marker observation."
+}

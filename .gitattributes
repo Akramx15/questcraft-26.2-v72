@@ -1,0 +1,6 @@
+/QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar filter=lfs diff=lfs merge=lfs -text
+/Pojlib/src/main/assets/runtimes/JRE-25.zip filter=lfs diff=lfs merge=lfs -text
+/V71_RC6_2_RUNTIME_RESULT.lock.json -text
+/artifacts/manual/v71-rc6.2-user-acceptance-20260907.json -text
+/artifacts/host/v71-rc6.2-post-manual-host-regression-20260907.json -text
+/scripts/test-quest-veq-dev-transactions.sh text eol=lf

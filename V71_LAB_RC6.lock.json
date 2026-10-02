@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "status": "host-built-and-audited",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "overlayFixCommit": "edf0ad59c47d49254b6676704ff8243d75d16a28",
+    "rc6IdentityCommit": "c9dfc90305da1bd8c8de4c711e6f5c1fd5b6e498",
+    "payloadIntegrationCommit": "b1b86c3b8cb4fc8103df07618a1c6fbfbb660340",
+    "optionsOwnershipRepairCommit": "3775183e5ac2728096b94b60d1d59398ffab2f90",
+    "buildHarnessCommit": "f33f4bb851961391f4ac6f9dc5e41362bb207f0c",
+    "scriptHashScheme": "sha256-utf8-normalized-lf",
+    "buildScript": "scripts/build-v71-lab-rc6-integrated.ps1",
+    "buildScriptSha256": "0C2907A3A4607BC108D64F9B5F70C60AA954E17135519B9B3168075BD4A19A69"
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "delivery": "integrated-persistent-managed-baseline",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.6-integrated-local.apk",
+    "apkSha256": "79AC6CD19AC3ED3644D0B400369518FF4E4EDC536AD4DB9926BE1411E6BC3DF5",
+    "apkSizeBytes": 128444257,
+    "artifactAuditPassed": true,
+    "stableTouched": false
+  },
+  "predecessor": {
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.5.2",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.5.2-integrated-local.apk",
+    "apkSha256": "AAD1B8F94DE7D4F65BF481CE65FCA83FAFFC7B0961435E95EF3F1899CF038879",
+    "apkSizeBytes": 128439489,
+    "immutableArtifactsAndReceipts": true
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\nveq=<uppercase-sha256>\n)",
+    "sha256": "ED3E2980F6B377E42BB598F5AFB1C3412F05AEECA9043534DBB21734BFD0BFD7",
+    "core": {
+      "sourcePath": "Vivecraft-26.2-Quest/build/libs/vivecraft-26.2-1.3.15+qc.v71.rc6-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc6",
+      "minecraftDependency": "26.2.x",
+      "javaDependency": ">=25",
+      "sha256": "8FE9804CC041CFCE45C9B4F49F361065D62DC41D14B05CC49680BB9A6F0FF079",
+      "sizeBytes": 10067011
+    },
+    "veq": {
+      "sourcePath": "Vivecraft-Essentials-Quest/mod-fabric/build/libs/VivecraftEssentialsQuest-0.7.0-v71.rc6+mc26.2-fabric.jar",
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v71.rc6",
+      "minecraftDependency": "26.2",
+      "javaDependency": ">=25",
+      "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "sizeBytes": 443280
+    }
+  },
+  "overlayScope": {
+    "gripWorldUnoccluded": true,
+    "wristSuppressesAnchorHeldShieldOnlyWhileVisible": true,
+    "ordinaryGuiAndHudDepthSemanticsUnchanged": true,
+    "handArmAndArmorRenderingUnchanged": true,
+    "nonShieldAndOppositeHandItemsUnchanged": true
+  },
+  "optionsOwnershipRepair": {
+    "commit": "3775183e5ac2728096b94b60d1d59398ffab2f90",
+    "maximumOptionsBytes": 4194304,
+    "alreadyWritableIsNoOp": true,
+    "replacementPreservesExactBytes": true,
+    "rejectsSymlinksAndNonRegularFiles": true,
+    "liveOptionsTouchedDuringHostBuild": false,
+    "resourcepacksTouchedDuringHostBuild": false
+  },
+  "persistentBaseline": {
+    "normalLaunchRequiresMarker": false,
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v6",
+    "veqHarnessStateNamespace": "questcraft-veq-v71-canary-v4",
+    "legacyRc5NamespacesRemainImmutable": true,
+    "normalColdStartsPersistent": true,
+    "runtimeValidation": "PENDING_NOT_INSTALLED"
+  },
+  "runtimeBinding": {
+    "expectedGameLogRelativePath": "instances/26.2/logs/latest.log",
+    "expectedGameLogMinecraftVersion": "26.2",
+    "expectedGameLogCoreVersion": "26.2-1.3.15+qc.v71.rc6",
+    "expectedGameLogVeqVersion": "0.7.0-v71.rc6",
+    "validation": "PENDING_NO_DEVICE_ACTION_IN_HOST_BUILD"
+  },
+  "pojlibAar": {
+    "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+    "sha256": "9A69B2A568919AEDAB5F1774028BDEE879B10D7ADD13B0152600A9713FBAFF1A",
+    "sizeBytes": 88709880,
+    "cleanBuildsMatchedByteForByte": true,
+    "cleanBuildCount": 2,
+    "unitTestSuitesPerBuild": 25,
+    "unitTestsPerBuild": 118,
+    "unitTestFailures": 0,
+    "unitTestErrors": 0,
+    "unitTestSkipped": 0,
+    "jdk": "Unity bundled Temurin 11.0.14.1+1",
+    "nativeBuildIdsOmittedForReproducibility": true
+  },
+  "unitySource": {
+    "projectSettingsPath": "QCXR-XR-Wrapper/ProjectSettings/ProjectSettings.asset",
+    "projectSettingsSha256": "E45F52C082C8E49C24C2EE12C5793D2C8E03136E4FC9E7515158AFB2995DD36E",
+    "restoredAfterEveryBuildAttempt": true
+  },
+  "hostVerification": {
+    "vivecraftCommonTests": 159,
+    "vivecraftTestFailures": 0,
+    "vivecraftFabricBuildPassed": true,
+    "veqFullCheckPassed": true,
+    "veqGradleTasksExecuted": 84,
+    "sourceArtifactHashesVerified": true,
+    "embeddedAssetHashesVerified": true,
+    "manifestCopiesVerified": true,
+    "pojlibAarReproducible": true,
+    "buildGateSelfTestPassed": true,
+    "integratedApkBuilt": true,
+    "integratedApkArtifactAuditPassed": true,
+    "apkPackage": "com.qcxr.qcxr.canary262",
+    "apkVersionCode": 71,
+    "apkVersionName": "6.0.1-26.2-vivecraft-personal.12-rc.6",
+    "apkLabel": "QuestCraft Vivecraft Lab 26.2",
+    "apkMinSdk": 29,
+    "apkTargetSdk": 34,
+    "apkAbis": [
+      "arm64-v8a"
+    ],
+    "apkSignerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "apkSignatureV2": true,
+    "vulkanAndOpenXrPayloadVerified": true,
+    "zipAlignment16KiB": true,
+    "nativeElfLoadAlignment16KiB": false,
+    "nativeElfAudit": {
+      "librariesAudited": 36,
+      "librariesAligned16KiB": 4,
+      "librariesAligned4KiBOnly": 32,
+      "incompatibleLibraries": [
+        "libawt_headless.so",
+        "libawt_xawt.so",
+        "libc++_shared.so",
+        "libistdio.so",
+        "libjrelauncher.so",
+        "liblog.so",
+        "liblwjgl_lmdb.so",
+        "liblwjgl_nanovg.so",
+        "liblwjgl_opengl.so",
+        "liblwjgl_opengles.so",
+        "liblwjgl_openvr.so",
+        "liblwjgl_stb.so",
+        "liblwjgl_tinyfd.so",
+        "liblwjgl_vma.so",
+        "liblwjgl.so",
+        "libmobileglues_info_getter.so",
+        "libmobileglues.so",
+        "libopenal.so",
+        "libopenxr_loader.so",
+        "libPICO_TOBAPI.so",
+        "libpojavexec_awt.so",
+        "libpojavexec.so",
+        "libpxrplatformloader.so",
+        "libshaderc.so",
+        "libspirv-cross-c-shared.so",
+        "libsqlitejdbc.so",
+        "libUnityOpenXR.so",
+        "libvloader.so",
+        "libwebp.so",
+        "libwebpdecoder.so",
+        "libwebpdemux.so",
+        "libwebpmux.so"
+      ]
+    },
+    "deviceTouched": false
+  },
+  "acceptance": {
+    "hostBuildPassed": true,
+    "runtimePassed": false,
+    "stablePromotionAllowed": false
+  },
+  "notes": "RC6 is a new Lab-only managed baseline containing the per-surface Grip world-visibility policy and Wrist anchor-hand Shield visual suppression. ZIP entries are 16-KiB aligned, but 32 of 36 native ELF libraries still expose 4-KiB PT_LOAD alignment, so Android 16-KiB native page compatibility is not achieved. No ADB, profile, resource-pack, account, Lab-runtime or Stable action is part of this Host lock. Historical RC5/RC5.1/RC5.2 artifacts, locks and receipts remain immutable."
+}

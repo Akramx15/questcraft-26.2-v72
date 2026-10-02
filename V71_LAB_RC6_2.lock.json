@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "status": "HOST_ARTIFACT_IDENTITY_LOCKED_RUNTIME_EVIDENCE_PENDING",
+  "immutable": true,
+  "recordedDate": "2026-09-07",
+  "source": {
+    "branch": "feature/quest3-v71-dual-hand-bow",
+    "evidenceBaseCommit": "d4e0bcf3282e2d2bb361ec94ddc46dc8e52cd3bb",
+    "tightSpaceRenderingFixCommit": "c3595101eec81ce8b55f4362256e2c7d1e73c82b",
+    "coreIdentityCommit": "764d33b5d321760439681a5c54919005c80035a2",
+    "payloadIntegrationCommit": "17965167afd7b86d4877e228722c1d45a4649a43",
+    "reproduciblePojlibAarCommit": "bef41d4c21772165fa4876ab9460b518d94f0bea",
+    "apkChecksumCommit": "a5e6f9ed9eeb081d059efb2d9b40a5be73e4f6f6"
+  },
+  "target": {
+    "package": "com.qcxr.qcxr.canary262",
+    "forbiddenStablePackage": "com.qcxr.qcxr.dev262",
+    "profile": "26.2",
+    "versionCode": 71,
+    "versionName": "6.0.1-26.2-vivecraft-personal.12-rc.6.2",
+    "apkPath": "QCXR-XR-Wrapper/Builds/QuestCraft-Vivecraft-Lab-26.2-v71-rc.6.2-tight-space-local.apk",
+    "apkSha256": "ED810E5ABB7AD3A7B0D6303D08DEB813FCB5F4C9EE7BD6B85D298F67420FA3D4",
+    "apkSizeBytes": 128459705,
+    "signerSha256": "B9BC192248354C7330EAE3781C39A5B569407F0DCCBCAF354C706DEE14D4CA1A",
+    "artifactAudit": "PASS_HOST_RECORDED",
+    "runtimeValidation": "PENDING_NOT_RUN",
+    "stableTouched": false
+  },
+  "predecessors": {
+    "rc6BuildLockPath": "V71_LAB_RC6.lock.json",
+    "rc5BuildLockPath": "V71_LAB_RC5.lock.json",
+    "artifactsLocksAndReceiptsRemainImmutable": true,
+    "receiptsMaySatisfyRc62Acceptance": false
+  },
+  "pair": {
+    "digestScheme": "sha256-utf8(core=<uppercase-sha256>\nveq=<uppercase-sha256>\n)",
+    "sha256": "EA2E063BF3B2B38B3B8EB28CA014C5D6144DC61BFC37BE4F3042CDE27FE8C30A",
+    "core": {
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-26.2-1.3.15-quest.bin",
+      "fabricId": "vivecraft",
+      "fabricVersion": "26.2-1.3.15+qc.v71.rc6.2",
+      "sha256": "6449A62588FA944BA238F87178C43EE00BD10E3B223459606B4C002B7F2360AF",
+      "sizeBytes": 10068468
+    },
+    "veq": {
+      "embeddedAssetPath": "Pojlib/src/main/assets/mods/vivecraft-essentials-quest.bin",
+      "fabricId": "vivecraft_essentials_quest",
+      "fabricVersion": "0.7.0-v71.rc6",
+      "sha256": "BF7857E4212B18601D6E165A5453CAF325BC3AB8EB1D093A324D6AA8C20F70FD",
+      "sizeBytes": 443280,
+      "frozenFromRc6": true
+    }
+  },
+  "pojlibAar": {
+    "path": "QCXR-XR-Wrapper/Assets/Plugins/Android/Pojlib-release.aar",
+    "sha256": "6B9224C6697D00DCE363AD80EA5FA9946E90808C514517BA4EEDFEB31DB2BA89",
+    "sizeBytes": 88724129,
+    "cleanBuildsMatchedByteForByte": true
+  },
+  "runtimeBinding": {
+    "expectedGameLogRelativePath": "instances/26.2/logs/latest.log",
+    "expectedGameLogMinecraftVersion": "26.2",
+    "expectedGameLogCoreVersion": "26.2-1.3.15+qc.v71.rc6.2",
+    "expectedGameLogVeqVersion": "0.7.0-v71.rc6",
+    "coreHarnessStateNamespace": "questcraft-vivecraft-core-canary-v7",
+    "veqHarnessStateNamespace": "questcraft-veq-v71-canary-v4",
+    "validation": "PENDING_NO_DEVICE_ACTION_WHILE_LOCKING"
+  },
+  "memoryPolicy": {
+    "xmsMiB": 512,
+    "automaticXmxTargetMiB": 1536,
+    "additionalNativeHeadroomMiB": 1024,
+    "automaticXmxMinMiB": 1536,
+    "xmxMaxMiB": 2048,
+    "manualXmxMaxMiB": 2048
+  },
+  "evidence": {
+    "producerLockPath": "V71_RC6_2_EVIDENCE_PRODUCERS.lock.json",
+    "manualAcceptanceTemplatePath": "V71_MANUAL_RC6_2_ACCEPTANCE.template.json",
+    "memorySamplerPath": "scripts/quest-v71-memory-soak-rc62.ps1",
+    "runtimeEvidence": "PENDING",
+    "manualAcceptance": "PENDING"
+  },
+  "acceptance": {
+    "hostArtifactIdentityLocked": true,
+    "questRuntimePassed": false,
+    "memorySoaksPassed": false,
+    "manualVrInteractionPassed": false,
+    "stablePromotionAllowed": false
+  },
+  "evidenceBoundary": {
+    "deviceTouchedWhileCreatingThisLock": false,
+    "adbUsedWhileCreatingThisLock": false,
+    "sourceBehaviorChangedByThisLock": false,
+    "apkModifiedByThisLock": false,
+    "runtimeEvidenceMayBeInferredFromHostArtifacts": false
+  },
+  "notes": "Immutable RC6.2 Lab identity and artifact boundary. The exact APK, Core, frozen RC6 VEQ, Pojlib AAR, and signer are locked here. Runtime, thermal, memory, manual-interaction, and Stable-promotion results remain pending and cannot be inherited from RC6, RC5, or any other candidate."
+}
